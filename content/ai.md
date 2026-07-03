@@ -11,7 +11,7 @@ kicker = "SavantChat — AI code security"
 schema_type = "Article"
 +++
 
-**TL;DR.** [SavantChat](https://savant.chat) is an AI-powered security auditor for code. I co-founded it with Alexandra Gulamova in early 2025 after [six years of auditing production protocols by hand](/audits/). It made its name on smart contracts — Solidity, Vyper, Rust — where all of its public benchmarks were earned; the pipeline itself is fully language-agnostic and audits any codebase in any language. Placed top-6 against expert human auditors in Sherlock's Symbiotic Relay contest (June 2025); runs pre-audits inside 1inch's development workflow since December 2025.
+**TL;DR.** [SavantChat](https://savant.chat) is an AI-powered security auditor for code. I co-founded it with Alexandra Gulamova in early 2025 after [six years of auditing production protocols by hand](/audits/). It made its name on smart contracts — Solidity, Vyper, Rust — where all of its public benchmarks were earned; the pipeline itself is fully language-agnostic and audits any codebase in any language. Placed top-6 against expert human auditors in Sherlock's Symbiotic Relay contest (June 2025) — the world's first competitive win by an AI auditor; runs pre-audits inside 1inch's development workflow since December 2025.
 
 ## Why we built it
 
@@ -25,7 +25,7 @@ The architecture mirrors how a strong human audit team works: the code is decomp
 
 ## The evidence
 
-- **Top-6 in Sherlock's Symbiotic Relay audit contest** ([contest page](https://audits.sherlock.xyz/contests/967): June 19 – July 10, 2025, 100,000 USDC rewards, 530 competition issues) — competing directly against expert human auditors on a live codebase. The [announcement](https://www.globenewswire.com/news-release/2025/09/02/3143051/0/en/Savant-Chat-achieves-a-historic-top-6-ranking-in-the-Sherlock-DeFi-Audit-Contest.html) (September 2, 2025) called it "the first time an AI has publicly demonstrated performance on par with expert human auditors in a fiercely competitive environment."
+- **Top-6 in Sherlock's Symbiotic Relay audit contest** ([leaderboard](https://audits.sherlock.xyz/contests/967/leaderboard); June 19 – July 10, 2025, 100,000 USDC rewards, 530 competition issues) — the world's first competitive win by an AI auditor, competing directly against expert human auditors on a live codebase. The [announcement](https://www.globenewswire.com/news-release/2025/09/02/3143051/0/en/Savant-Chat-achieves-a-historic-top-6-ranking-in-the-Sherlock-DeFi-Audit-Contest.html) (September 2, 2025) called it "the first time an AI has publicly demonstrated performance on par with expert human auditors in a fiercely competitive environment."
 - **87–95% on CTFBench (v0.2)** — see the benchmark section below.
 - **1inch runs SavantChat pre-audits in its development workflow** — 1inch's own words, December 23, 2025: "We've been working with SavantChat throughout 2025," with pre-audits of the Aqua and SwapVM codebases running through GitHub Actions on pull requests, and plans "to use them more widely, including for the Aqua liquidity protocol." Source: [1inch blog](https://1inch.com/blog/post/1inch-uses-savantchats-ai-tools). There is a personal loop here: I audited [ten 1inch protocol releases by hand in 2020–2024](/audits/) — now SavantChat runs the automated first pass in parts of that same workflow.
 
@@ -46,7 +46,7 @@ Interviews on the topic: ["AI powered Web3 Security" with Francesco Andreoli](ht
 | Claim | Source |
 |---|---|
 | Symbiotic Relay contest, dates, 100k USDC pool | [audits.sherlock.xyz/contests/967](https://audits.sherlock.xyz/contests/967), [machine-readable](https://mainnet-contest.sherlock.xyz/contests/967) |
-| Top-6 placement | [announcement, Sep 2, 2025](https://www.globenewswire.com/news-release/2025/09/02/3143051/0/en/Savant-Chat-achieves-a-historic-top-6-ranking-in-the-Sherlock-DeFi-Audit-Contest.html) |
+| Top-6 placement | [leaderboard](https://audits.sherlock.xyz/contests/967/leaderboard), [announcement, Sep 2, 2025](https://www.globenewswire.com/news-release/2025/09/02/3143051/0/en/Savant-Chat-achieves-a-historic-top-6-ranking-in-the-Sherlock-DeFi-Audit-Contest.html) |
 | 1inch pre-audits (Aqua, SwapVM), GitHub Actions | [1inch blog, Dec 23, 2025](https://1inch.com/blog/post/1inch-uses-savantchats-ai-tools) |
 | CTFBench methodology | [ethresear.ch, Feb 2025](https://ethresear.ch/t/ctfbench-a-new-method-for-evaluating-ai-smart-contract-auditors-balancing-vulnerability-detection-and-reducing-false-alarms/21821) |
 | CTFBench scores 87–95% (v0.2) | [ctfbench.com](https://ctfbench.com), [raw tasks](https://github.com/snjax/evmbench-ctfbench-benchmark) |
