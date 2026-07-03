@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI that audits code: SavantChat and the security arms race — Igor Gulamov</title>
+<meta name="description" content="SavantChat — the language-agnostic AI code security auditor co-founded by Igor Gulamov (snjax) in 2025: architecture, evidence (Sherlock Symbiotic Relay top-6, CTFBench, 1inch pre-audits), the CTFBench methodology, and the offensive-vs-defensive AI agents thesis.">
+<meta name="author" content="Igor Gulamov">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://igorgulamov.com/ai/">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="alternate" type="application/atom+xml" title="Igor Gulamov" href="/atom.xml">
+<link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Igor Gulamov (snjax)">
+<meta property="og:title" content="AI that audits code: SavantChat and the security arms race">
+<meta property="og:description" content="SavantChat — the language-agnostic AI code security auditor co-founded by Igor Gulamov (snjax) in 2025: architecture, evidence (Sherlock Symbiotic Relay top-6, CTFBench, 1inch pre-audits), the CTFBench methodology, and the offensive-vs-defensive AI agents thesis.">
+<meta property="og:url" content="https://igorgulamov.com/ai/">
+<meta property="og:image" content="https://igorgulamov.com/img/igor.jpg">
+<meta property="og:image:width" content="640">
+<meta property="og:image:height" content="640">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@igorgulamov">
+<meta name="twitter:creator" content="@igorgulamov">
+<meta name="twitter:title" content="AI that audits code: SavantChat and the security arms race">
+<meta name="twitter:description" content="SavantChat — the language-agnostic AI code security auditor co-founded by Igor Gulamov (snjax) in 2025: architecture, evidence (Sherlock Symbiotic Relay top-6, CTFBench, 1inch pre-audits), the CTFBench methodology, and the offensive-vs-defensive AI agents thesis.">
+<meta name="twitter:image" content="https://igorgulamov.com/img/igor.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "AI that audits code: SavantChat and the security arms race",
+  "description": "SavantChat — the language-agnostic AI code security auditor co-founded by Igor Gulamov (snjax) in 2025: architecture, evidence (Sherlock Symbiotic Relay top-6, CTFBench, 1inch pre-audits), the CTFBench methodology, and the offensive-vs-defensive AI agents thesis.",
+  "url": "https://igorgulamov.com/ai/",
+  "datePublished": "2026-07-04",
+  "dateModified": "2026-07-04",
+  "inLanguage": "en",
+  "author": {
+    "@type": "Person",
+    "@id": "https://igorgulamov.com/#person",
+    "name": "Igor Gulamov",
+    "alternateName": "snjax",
+    "url": "https://igorgulamov.com/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Igor Gulamov",
+    "url": "https://igorgulamov.com/"
+  },
+  "mainEntityOfPage": "https://igorgulamov.com/ai/",
+  "image": "https://igorgulamov.com/img/igor.jpg"
+}
+</script>
+
+<style>
+:root{
+  --bg:#fdfdfb; --ink:#111110; --gray:#55554f; --soft:#444440;
+  --hair:#d9d9d3; --red:#d2321c;
+  --sans:'Helvetica Neue',Helvetica,Arial,'Liberation Sans',sans-serif;
+  --mono:ui-monospace,'JetBrains Mono',Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55}
+a{color:var(--ink)}
+img{max-width:100%}
+.topbar{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 20px;border-bottom:1px solid var(--ink);padding:18px clamp(20px,5vw,64px);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.topbar .muted{color:var(--gray)}
+.topnav{display:flex;flex-wrap:wrap;gap:8px 22px;border-bottom:1px solid var(--hair);padding:12px clamp(20px,5vw,64px);font-size:11.5px;font-weight:700;letter-spacing:.12em}
+.topnav a{color:var(--ink);text-decoration:none}
+.topnav a .arr{color:var(--red)}
+.topnav a[aria-current="page"]{color:var(--red)}
+.section{display:grid;grid-template-columns:220px 1fr;gap:48px;border-top:1px solid var(--ink);padding:40px clamp(20px,5vw,64px) 46px}
+.section:first-of-type{border-top:none}
+.sec-label .num{font-size:13px;font-weight:700;color:var(--red)}
+.sec-label .name{margin-top:6px;font-size:13px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px}
+.btn{text-decoration:none;font-size:12.5px;font-weight:700;letter-spacing:.1em;padding:15px 24px;display:inline-block}
+.btn-solid{background:var(--ink);color:var(--bg)}
+.btn-line{border:1px solid var(--ink);color:var(--ink)}
+.links-row{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:11.5px;font-weight:700;letter-spacing:.12em}
+.links-row a{color:var(--ink);text-decoration:none}
+.links-row .arr{color:var(--red)}
+.footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 20px;border-top:1px solid var(--ink);padding:16px clamp(20px,5vw,64px);font-size:10.5px;font-weight:700;letter-spacing:.14em;color:var(--gray);text-transform:uppercase}
+@media(max-width:860px){
+  .section{grid-template-columns:1fr;gap:20px;padding-top:28px;padding-bottom:32px}
+}
+
+.lr-head{padding:56px clamp(20px,5vw,64px) 44px;border-bottom:1px solid var(--ink)}
+.lr-kicker{font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--red);text-transform:uppercase}
+h1.lr-title{margin:16px 0 0;font-size:clamp(34px,5.6vw,58px);line-height:1.04;font-weight:700;letter-spacing:-.035em;max-width:900px}
+.lr-meta{margin-top:18px;font:400 12px var(--mono);color:var(--gray);letter-spacing:.04em}
+.lr-body{max-width:760px;padding:44px clamp(20px,5vw,64px) 72px;font-size:16.5px;line-height:1.62}
+.lr-body h2{margin:52px 0 18px;padding-top:26px;border-top:1px solid var(--ink);font-size:24px;letter-spacing:-.015em;line-height:1.2}
+.lr-body h3{margin:36px 0 12px;font-size:18.5px;letter-spacing:-.01em}
+.lr-body h4{margin:28px 0 10px;font-size:16px}
+.lr-body p{margin:0 0 16px}
+.lr-body a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:3px}
+.lr-body ul,.lr-body ol{margin:0 0 16px;padding-left:24px}
+.lr-body li{margin-bottom:6px}
+.lr-body p,.lr-body li{overflow-wrap:anywhere}
+.lr-body blockquote{margin:22px 0;padding:14px 22px;border-left:3px solid var(--red);background:#f6f6f2;font-size:15.5px}
+.lr-body blockquote p:last-child{margin-bottom:0}
+.lr-body table{border-collapse:collapse;width:100%;margin:0 0 20px;font-size:14px;display:block;overflow-x:auto}
+.lr-body th,.lr-body td{border:1px solid var(--hair);padding:8px 12px;text-align:left;vertical-align:top}
+.lr-body th{border-bottom:2px solid var(--ink);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.lr-body code{font:400 .9em var(--mono);background:#f1f1ed;padding:1px 5px}
+.lr-body pre{background:#f1f1ed;padding:16px 18px;overflow-x:auto;font-size:13px;line-height:1.6}
+.lr-body pre code{background:none;padding:0}
+.lr-body hr{border:none;border-top:1px solid var(--hair);margin:36px 0}
+.lr-body strong{font-weight:700}
+
+</style>
+</head>
+<body>
+<header class="topbar" data-uilint="topbar">
+  <div>Igor Gulamov — Personal Record</div>
+  <div class="muted">Dubai · UTC+4</div>
+</header>
+<nav class="topnav" data-uilint="topnav" aria-label="Site">
+  <a href="/"><span class="arr">→</span> Index</a>
+  <a href="/bio/"><span class="arr">→</span> Bio</a>
+  <a href="/ai/" aria-current="page"><span class="arr">→</span> AI</a>
+  <a href="/zk/"><span class="arr">→</span> ZK</a>
+  <a href="/audits/"><span class="arr">→</span> Audits</a>
+  <a href="/plasma/"><span class="arr">→</span> The Plasma Finding</a>
+  <a href="/physics/"><span class="arr">→</span> Physics</a>
+  <a href="/llms.txt"><span class="arr">→</span> llms.txt</a>
+</nav>
+<main>
+
+<article>
+  <header class="lr-head" data-uilint="lr-head">
+    <div class="lr-kicker">SavantChat — AI code security</div>
+    <h1 class="lr-title">AI that audits code: SavantChat and the security arms race</h1>
+    <div class="lr-meta">last revised July 2026 · igorgulamov.com/ai/ · dated, linked sources throughout</div>
+  </header>
+  <div class="lr-body" data-uilint="lr-body">
+    <p><strong>TL;DR.</strong> <a rel="noopener external" target="_blank" href="https://savant.chat">SavantChat</a> is an AI-powered security auditor for code. I co-founded it with Alexandra Gulamova in early 2025 after <a href="/audits/">six years of auditing production protocols by hand</a>. It made its name on smart contracts — Solidity, Vyper, Rust — where all of its public benchmarks were earned; the pipeline itself is fully language-agnostic and audits any codebase in any language. Placed top-6 against expert human auditors in Sherlock's Symbiotic Relay contest (June 2025, per our announcement); runs pre-audits inside 1inch's development workflow since December 2025.</p>
+<h2 id="why-we-built-it">Why we built it</h2>
+<p>After watching project after project get drained by vulnerabilities that a careful reviewer would have caught — and after two decades of doing that careful review myself, first as a physicist, then as a <a href="/audits/">hands-on auditor</a> — the conclusion was simple: careful review does not scale in humans, and it has to. The founding story is in my article <a rel="noopener external" target="_blank" href="https://medium.com/@igorgulamov/we-got-tired-of-smart-contract-hacks-so-we-built-savant-chat-f63f0e57b870">"We Got Tired of Smart Contract Hacks, So We Built Savant Chat"</a> (March 17, 2025).</p>
+<h2 id="how-it-works">How it works</h2>
+<p>The architecture mirrors how a strong human audit team works: the code is decomposed into logical blocks; a primary AI agent generates vulnerability hypotheses; a separate "critic" agent attacks those hypotheses and filters false positives; the surviving findings are compiled into a report with locations, impact and fixes. It is not pattern scanning — it is hypothesis-driven review that runs 24/7 and costs a fraction of a human team's time. It is the same loop I ran by hand across <a href="/audits/">15 published audits</a>, encoded.</p>
+<p><strong>What customers get:</strong> a web app at <a rel="noopener external" target="_blank" href="https://savant.chat">savant.chat</a> plus CI integration — audits run on pull requests via GitHub Actions (<a rel="noopener external" target="_blank" href="https://www.youtube.com/watch?v=YKmL2012oSk">demo video</a>), so security review happens where developers already work. Teams use it for pre-audits before human review and for continuous checks during development; it complements, not replaces, a final human audit. For customer references, benchmark raw data and the deck — <a href="/#contact">contact me</a>.</p>
+<h2 id="the-evidence-with-source-types-labeled">The evidence, with source types labeled</h2>
+<ul>
+<li><strong>Top-6 in Sherlock's Symbiotic Relay audit contest</strong> (<a rel="noopener external" target="_blank" href="https://audits.sherlock.xyz/contests/967">contest page</a>: June 19 – July 10, 2025, 100,000 USDC rewards, 530 competition issues) — competing directly against expert human auditors on a live codebase. The ranking is our own report: SavantChat's announcement (<a rel="noopener external" target="_blank" href="https://www.globenewswire.com/news-release/2025/09/02/3143051/0/en/Savant-Chat-achieves-a-historic-top-6-ranking-in-the-Sherlock-DeFi-Audit-Contest.html">GlobeNewswire press release, September 2, 2025</a>) called it "the first time an AI has publicly demonstrated performance on par with expert human auditors in a fiercely competitive environment" — the superlative is the announcement's wording; the contest, dates and prize pool are Sherlock's public record.</li>
+<li><strong>87–95% on CTFBench (v0.2)</strong> — see the benchmark section below.</li>
+<li><strong>1inch runs SavantChat pre-audits in its development workflow</strong> — 1inch's own words, December 23, 2025: "We've been working with SavantChat throughout 2025," with pre-audits of the Aqua and SwapVM codebases running through GitHub Actions on pull requests, and plans "to use them more widely, including for the Aqua liquidity protocol." Source: <a rel="noopener external" target="_blank" href="https://1inch.com/blog/post/1inch-uses-savantchats-ai-tools">1inch blog</a> (partner announcement). There is a personal loop here: I audited <a href="/audits/">ten 1inch protocol releases by hand in 2020–2024</a> — now SavantChat runs the automated first pass in parts of that same workflow.</li>
+</ul>
+<h2 id="ctfbench-measuring-ai-auditors-honestly">CTFBench: measuring AI auditors honestly</h2>
+<p>Benchmarks for AI security tools have a systematic bias: a tool that spams findings looks great on detection and terrible in practice. <a rel="noopener external" target="_blank" href="https://ethresear.ch/t/ctfbench-a-new-method-for-evaluating-ai-smart-contract-auditors-balancing-vulnerability-detection-and-reducing-false-alarms/21821">CTFBench</a> (published February 2025) measures two axes at once: <strong>Vulnerability Detection Rate</strong> (did you find the real bug?) and <strong>Overreporting Index</strong> (how much noise did you produce per real finding?). "Accuracy" is shorthand for the combination. In the same methodology, a set of 8 traditional SAST tools missed roughly half of the vulnerabilities.</p>
+<p>Everything is open: <a rel="noopener external" target="_blank" href="https://ethresear.ch/t/ctfbench-a-new-method-for-evaluating-ai-smart-contract-auditors-balancing-vulnerability-detection-and-reducing-false-alarms/21821">methodology</a> · <a rel="noopener external" target="_blank" href="https://ctfbench.com">results site</a> · <a rel="noopener external" target="_blank" href="https://github.com/snjax/evmbench-ctfbench-benchmark">raw tasks</a>. SavantChat scores 87–95% (v0.2); independent reproduction is welcome — that is the point of publishing the tasks.</p>
+<h2 id="the-arms-race-offensive-vs-defensive-ai-agents">The arms race: offensive vs. defensive AI agents</h2>
+<p>The same models that audit code can attack it. My working thesis — presented at <a rel="noopener external" target="_blank" href="https://ethprague.fileverse.io/?view=home&amp;event=HBQLXJ">ETHPrague 2026</a> as "Beyond Human Review: The Inevitable Arms Race Between Offensive and Defensive AI Agents" (<a rel="noopener external" target="_blank" href="https://www.youtube.com/watch?v=r2oU7TFLDMc">full recording</a>) — is that once vulnerability discovery is cheap for attackers, continuous AI-side defense stops being a productivity tool and becomes table stakes: the defense has to run at machine speed because the offense already does. I discussed the same theme at <a rel="noopener external" target="_blank" href="https://www.ethdubaiconf.org/schedule">ETHDubai 2025</a> (advanced reasoning AI/LLMs for auditing smart contracts) and at the "Intelligent Defense" roundtable on AI's role in securing crypto and DLT financial infrastructure at <a rel="noopener external" target="_blank" href="https://luma.com/wupxaqku">Blockchain Community Day 2026</a> — Blockchain Professionals' sixth annual virtual conference (<a rel="noopener external" target="_blank" href="https://tidy-ixora-d38.notion.site/blockchainprofessionals2026">agenda</a>, <a rel="noopener external" target="_blank" href="https://x.com/BlockchainProfs/status/2059985358876766702">announcement on X</a>).</p>
+<p>Interviews on the topic: <a rel="noopener external" target="_blank" href="https://www.youtube.com/watch?v=mXVgyqHAiFk">"AI powered Web3 Security" with Francesco Andreoli</a> (March 24, 2025) · <a rel="noopener external" target="_blank" href="https://www.youtube.com/watch?v=2B2Sj2vh450">cp0x podcast #21</a> (December 2025, in Russian — SavantChat, the ZeroPool story, and <a href="/plasma/">the Plasma finding</a>).</p>
+<h2 id="sources">Sources</h2>
+<table><thead><tr><th>Claim</th><th>Source</th><th>Type</th></tr></thead><tbody>
+<tr><td>Symbiotic Relay contest, dates, 100k USDC pool</td><td><a rel="noopener external" target="_blank" href="https://audits.sherlock.xyz/contests/967">audits.sherlock.xyz/contests/967</a>, <a rel="noopener external" target="_blank" href="https://mainnet-contest.sherlock.xyz/contests/967">machine-readable</a></td><td>primary (contest)</td></tr>
+<tr><td>Top-6 placement</td><td><a rel="noopener external" target="_blank" href="https://www.globenewswire.com/news-release/2025/09/02/3143051/0/en/Savant-Chat-achieves-a-historic-top-6-ranking-in-the-Sherlock-DeFi-Audit-Contest.html">GlobeNewswire, Sep 2, 2025</a></td><td>company press release</td></tr>
+<tr><td>1inch pre-audits (Aqua, SwapVM), GitHub Actions</td><td><a rel="noopener external" target="_blank" href="https://1inch.com/blog/post/1inch-uses-savantchats-ai-tools">1inch blog, Dec 23, 2025</a></td><td>partner announcement</td></tr>
+<tr><td>CTFBench methodology</td><td><a rel="noopener external" target="_blank" href="https://ethresear.ch/t/ctfbench-a-new-method-for-evaluating-ai-smart-contract-auditors-balancing-vulnerability-detection-and-reducing-false-alarms/21821">ethresear.ch, Feb 2025</a></td><td>open methodology</td></tr>
+<tr><td>CTFBench scores 87–95% (v0.2)</td><td><a rel="noopener external" target="_blank" href="https://ctfbench.com">ctfbench.com</a>, <a rel="noopener external" target="_blank" href="https://github.com/snjax/evmbench-ctfbench-benchmark">raw tasks</a></td><td>open, reproducible</td></tr>
+<tr><td>ETHPrague 2026 talk</td><td><a rel="noopener external" target="_blank" href="https://www.youtube.com/watch?v=r2oU7TFLDMc">recording</a></td><td>video</td></tr>
+<tr><td>Founding story</td><td><a rel="noopener external" target="_blank" href="https://medium.com/@igorgulamov/we-got-tired-of-smart-contract-hacks-so-we-built-savant-chat-f63f0e57b870">Medium, Mar 17, 2025</a></td><td>self-published</td></tr>
+</tbody></table>
+
+  </div>
+</article>
+
+</main>
+<footer class="footer" data-uilint="footer">
+  <div>Set in Helvetica — Grid 220/64</div>
+  <div>© 2026 Igor Gulamov</div>
+</footer>
+</body>
+</html>

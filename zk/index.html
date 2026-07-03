@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zero-knowledge engineering: privacy, delegated proving, storage — Igor Gulamov</title>
+<meta name="description" content="Igor Gulamov&#x27;s (snjax) zero-knowledge track: ZeroPool private transactions (Web3 Foundation, NEAR, Waves grants), the Fawkes-Crypto zkSNARK framework, shielded delegated proving on Sangria folding (2023), and the sharded storage &#x2F; DA research line (2024).">
+<meta name="author" content="Igor Gulamov">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://igorgulamov.com/zk/">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="alternate" type="application/atom+xml" title="Igor Gulamov" href="/atom.xml">
+<link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Igor Gulamov (snjax)">
+<meta property="og:title" content="Zero-knowledge engineering: privacy, delegated proving, storage">
+<meta property="og:description" content="Igor Gulamov&#x27;s (snjax) zero-knowledge track: ZeroPool private transactions (Web3 Foundation, NEAR, Waves grants), the Fawkes-Crypto zkSNARK framework, shielded delegated proving on Sangria folding (2023), and the sharded storage &#x2F; DA research line (2024).">
+<meta property="og:url" content="https://igorgulamov.com/zk/">
+<meta property="og:image" content="https://igorgulamov.com/img/igor.jpg">
+<meta property="og:image:width" content="640">
+<meta property="og:image:height" content="640">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@igorgulamov">
+<meta name="twitter:creator" content="@igorgulamov">
+<meta name="twitter:title" content="Zero-knowledge engineering: privacy, delegated proving, storage">
+<meta name="twitter:description" content="Igor Gulamov&#x27;s (snjax) zero-knowledge track: ZeroPool private transactions (Web3 Foundation, NEAR, Waves grants), the Fawkes-Crypto zkSNARK framework, shielded delegated proving on Sangria folding (2023), and the sharded storage &#x2F; DA research line (2024).">
+<meta name="twitter:image" content="https://igorgulamov.com/img/igor.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Zero-knowledge engineering: privacy, delegated proving, storage",
+  "description": "Igor Gulamov's (snjax) zero-knowledge track: ZeroPool private transactions (Web3 Foundation, NEAR, Waves grants), the Fawkes-Crypto zkSNARK framework, shielded delegated proving on Sangria folding (2023), and the sharded storage / DA research line (2024).",
+  "url": "https://igorgulamov.com/zk/",
+  "datePublished": "2026-07-04",
+  "dateModified": "2026-07-04",
+  "inLanguage": "en",
+  "author": {
+    "@type": "Person",
+    "@id": "https://igorgulamov.com/#person",
+    "name": "Igor Gulamov",
+    "alternateName": "snjax",
+    "url": "https://igorgulamov.com/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Igor Gulamov",
+    "url": "https://igorgulamov.com/"
+  },
+  "mainEntityOfPage": "https://igorgulamov.com/zk/",
+  "image": "https://igorgulamov.com/img/igor.jpg"
+}
+</script>
+
+<style>
+:root{
+  --bg:#fdfdfb; --ink:#111110; --gray:#55554f; --soft:#444440;
+  --hair:#d9d9d3; --red:#d2321c;
+  --sans:'Helvetica Neue',Helvetica,Arial,'Liberation Sans',sans-serif;
+  --mono:ui-monospace,'JetBrains Mono',Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55}
+a{color:var(--ink)}
+img{max-width:100%}
+.topbar{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 20px;border-bottom:1px solid var(--ink);padding:18px clamp(20px,5vw,64px);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.topbar .muted{color:var(--gray)}
+.topnav{display:flex;flex-wrap:wrap;gap:8px 22px;border-bottom:1px solid var(--hair);padding:12px clamp(20px,5vw,64px);font-size:11.5px;font-weight:700;letter-spacing:.12em}
+.topnav a{color:var(--ink);text-decoration:none}
+.topnav a .arr{color:var(--red)}
+.topnav a[aria-current="page"]{color:var(--red)}
+.section{display:grid;grid-template-columns:220px 1fr;gap:48px;border-top:1px solid var(--ink);padding:40px clamp(20px,5vw,64px) 46px}
+.section:first-of-type{border-top:none}
+.sec-label .num{font-size:13px;font-weight:700;color:var(--red)}
+.sec-label .name{margin-top:6px;font-size:13px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px}
+.btn{text-decoration:none;font-size:12.5px;font-weight:700;letter-spacing:.1em;padding:15px 24px;display:inline-block}
+.btn-solid{background:var(--ink);color:var(--bg)}
+.btn-line{border:1px solid var(--ink);color:var(--ink)}
+.links-row{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:11.5px;font-weight:700;letter-spacing:.12em}
+.links-row a{color:var(--ink);text-decoration:none}
+.links-row .arr{color:var(--red)}
+.footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 20px;border-top:1px solid var(--ink);padding:16px clamp(20px,5vw,64px);font-size:10.5px;font-weight:700;letter-spacing:.14em;color:var(--gray);text-transform:uppercase}
+@media(max-width:860px){
+  .section{grid-template-columns:1fr;gap:20px;padding-top:28px;padding-bottom:32px}
+}
+
+.lr-head{padding:56px clamp(20px,5vw,64px) 44px;border-bottom:1px solid var(--ink)}
+.lr-kicker{font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--red);text-transform:uppercase}
+h1.lr-title{margin:16px 0 0;font-size:clamp(34px,5.6vw,58px);line-height:1.04;font-weight:700;letter-spacing:-.035em;max-width:900px}
+.lr-meta{margin-top:18px;font:400 12px var(--mono);color:var(--gray);letter-spacing:.04em}
+.lr-body{max-width:760px;padding:44px clamp(20px,5vw,64px) 72px;font-size:16.5px;line-height:1.62}
+.lr-body h2{margin:52px 0 18px;padding-top:26px;border-top:1px solid var(--ink);font-size:24px;letter-spacing:-.015em;line-height:1.2}
+.lr-body h3{margin:36px 0 12px;font-size:18.5px;letter-spacing:-.01em}
+.lr-body h4{margin:28px 0 10px;font-size:16px}
+.lr-body p{margin:0 0 16px}
+.lr-body a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:3px}
+.lr-body ul,.lr-body ol{margin:0 0 16px;padding-left:24px}
+.lr-body li{margin-bottom:6px}
+.lr-body p,.lr-body li{overflow-wrap:anywhere}
+.lr-body blockquote{margin:22px 0;padding:14px 22px;border-left:3px solid var(--red);background:#f6f6f2;font-size:15.5px}
+.lr-body blockquote p:last-child{margin-bottom:0}
+.lr-body table{border-collapse:collapse;width:100%;margin:0 0 20px;font-size:14px;display:block;overflow-x:auto}
+.lr-body th,.lr-body td{border:1px solid var(--hair);padding:8px 12px;text-align:left;vertical-align:top}
+.lr-body th{border-bottom:2px solid var(--ink);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.lr-body code{font:400 .9em var(--mono);background:#f1f1ed;padding:1px 5px}
+.lr-body pre{background:#f1f1ed;padding:16px 18px;overflow-x:auto;font-size:13px;line-height:1.6}
+.lr-body pre code{background:none;padding:0}
+.lr-body hr{border:none;border-top:1px solid var(--hair);margin:36px 0}
+.lr-body strong{font-weight:700}
+
+</style>
+</head>
+<body>
+<header class="topbar" data-uilint="topbar">
+  <div>Igor Gulamov — Personal Record</div>
+  <div class="muted">Dubai · UTC+4</div>
+</header>
+<nav class="topnav" data-uilint="topnav" aria-label="Site">
+  <a href="/"><span class="arr">→</span> Index</a>
+  <a href="/bio/"><span class="arr">→</span> Bio</a>
+  <a href="/ai/"><span class="arr">→</span> AI</a>
+  <a href="/zk/" aria-current="page"><span class="arr">→</span> ZK</a>
+  <a href="/audits/"><span class="arr">→</span> Audits</a>
+  <a href="/plasma/"><span class="arr">→</span> The Plasma Finding</a>
+  <a href="/physics/"><span class="arr">→</span> Physics</a>
+  <a href="/llms.txt"><span class="arr">→</span> llms.txt</a>
+</nav>
+<main>
+
+<article>
+  <header class="lr-head" data-uilint="lr-head">
+    <div class="lr-kicker">Zero-knowledge — 2018–2024</div>
+    <h1 class="lr-title">Zero-knowledge engineering: privacy, delegated proving, storage</h1>
+    <div class="lr-meta">last revised July 2026 · igorgulamov.com/zk/ · dated, linked sources throughout</div>
+  </header>
+  <div class="lr-body" data-uilint="lr-body">
+    <p><strong>TL;DR.</strong> Six years of zero-knowledge engineering across the full stack: a production-grade private-transaction protocol (<a href="https://igorgulamov.com/zk/#zeropool-private-transactions">ZeroPool</a>, 2019, grants from Web3 Foundation, NEAR and Waves), a Rust zkSNARK framework (<a href="https://igorgulamov.com/zk/#fawkes-crypto">Fawkes-Crypto</a>), a construction for <a href="https://igorgulamov.com/zk/#delegated-proving-shielded-sangria">cloud ZK proving over a blinded witness</a> (2023 — the strongest single result of the research line), and a <a href="https://igorgulamov.com/zk/#storage-and-data-availability">sharded-storage / data-availability</a> research program (2024). 22 research topics on <a rel="noopener external" target="_blank" href="https://ethresear.ch/u/snjax/activity">ethresear.ch</a>, 5 on <a rel="noopener external" target="_blank" href="https://zkresear.ch/u/snjax/activity">zkresear.ch</a>. The Plasma-era prehistory lives on its own page: <a href="/plasma/">the history-split finding</a>.</p>
+<h2 id="zeropool-private-transactions">ZeroPool: private transactions</h2>
+<p><a rel="noopener external" target="_blank" href="https://zeropool.network/">ZeroPool</a> is a fully private multi-blockchain transaction protocol: sender, receiver and amount are all hidden, with a common anonymity set and low fees. I founded it at ETHBoston in September 2019, where it reached the main-stage finals and took the SKALE prize (team: Igor Gulamov, Artem Vorobev, Nick Kozlov — <a rel="noopener external" target="_blank" href="https://devpost.com/software/zeropool">Devpost</a>, <a rel="noopener external" target="_blank" href="https://www.youtube.com/watch?v=FE37_hiV4kQ">demo video</a>). Later demos: <a rel="noopener external" target="_blank" href="https://www.youtube.com/watch?v=cNMzKfktATM">a private transaction on Ethereum mainnet</a>, <a rel="noopener external" target="_blank" href="https://www.youtube.com/watch?v=DQ8gbNTOP-g">ZeroPool on Substrate</a>.</p>
+<p>I presented ZeroPool's account-based privacy design at <strong>zkSummit 6</strong> (online, November 2020) — <a rel="noopener external" target="_blank" href="https://www.youtube.com/watch?v=f885LTdgJVs">talk recording</a> on the Zero Knowledge channel. Earlier that year: a zk-private-transactions talk at <strong>ETHDenver</strong> and a lightning talk on the same topic at <strong>Stanford Blockchain Week</strong> (both February 2020), and the ZeroPool beta shown at <strong>EthCC 3 in Paris</strong> (March 2020) — "the final offline event before COVID-19," per <a rel="noopener external" target="_blank" href="https://medium.com/zeropool/zeropool-november-and-december-news-77f6a9e5e752">ZeroPool's blog</a>.</p>
+<p>Technically, ZeroPool is a UTXO-based design: UTXO hashes live in calldata, the Merkle root in storage, and UTXOs plus transactions are encrypted to the receiver's public key — the design write-up is on <a rel="noopener external" target="_blank" href="https://ethresear.ch/t/zeropool-explanation/6122">ethresear.ch (September 2019)</a>, with the gas-scaling follow-up <a rel="noopener external" target="_blank" href="https://ethresear.ch/t/state-of-zeropool-scaling-anonymous-transactions-for-ethereum/6946">"State of ZeroPool"</a> (February 2020) showing transaction costs dropping from 40k toward 15k gas with batching.</p>
+<p><strong>Grants and integrations:</strong></p>
+<ul>
+<li><strong>Web3 Foundation</strong> Open Grants Program — 63,000 DAI across two milestones; deliverables: zkSNARK circuit + cryptography library, a Substrate pallet for private transactions, and a js/wasm wallet library. <a rel="noopener external" target="_blank" href="https://github.com/w3f/Grants-Program/blob/master/applications/ZeroPool.md">Grant application</a>.</li>
+<li><strong>NEAR Foundation</strong> — collaboration announced April 22, 2020: <a rel="noopener external" target="_blank" href="https://www.near.org/blog/private-transactions-on-near">"A Deep Dive into Private Transactions on NEAR"</a> (<a rel="noopener external" target="_blank" href="https://web.archive.org/web/2021/https://near.org/blog/private-transactions-on-near/">archived copy</a>); a 2023 NEAR blog overview still listed ZeroPool as active on testnet (<a rel="noopener external" target="_blank" href="https://medium.com/nearprotocol/zero-knowledge-now-on-near-bd575fb3182">Medium</a>). Code: <a rel="noopener external" target="_blank" href="https://github.com/zeropoolnetwork/zeropool-near">zeropoolnetwork/zeropool-near</a>; I also proposed the alt_bn128 precompiles for nearcore itself (<a rel="noopener external" target="_blank" href="https://github.com/near/nearcore/pull/2842">PR #2842</a>, 2020 — the alt_bn128 host functions were later stabilized in nearcore).</li>
+<li><strong>Waves</strong> — anonymous-transactions prototype, including a fork of the Waves node with a <code>groth16verify</code> verifier. <a rel="noopener external" target="_blank" href="https://github.com/wavesplatform/anonymous-transactions-prototype">wavesplatform/anonymous-transactions-prototype</a>.</li>
+<li><strong>Gitcoin Grants</strong> — community quadratic funding (mentioned in the <a rel="noopener external" target="_blank" href="https://www.near.org/blog/private-transactions-on-near">NEAR announcement</a>).</li>
+</ul>
+<p><strong>Status, for the record:</strong> after the 2022 OFAC sanctions in the on-chain privacy space, a business around private transactions became untenable; ZeroPool remained free, open research and libraries — no token was ever issued, no venture round was raised, grant deliverables were shipped, code stays open under <a rel="noopener external" target="_blank" href="https://github.com/zeropoolnetwork">zeropoolnetwork</a>. My later research engages the compliance question directly: the <a rel="noopener external" target="_blank" href="https://ethresear.ch/t/anti-mixer-privacy-protocol/16687">anti-mixer privacy protocol</a> (September 2023) is a privacy design built around deanonymization and compliance concerns — privacy engineering that takes regulation seriously, not a mixer.</p>
+<h2 id="fawkes-crypto">Fawkes-Crypto</h2>
+<p>To build ZeroPool's circuits I wrote <a rel="noopener external" target="_blank" href="https://ethresear.ch/t/fawkes-crypto-zksnarks-framework-from-zeropool/7201">Fawkes-Crypto</a> (March 2020) — a lightweight Rust framework for building zkSNARK circuits over bellman (Groth16, BN254).</p>
+<h2 id="delegated-proving-shielded-sangria">Delegated proving: shielded Sangria</h2>
+<p>The strongest single result of this research line: <a rel="noopener external" target="_blank" href="https://zkresear.ch/t/running-sangria-final-proof-in-shielded-mode-on-untrusted-3rd-party-prover/133"><strong>Running Sangria final proof in shielded mode on untrusted 3rd party prover</strong></a> (April 13, 2023).</p>
+<p>The problem: ZK proving is expensive, so you want to outsource it to a cloud prover — but sending your witness to someone else's server destroys the very privacy the proof exists for. The construction: instead of running the final (expensive) proving step locally, the client — in one extra <a rel="noopener external" target="_blank" href="https://geometry.xyz/notebook/sangria-a-folding-scheme-for-plonk">Sangria</a> folding round of only linear complexity — folds its real Plonk execution trace with a specially generated high-entropy random trace, and hands the folded trace to the untrusted prover. The post proves that for any candidate initial trace there exists a consistent blinding trace producing exactly what the prover sees, so the delegated trace reveals nothing about the original witness: the thin client does O(n) work, the heavy final proof happens in the cloud, and there are zero data leaks. Worked computations (SageMath): <a rel="noopener external" target="_blank" href="https://github.com/snjax/sangria-delegated-zk">snjax/sangria-delegated-zk</a>. This idea family — folding-based delegated and private proving — has since become an active industry theme around proving markets and client-side privacy.</p>
+<p>All five zkresear.ch topics:</p>
+<table><thead><tr><th>Date</th><th>Topic</th><th>Contribution</th></tr></thead><tbody>
+<tr><td>Apr 10, 2023</td><td><a rel="noopener external" target="_blank" href="https://zkresear.ch/t/multilinear-polynomial-kgz10-commitment-with-linear-pairing-check/126">Multilinear polynomial KZG10 commitment with linear pairing check</a></td><td>Multilinear KZG-style commitment with a linear pairing check</td></tr>
+<tr><td>Apr 13, 2023</td><td><a rel="noopener external" target="_blank" href="https://zkresear.ch/t/running-sangria-final-proof-in-shielded-mode-on-untrusted-3rd-party-prover/133"><strong>Running Sangria final proof in shielded mode on untrusted 3rd party prover</strong></a></td><td>Cloud ZK proving over a blinded witness — see above</td></tr>
+<tr><td>Apr 24, 2023</td><td><a rel="noopener external" target="_blank" href="https://zkresear.ch/t/fast-fourier-inspired-sangria/145">Fast Fourier inspired Sangria</a></td><td>FFT-style folding tree for Sangria</td></tr>
+<tr><td>May 12, 2023</td><td><a rel="noopener external" target="_blank" href="https://zkresear.ch/t/no-fft-o-n-univariate-polynomial-zero-check-with-o-log-n-verifier/168">No-FFT O(N) univariate polynomial zero-check with O(log N) verifier</a></td><td>Zero-check protocol avoiding FFTs entirely</td></tr>
+<tr><td>Sep 6, 2023</td><td><a rel="noopener external" target="_blank" href="https://zkresear.ch/t/minimal-streaming-zkvm-with-quasilinear-prover-complexity-on-the-thin-client-and-the-same-memory-complexity-as-native-execution/216">Minimal streaming zkVM with quasilinear prover complexity</a></td><td>Streaming zkVM: thin client, memory complexity of native execution</td></tr>
+</tbody></table>
+<h2 id="storage-and-data-availability">Storage and data availability</h2>
+<p>In 2024 the research line shifted to the data problem: how to store and prove large amounts of data with web2 costs and web3 security.</p>
+<ul>
+<li><a rel="noopener external" target="_blank" href="https://ethresear.ch/t/blockchain-sharded-storage-web2-costs-and-web3-security-with-shamir-secret-sharing/18881"><strong>Blockchain Sharded Storage: Web2 Costs and Web3 Security with Shamir Secret Sharing</strong></a> (March 2024) — a horizontally scalable, fault-tolerant blockchain storage design (beyond petabytes) built on Shamir secret sharing, Reed–Solomon codes, FFT and zkSNARKs. Detailed <a rel="noopener external" target="_blank" href="https://zeropool.network/pdf/WriteupZeroPoolShardedStorage.pdf">walkthrough PDF</a> (edited by Ivan Oleynikov).</li>
+<li><a rel="noopener external" target="_blank" href="https://ethresear.ch/t/minimal-fully-recursive-zkda-rollup-with-sharded-storage/19020"><strong>Minimal fully recursive zkDA rollup with sharded storage</strong></a> (March 2024).</li>
+<li><a rel="noopener external" target="_blank" href="https://ethresear.ch/t/mining-attacks-on-pora-proof-of-random-access/19323"><strong>Mining attacks on PoRA</strong></a> (April 2024) — security analysis of Proof-of-Random-Access consensus against the "shrink attack" (cheaper storage with equal throughput) and the "Moore attack" (technology-driven throughput advantage).</li>
+<li><a rel="noopener external" target="_blank" href="https://ethresear.ch/t/efficient-data-distribution-with-reed-solomon-codes-for-sharded-storage/20232"><strong>Efficient data distribution with Reed–Solomon codes for sharded storage</strong></a> (August 2024).</li>
+<li><a rel="noopener external" target="_blank" href="https://ethresear.ch/t/using-fri-for-da-with-optimistic-correctable-commitments-in-rollups/20467"><strong>Using FRI for DA with optimistic correctable commitments in rollups</strong></a> (September 2024).</li>
+<li>Research index: <a rel="noopener external" target="_blank" href="https://zeropool.network/research/">zeropool.network/research</a>.</li>
+</ul>
+<p>I presented the sharded-storage work at <a rel="noopener external" target="_blank" href="https://cfp.ducttape.events/ethprague2024/talk/MZ8ZZE/">ETHPrague 2024</a> ("Solving Vitalik's trilemma with zk-driven DA and Storage" — <a rel="noopener external" target="_blank" href="https://www.youtube.com/watch?v=l2NsFU0gGVU">recording from FIL Dev Summit 4, Brussels</a>, same talk).</p>
+<h2 id="where-it-started-and-where-it-went">Where it started, and where it went</h2>
+<p>The zero-knowledge track grew out of the Plasma era — the full story of the <a href="/plasma/">December 2018 history-split finding</a> explains why on-chain data availability won and privacy had to be engineered on top of it, not around it. And the security habits built while writing and reviewing circuits became the <a href="/audits/">audit record</a>, which in turn became <a href="/ai/">SavantChat</a>.</p>
+
+  </div>
+</article>
+
+</main>
+<footer class="footer" data-uilint="footer">
+  <div>Set in Helvetica — Grid 220/64</div>
+  <div>© 2026 Igor Gulamov</div>
+</footer>
+</body>
+</html>

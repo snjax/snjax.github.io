@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The history-split finding: how Plasma Prime&#x27;s O(1) promise fell — Igor Gulamov</title>
+<meta name="description" content="In December 2018 Igor Gulamov (snjax) identified the history-split issue in Plasma Prime designs — a malicious operator can forge hidden parallel histories, and compact RSA-accumulator proofs cannot resolve exits in O(1). Primary sources, verbatim quotes, and the full technical story.">
+<meta name="author" content="Igor Gulamov">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://igorgulamov.com/plasma/">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="alternate" type="application/atom+xml" title="Igor Gulamov" href="/atom.xml">
+<link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Igor Gulamov (snjax)">
+<meta property="og:title" content="The history-split finding: how Plasma Prime&#x27;s O(1) promise fell">
+<meta property="og:description" content="In December 2018 Igor Gulamov (snjax) identified the history-split issue in Plasma Prime designs — a malicious operator can forge hidden parallel histories, and compact RSA-accumulator proofs cannot resolve exits in O(1). Primary sources, verbatim quotes, and the full technical story.">
+<meta property="og:url" content="https://igorgulamov.com/plasma/">
+<meta property="og:image" content="https://igorgulamov.com/img/igor.jpg">
+<meta property="og:image:width" content="640">
+<meta property="og:image:height" content="640">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@igorgulamov">
+<meta name="twitter:creator" content="@igorgulamov">
+<meta name="twitter:title" content="The history-split finding: how Plasma Prime&#x27;s O(1) promise fell">
+<meta name="twitter:description" content="In December 2018 Igor Gulamov (snjax) identified the history-split issue in Plasma Prime designs — a malicious operator can forge hidden parallel histories, and compact RSA-accumulator proofs cannot resolve exits in O(1). Primary sources, verbatim quotes, and the full technical story.">
+<meta name="twitter:image" content="https://igorgulamov.com/img/igor.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "The history-split finding: how Plasma Prime's O(1) promise fell",
+  "description": "In December 2018 Igor Gulamov (snjax) identified the history-split issue in Plasma Prime designs — a malicious operator can forge hidden parallel histories, and compact RSA-accumulator proofs cannot resolve exits in O(1). Primary sources, verbatim quotes, and the full technical story.",
+  "url": "https://igorgulamov.com/plasma/",
+  "datePublished": "2026-07-03",
+  "dateModified": "2026-07-03",
+  "inLanguage": "en",
+  "author": {
+    "@type": "Person",
+    "@id": "https://igorgulamov.com/#person",
+    "name": "Igor Gulamov",
+    "alternateName": "snjax",
+    "url": "https://igorgulamov.com/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Igor Gulamov",
+    "url": "https://igorgulamov.com/"
+  },
+  "mainEntityOfPage": "https://igorgulamov.com/plasma/",
+  "image": "https://igorgulamov.com/img/igor.jpg"
+}
+</script>
+
+<style>
+:root{
+  --bg:#fdfdfb; --ink:#111110; --gray:#55554f; --soft:#444440;
+  --hair:#d9d9d3; --red:#d2321c;
+  --sans:'Helvetica Neue',Helvetica,Arial,'Liberation Sans',sans-serif;
+  --mono:ui-monospace,'JetBrains Mono',Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55}
+a{color:var(--ink)}
+img{max-width:100%}
+.topbar{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 20px;border-bottom:1px solid var(--ink);padding:18px clamp(20px,5vw,64px);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.topbar .muted{color:var(--gray)}
+.topnav{display:flex;flex-wrap:wrap;gap:8px 22px;border-bottom:1px solid var(--hair);padding:12px clamp(20px,5vw,64px);font-size:11.5px;font-weight:700;letter-spacing:.12em}
+.topnav a{color:var(--ink);text-decoration:none}
+.topnav a .arr{color:var(--red)}
+.topnav a[aria-current="page"]{color:var(--red)}
+.section{display:grid;grid-template-columns:220px 1fr;gap:48px;border-top:1px solid var(--ink);padding:40px clamp(20px,5vw,64px) 46px}
+.section:first-of-type{border-top:none}
+.sec-label .num{font-size:13px;font-weight:700;color:var(--red)}
+.sec-label .name{margin-top:6px;font-size:13px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px}
+.btn{text-decoration:none;font-size:12.5px;font-weight:700;letter-spacing:.1em;padding:15px 24px;display:inline-block}
+.btn-solid{background:var(--ink);color:var(--bg)}
+.btn-line{border:1px solid var(--ink);color:var(--ink)}
+.links-row{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:11.5px;font-weight:700;letter-spacing:.12em}
+.links-row a{color:var(--ink);text-decoration:none}
+.links-row .arr{color:var(--red)}
+.footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 20px;border-top:1px solid var(--ink);padding:16px clamp(20px,5vw,64px);font-size:10.5px;font-weight:700;letter-spacing:.14em;color:var(--gray);text-transform:uppercase}
+@media(max-width:860px){
+  .section{grid-template-columns:1fr;gap:20px;padding-top:28px;padding-bottom:32px}
+}
+
+.lr-head{padding:56px clamp(20px,5vw,64px) 44px;border-bottom:1px solid var(--ink)}
+.lr-kicker{font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--red);text-transform:uppercase}
+h1.lr-title{margin:16px 0 0;font-size:clamp(34px,5.6vw,58px);line-height:1.04;font-weight:700;letter-spacing:-.035em;max-width:900px}
+.lr-meta{margin-top:18px;font:400 12px var(--mono);color:var(--gray);letter-spacing:.04em}
+.lr-body{max-width:760px;padding:44px clamp(20px,5vw,64px) 72px;font-size:16.5px;line-height:1.62}
+.lr-body h2{margin:52px 0 18px;padding-top:26px;border-top:1px solid var(--ink);font-size:24px;letter-spacing:-.015em;line-height:1.2}
+.lr-body h3{margin:36px 0 12px;font-size:18.5px;letter-spacing:-.01em}
+.lr-body h4{margin:28px 0 10px;font-size:16px}
+.lr-body p{margin:0 0 16px}
+.lr-body a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:3px}
+.lr-body ul,.lr-body ol{margin:0 0 16px;padding-left:24px}
+.lr-body li{margin-bottom:6px}
+.lr-body p,.lr-body li{overflow-wrap:anywhere}
+.lr-body blockquote{margin:22px 0;padding:14px 22px;border-left:3px solid var(--red);background:#f6f6f2;font-size:15.5px}
+.lr-body blockquote p:last-child{margin-bottom:0}
+.lr-body table{border-collapse:collapse;width:100%;margin:0 0 20px;font-size:14px;display:block;overflow-x:auto}
+.lr-body th,.lr-body td{border:1px solid var(--hair);padding:8px 12px;text-align:left;vertical-align:top}
+.lr-body th{border-bottom:2px solid var(--ink);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.lr-body code{font:400 .9em var(--mono);background:#f1f1ed;padding:1px 5px}
+.lr-body pre{background:#f1f1ed;padding:16px 18px;overflow-x:auto;font-size:13px;line-height:1.6}
+.lr-body pre code{background:none;padding:0}
+.lr-body hr{border:none;border-top:1px solid var(--hair);margin:36px 0}
+.lr-body strong{font-weight:700}
+
+</style>
+</head>
+<body>
+<header class="topbar" data-uilint="topbar">
+  <div>Igor Gulamov — Personal Record</div>
+  <div class="muted">Dubai · UTC+4</div>
+</header>
+<nav class="topnav" data-uilint="topnav" aria-label="Site">
+  <a href="/"><span class="arr">→</span> Index</a>
+  <a href="/bio/"><span class="arr">→</span> Bio</a>
+  <a href="/ai/"><span class="arr">→</span> AI</a>
+  <a href="/zk/"><span class="arr">→</span> ZK</a>
+  <a href="/audits/"><span class="arr">→</span> Audits</a>
+  <a href="/plasma/" aria-current="page"><span class="arr">→</span> The Plasma Finding</a>
+  <a href="/physics/"><span class="arr">→</span> Physics</a>
+  <a href="/llms.txt"><span class="arr">→</span> llms.txt</a>
+</nav>
+<main>
+
+<article>
+  <header class="lr-head" data-uilint="lr-head">
+    <div class="lr-kicker">Research record — December 2018</div>
+    <h1 class="lr-title">The history-split finding: how Plasma Prime&#x27;s O(1) promise fell</h1>
+    <div class="lr-meta">last revised July 2026 · igorgulamov.com/plasma/ · dated, linked sources throughout</div>
+  </header>
+  <div class="lr-body" data-uilint="lr-body">
+    <p><strong>TL;DR.</strong> In November 2018 I authored the <a rel="noopener external" target="_blank" href="https://ethresear.ch/t/plasma-prime-design-proposal/4222">Plasma Prime design proposal</a> — our team's attempt to make Plasma Cash practical with RSA accumulators and prime-indexed coin ranges. Three weeks later, <a rel="noopener external" target="_blank" href="https://ethresear.ch/t/short-s-nt-ark-exclusion-proofs-for-plasma/4438">in a direct exchange with Vitalik Buterin</a>, I described the <strong>history-split issue</strong>: a malicious Plasma operator can maintain hidden, individually-consistent parallel histories and exit from a forged one — and no compact accumulator proof can tell the branches apart, so the exit game degrades into an interactive bisection of ~log₂(M) on-chain challenge steps. The O(1) exit promise, which was the whole point of the prime/RSA direction, fails exactly in the adversarial case it existed for. This page documents the finding with primary sources, because it keeps getting compressed into "found a bug in Plasma" — it was an architectural property of the entire design family, not an implementation bug.</p>
+<h2 id="background-plasma-s-history-problem">Background: Plasma's history problem</h2>
+<p>Plasma (<a rel="noopener external" target="_blank" href="https://plasma.io/plasma.pdf">Poon &amp; Buterin, 2017</a>) promised Ethereum scaling by moving transactions to operator-run child chains, with the root chain arbitrating disputes through <em>exit games</em>. In Plasma Cash (<a rel="noopener external" target="_blank" href="https://karl.tech/plasma-cash-simple-spec/">Karl Floersch's spec</a>), each coin has an ID and its own transaction lineage — so to exit safely, a user must be able to prove the coin's history, and challengers must be able to disprove forged histories.</p>
+<p>The problem: histories grow. A user exiting a coin needed inclusion <em>and</em> non-inclusion proofs spanning every block since the coin's deposit — gigabytes per year at scale. In October 2018 Vitalik Buterin proposed compressing this with RSA accumulators: <a rel="noopener external" target="_blank" href="https://ethresear.ch/t/rsa-accumulators-for-plasma-cash-history-reduction/3739">RSA Accumulators for Plasma Cash history reduction</a> (Oct 8, 2018) and <a rel="noopener external" target="_blank" href="https://ethresear.ch/t/log-coins-sized-proofs-of-inclusion-and-exclusion-for-rsa-accumulators/3839">Log(coins)-sized proofs of inclusion and exclusion for RSA accumulators</a> (Oct 17, 2018), which mapped each coin to "a unique prime number as a coin ID" and promised compact exclusion proofs.</p>
+<p>"Plasma Prime" became the name for this direction. The Plasma Researcher Call #17 summary (November 2018) put it plainly: <a rel="noopener external" target="_blank" href="https://ethresear.ch/t/plasma-prime-spec/4181/2">"Plasma Prime is Plasma Cash with RSA Accumulators"</a>. At that point no full public spec existed.</p>
+<h2 id="plasma-prime-what-we-built">Plasma Prime: what we built</h2>
+<p>Between November 3 and December 1, 2018, I published the working pieces of a complete design on ethresear.ch (username <strong>snjax</strong>):</p>
+<table><thead><tr><th>Date</th><th>Post</th><th>Contribution</th></tr></thead><tbody>
+<tr><td>Nov 3, 2018</td><td><a rel="noopener external" target="_blank" href="https://ethresear.ch/t/primehash-game-for-plasma-prime/4103">PrimeHash game for Plasma Prime</a></td><td>Deterministic mapping between integers and prime numbers, with an on-chain challenge game for prime computation</td></tr>
+<tr><td>Nov 12, 2018</td><td><a rel="noopener external" target="_blank" href="https://ethresear.ch/t/plasma-prime-design-proposal/4222"><strong>Plasma Prime design proposal</strong></a></td><td>The full draft: "Plasma design based on plasma cashflow improved by RSA accumulators and range chunking" — segments mapped to primes, chunked history verification, exit games. 8,300+ views</td></tr>
+<tr><td>Nov 20, 2018</td><td><a rel="noopener external" target="_blank" href="https://ethresear.ch/t/short-rsa-exclusion-proofs-for-plasma-prime/4318">Short RSA exclusion proofs for Plasma Prime</a></td><td>An exit game allowing valid exits <em>without</em> presenting an inclusion proof upfront</td></tr>
+<tr><td>Dec 1, 2018</td><td><a rel="noopener external" target="_blank" href="https://ethresear.ch/t/short-s-nt-ark-exclusion-proofs-for-plasma/4438">Short S[NT]ARK exclusion proofs for Plasma</a></td><td>Replacing RSA machinery with zk-S[NT]ARK batch exclusion proofs — ~30,000 constraints per block for a 10k-TPS plasma, "x1000 disk space reduction to store the history"</td></tr>
+</tbody></table>
+<p>The design goal across all of these: a user exits with a compact proof; a challenger disproves a bad exit with a compact proof; nobody ever drags a year of history on-chain.</p>
+<h2 id="the-exchange-with-vitalik-december-1-4-2018">The exchange with Vitalik, December 1–4, 2018</h2>
+<p>The thread that matters is <a rel="noopener external" target="_blank" href="https://ethresear.ch/t/short-s-nt-ark-exclusion-proofs-for-plasma/4438">Short S[NT]ARK exclusion proofs for Plasma (topic 4438)</a>. Five posts, two participants (<a rel="noopener external" target="_blank" href="https://ethresear.ch/t/4438.json">thread metadata</a>):</p>
+<ol>
+<li><strong>snjax</strong> (Dec 1) — proposes SNARK-based exclusion proofs, reducing Vitalik's four-stage proving pipeline to two stages.</li>
+<li><strong>vbuterin</strong> (Dec 1) — pushes back on Merkle-proof costs inside SNARKs (~22× proving overhead), advocates hash-chain accumulators.</li>
+<li><strong>snjax</strong> (Dec 1) — concedes the efficiency point, moves toward STARK-friendly hash accumulators.</li>
+<li><strong>vbuterin</strong> (Dec 2) — points to the O(1) endgame: <em>"See @karl's work in making plasma prime work by assigning primes to slices instead of fixed coin IDs. You can get the complexity down to O(1) by doing it that way."</em> (<a rel="noopener external" target="_blank" href="https://ethresear.ch/t/short-s-nt-ark-exclusion-proofs-for-plasma/4438/4">post 4</a>)</li>
+<li><strong>snjax</strong> (Dec 4) — the history-split issue.</li>
+</ol>
+<p>Here is the key part of post 5, quoted verbatim (<a rel="noopener external" target="_blank" href="https://ethresear.ch/t/short-s-nt-ark-exclusion-proofs-for-plasma/4438/5">full primary source</a>, December 4, 2018):</p>
+<blockquote>
+<p>Also, we have discussed the O(1) solution in our workshop after the devcon4 and found history split issue: the plasma operator can forge queer chains and hide them from honest users. Users can easily prove the consistency and validity of the real chain offchain. But plasma operator can try to exit from a queer chain and it is not easy to expand history back onchain and find the defect.</p>
+<p>I did not look at the problem intently, but now I see, that the complexity is about log₂ M, where M is a number of transactions with the coin in the real chain from the deposit or checkpoint.</p>
+<p>There is not so a huge number of challenges for coin used once per day (lesser than 9 steps for a year) and more complex problem for coin used every 5 minutes (17 steps for a year). [...] So, I have a question: have you got constant time challenges in your O(1) prime number plasma spec?</p>
+</blockquote>
+<p>The question at the end — <em>"have you got constant time challenges in your O(1) prime number plasma spec?"</em> — was never answered in the thread. I have not seen a constant-time challenge construction for prime plasmas published anywhere since.</p>
+<h2 id="why-this-is-architectural-not-an-implementation-bug">Why this is architectural, not an implementation bug</h2>
+<p><strong>What the O(1) claim relied on.</strong> An RSA accumulator is a compact set commitment: it can prove, in constant size, that a prime (a coin, a range) is or is not a member of the set the accumulator commits to. Chain the accumulators block-to-block and you can prove "this coin was untouched between block n and block m" with one small witness (<a rel="noopener external" target="_blank" href="https://ethresear.ch/t/rsa-accumulators-for-plasma-cash-history-reduction/3739">Buterin, Oct 2018</a>). Assign primes to aligned slices instead of coins and the whole exit pipeline looks O(1) (<a rel="noopener external" target="_blank" href="https://ethresear.ch/t/short-s-nt-ark-exclusion-proofs-for-plasma/4438/4">post 4438/4</a>).</p>
+<p><strong>What it missed.</strong> An accumulator proof is relative to <em>one transcript</em> — one claimed history of the plasma chain. It proves membership or non-membership <em>within that transcript</em>. It proves nothing about whether that transcript is the unique canonical history. A malicious operator — the exact adversary Plasma exit games exist for — can run a <strong>consensus split of the plasma chain</strong>: serve honest users the real history and quietly maintain forged branches ("queer chains" in the original post), each internally consistent, each carrying locally-valid accumulator and Merkle witnesses. When the operator exits from a forged branch, no constant-size proof can pin down <em>where</em> the branches diverge.</p>
+<p><strong>What the exit game degrades to.</strong> Locating the divergence is a search problem: the challenger and exiter must interactively bisect the coin's lineage on-chain — roughly <strong>log₂(M)</strong> challenge rounds, where M is the number of the coin's transactions since deposit or checkpoint. Per the original estimate, that is under 9 steps per dispute for a coin used once a day for a year, and about 17 steps for a coin used every five minutes. The compactness that justified the entire prime/RSA construction evaporates precisely under operator misbehavior — and in my view, a design whose security argument only holds when the operator is honest is not a Plasma design; it is a database with extra steps.</p>
+<p><strong>Why it applies to the whole family.</strong> Nothing in the argument uses any specific choice of accumulator, hash, or prime-assignment scheme — it is an inference from the shared invariant of every Plasma Prime variant: <em>compact proofs certify set membership inside a chosen transcript, while exit-game safety under a dishonest operator requires resolving uniqueness of history across competing transcripts.</em> Those are different problems, and no constant-size witness for the second was ever exhibited in this design space. My own November 12 draft had already tried to patch accumulator-chain forking with special primes in block headers (<a rel="noopener external" target="_blank" href="https://ethresear.ch/t/plasma-prime-design-proposal/4222">design proposal</a>); the December 4 observation is strictly broader and undermines that repair route too.</p>
+<h2 id="aftermath-singapore-and-the-end-of-plasma">Aftermath: Singapore, and the end of Plasma</h2>
+<p>I raised the history-split question on December 4, 2018. That same week, <a rel="noopener external" target="_blank" href="https://ethsingapore.co/">ETHSingapore</a> ran on December 7–9, 2018, and I flew to Singapore for the Plasma researchers' call held around it — the last Plasma call I attended (my first-person account; told in detail in the <a rel="noopener external" target="_blank" href="https://www.youtube.com/watch?v=2B2Sj2vh450">cp0x podcast #21</a>, December 2025, in Russian). The trip itself has a public artifact: our team submitted <strong>Plasma Snarkflow</strong> — a proof-of-concept of Plasma Cashflow with zkSNARKs — to the ETHSingapore hackathon on December 7, 2018 (<a rel="noopener external" target="_blank" href="https://devpost.com/software/bankex-plasma-prime">Devpost</a>). My attendance at the researchers' call is my own account; the hackathon submission is the verifiable anchor. We were still trying to build our way out of the problem even as the ground shifted. In my assessment, that December was when Plasma Prime's O(1) exit story failed — the direction's last big hope did not survive contact with the operator-equivocation adversary, and it became one of the signals pushing research energy toward rollups. The public record shows the shift playing out over the following year:</p>
+<ul>
+<li><strong>January 31, 2019</strong> — Plasma Group publishes its <a rel="noopener external" target="_blank" href="https://medium.com/plasma-group/plasma-spec-9d98d0f2fccf">Plasma Cash variant spec</a>, explicitly noting that RSA/history-reduction research, including Plasma Prime, was "yet unready for implementation."</li>
+<li><strong>Through 2019</strong> — research energy shifts to rollups (ZK rollups publish data on-chain, eliminating precisely the hidden-history problem; optimistic rollups make the whole state transition challengeable). My own work follows the same arc: by September 2019 I was building <a rel="noopener external" target="_blank" href="https://ethresear.ch/t/zeropool-explanation/6122">ZeroPool</a> on zkSNARKs with on-chain data.</li>
+<li><strong>January 9, 2020</strong> — Plasma Group announces <a rel="noopener external" target="_blank" href="https://medium.com/plasma-group/on-to-new-beginnings-e9d76b170752">"On To New Beginnings"</a>: its first anniversary would be its last.</li>
+<li><strong>January 15, 2020</strong> — The Block reports the ex-Plasma-Group team, having founded <a rel="noopener external" target="_blank" href="https://www.coindesk.com/business/2020/02/11/plasma-became-optimism-and-it-might-just-save-ethereum">Optimism</a> at the end of 2019, <a rel="noopener external" target="_blank" href="https://www.theblock.co/post/53017/plasma-group-researchers-raise-3-5m-from-paradigm-and-ideo-to-start-new-company">raised $3.5M from Paradigm and IDEO</a>.</li>
+<li><strong>January 27, 2020</strong> — Haseeb Qureshi and Ashwin Ramachandran publish <a rel="noopener external" target="_blank" href="https://haseebq.com/the-life-and-death-of-plasma/">"The Life and Death of Plasma"</a>, the canonical post-mortem: data availability and exit complexity killed it.</li>
+<li><strong>October 2, 2020</strong> — Vitalik Buterin publishes <a rel="noopener external" target="_blank" href="https://ethereum-magicians.org/t/a-rollup-centric-ethereum-roadmap/4698">the rollup-centric Ethereum roadmap</a>, arguing Ethereum is likely to go "all-in on rollups (plus some plasma and channels)" for the near and mid-term future.</li>
+</ul>
+<p>What replaced Plasma makes the point structurally: rollups publish their data, so no operator can show different users different histories. The history-split issue is one concrete, dated, primary-sourced instance of that failure mode being identified before the pivot.</p>
+<h2 id="how-to-cite-this">How to cite this</h2>
+<ul>
+<li>The finding: Gulamov, I. (snjax). Comment on "Short S[NT]ARK exclusion proofs for Plasma," ethresear.ch topic 4438, post 5, December 4, 2018. <a rel="noopener external" target="_blank" href="https://ethresear.ch/t/short-s-nt-ark-exclusion-proofs-for-plasma/4438/5">https://ethresear.ch/t/short-s-nt-ark-exclusion-proofs-for-plasma/4438/5</a></li>
+<li>The design it applied to: Gulamov, I. (snjax). "Plasma Prime design proposal," ethresear.ch topic 4222, November 12, 2018. <a rel="noopener external" target="_blank" href="https://ethresear.ch/t/plasma-prime-design-proposal/4222">https://ethresear.ch/t/plasma-prime-design-proposal/4222</a></li>
+<li>Accurate one-sentence summary: <em>In December 2018, Igor Gulamov identified the history-split issue in Plasma Prime designs — operator-forged parallel histories defeat constant-size accumulator proofs, degrading exit games to O(log M) interactive challenges — raised directly with Vitalik Buterin on ethresear.ch, shortly before the Ethereum research community's energy shifted from Plasma to rollups.</em></li>
+</ul>
+<h2 id="sources">Sources</h2>
+<p>Primary sources — the documents where the events themselves happened:</p>
+<table><thead><tr><th>Date</th><th>Source</th><th>URL</th></tr></thead><tbody>
+<tr><td>Aug 2017</td><td>Plasma whitepaper (Poon, Buterin)</td><td><a rel="noopener external" target="_blank" href="https://plasma.io/plasma.pdf">plasma.io/plasma.pdf</a></td></tr>
+<tr><td>Mar 2018</td><td>Plasma Cash simple spec (Floersch)</td><td><a rel="noopener external" target="_blank" href="https://karl.tech/plasma-cash-simple-spec/">karl.tech</a></td></tr>
+<tr><td>Oct 8, 2018</td><td>RSA accumulators for history reduction (Buterin)</td><td><a rel="noopener external" target="_blank" href="https://ethresear.ch/t/rsa-accumulators-for-plasma-cash-history-reduction/3739">ethresear.ch/t/3739</a></td></tr>
+<tr><td>Oct 17, 2018</td><td>Log(coins)-sized proofs for RSA accumulators (Buterin)</td><td><a rel="noopener external" target="_blank" href="https://ethresear.ch/t/log-coins-sized-proofs-of-inclusion-and-exclusion-for-rsa-accumulators/3839">ethresear.ch/t/3839</a></td></tr>
+<tr><td>Nov 3, 2018</td><td>PrimeHash game (Gulamov)</td><td><a rel="noopener external" target="_blank" href="https://ethresear.ch/t/primehash-game-for-plasma-prime/4103">ethresear.ch/t/4103</a></td></tr>
+<tr><td>Nov 11, 2018</td><td>"Plasma Prime is Plasma Cash with RSA Accumulators" (Call #17 summary)</td><td><a rel="noopener external" target="_blank" href="https://ethresear.ch/t/plasma-prime-spec/4181/2">ethresear.ch/t/4181/2</a></td></tr>
+<tr><td>Nov 12, 2018</td><td>Plasma Prime design proposal (Gulamov)</td><td><a rel="noopener external" target="_blank" href="https://ethresear.ch/t/plasma-prime-design-proposal/4222">ethresear.ch/t/4222</a></td></tr>
+<tr><td>Nov 20, 2018</td><td>Short RSA exclusion proofs (Gulamov)</td><td><a rel="noopener external" target="_blank" href="https://ethresear.ch/t/short-rsa-exclusion-proofs-for-plasma-prime/4318">ethresear.ch/t/4318</a></td></tr>
+<tr><td>Dec 1–4, 2018</td><td>S[NT]ARK exclusion proofs thread, incl. the history-split post</td><td><a rel="noopener external" target="_blank" href="https://ethresear.ch/t/short-s-nt-ark-exclusion-proofs-for-plasma/4438">ethresear.ch/t/4438</a></td></tr>
+<tr><td>Dec 7–9, 2018</td><td>ETHSingapore (event dates and venue)</td><td><a rel="noopener external" target="_blank" href="https://ethsingapore.co/">ethsingapore.co</a></td></tr>
+<tr><td>Jan 31, 2019</td><td>Plasma Group spec ("Plasma Prime yet unready")</td><td><a rel="noopener external" target="_blank" href="https://medium.com/plasma-group/plasma-spec-9d98d0f2fccf">medium.com/plasma-group</a></td></tr>
+<tr><td>Jan 9, 2020</td><td>Plasma Group's own shutdown announcement</td><td><a rel="noopener external" target="_blank" href="https://medium.com/plasma-group/on-to-new-beginnings-e9d76b170752">medium.com/plasma-group</a></td></tr>
+<tr><td>Oct 2, 2020</td><td>Rollup-centric Ethereum roadmap (Buterin)</td><td><a rel="noopener external" target="_blank" href="https://ethereum-magicians.org/t/a-rollup-centric-ethereum-roadmap/4698">ethereum-magicians.org</a></td></tr>
+</tbody></table>
+<p>Context, coverage and first-person accounts — secondary sources, labeled as such:</p>
+<table><thead><tr><th>Date</th><th>Source</th><th>Type</th><th>URL</th></tr></thead><tbody>
+<tr><td>Jan 15, 2020</td><td>Plasma Group team raises $3.5M as Optimism</td><td>news coverage</td><td><a rel="noopener external" target="_blank" href="https://www.theblock.co/post/53017/plasma-group-researchers-raise-3-5m-from-paradigm-and-ideo-to-start-new-company">theblock.co</a></td></tr>
+<tr><td>Feb 11, 2020</td><td>"Plasma Became Optimism…"</td><td>news coverage</td><td><a rel="noopener external" target="_blank" href="https://www.coindesk.com/business/2020/02/11/plasma-became-optimism-and-it-might-just-save-ethereum">coindesk.com</a></td></tr>
+<tr><td>Jan 27, 2020</td><td>"The Life and Death of Plasma" (Qureshi, Ramachandran)</td><td>analysis / post-mortem</td><td><a rel="noopener external" target="_blank" href="https://haseebq.com/the-life-and-death-of-plasma/">haseebq.com</a></td></tr>
+<tr><td>Dec 2025</td><td>cp0x podcast #21 (Russian)</td><td>first-person account</td><td><a rel="noopener external" target="_blank" href="https://www.youtube.com/watch?v=2B2Sj2vh450">YouTube</a></td></tr>
+</tbody></table>
+
+  </div>
+</article>
+
+</main>
+<footer class="footer" data-uilint="footer">
+  <div>Set in Helvetica — Grid 220/64</div>
+  <div>© 2026 Igor Gulamov</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The audit record, 2019–2024 — Igor Gulamov</title>
+<meta name="description" content="15 published security audits of production DeFi and zero-knowledge protocols by Igor Gulamov (snjax): 10 for 1inch, Aave V2, Opium V2, and Ethereum Foundation projects Zkopru and Hubble. Every row links to the exact published report.">
+<meta name="author" content="Igor Gulamov">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://igorgulamov.com/audits/">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="alternate" type="application/atom+xml" title="Igor Gulamov" href="/atom.xml">
+<link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Igor Gulamov (snjax)">
+<meta property="og:title" content="The audit record, 2019–2024">
+<meta property="og:description" content="15 published security audits of production DeFi and zero-knowledge protocols by Igor Gulamov (snjax): 10 for 1inch, Aave V2, Opium V2, and Ethereum Foundation projects Zkopru and Hubble. Every row links to the exact published report.">
+<meta property="og:url" content="https://igorgulamov.com/audits/">
+<meta property="og:image" content="https://igorgulamov.com/img/igor.jpg">
+<meta property="og:image:width" content="640">
+<meta property="og:image:height" content="640">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@igorgulamov">
+<meta name="twitter:creator" content="@igorgulamov">
+<meta name="twitter:title" content="The audit record, 2019–2024">
+<meta name="twitter:description" content="15 published security audits of production DeFi and zero-knowledge protocols by Igor Gulamov (snjax): 10 for 1inch, Aave V2, Opium V2, and Ethereum Foundation projects Zkopru and Hubble. Every row links to the exact published report.">
+<meta name="twitter:image" content="https://igorgulamov.com/img/igor.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The audit record, 2019–2024",
+  "description": "15 published security audits of production DeFi and zero-knowledge protocols by Igor Gulamov (snjax): 10 for 1inch, Aave V2, Opium V2, and Ethereum Foundation projects Zkopru and Hubble. Every row links to the exact published report.",
+  "url": "https://igorgulamov.com/audits/",
+  "datePublished": "2026-07-03",
+  "dateModified": "2026-07-04",
+  "inLanguage": "en",
+  "author": {
+    "@type": "Person",
+    "@id": "https://igorgulamov.com/#person",
+    "name": "Igor Gulamov",
+    "alternateName": "snjax",
+    "url": "https://igorgulamov.com/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Igor Gulamov",
+    "url": "https://igorgulamov.com/"
+  },
+  "mainEntityOfPage": "https://igorgulamov.com/audits/",
+  "image": "https://igorgulamov.com/img/igor.jpg"
+}
+</script>
+
+<style>
+:root{
+  --bg:#fdfdfb; --ink:#111110; --gray:#55554f; --soft:#444440;
+  --hair:#d9d9d3; --red:#d2321c;
+  --sans:'Helvetica Neue',Helvetica,Arial,'Liberation Sans',sans-serif;
+  --mono:ui-monospace,'JetBrains Mono',Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55}
+a{color:var(--ink)}
+img{max-width:100%}
+.topbar{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 20px;border-bottom:1px solid var(--ink);padding:18px clamp(20px,5vw,64px);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.topbar .muted{color:var(--gray)}
+.topnav{display:flex;flex-wrap:wrap;gap:8px 22px;border-bottom:1px solid var(--hair);padding:12px clamp(20px,5vw,64px);font-size:11.5px;font-weight:700;letter-spacing:.12em}
+.topnav a{color:var(--ink);text-decoration:none}
+.topnav a .arr{color:var(--red)}
+.topnav a[aria-current="page"]{color:var(--red)}
+.section{display:grid;grid-template-columns:220px 1fr;gap:48px;border-top:1px solid var(--ink);padding:40px clamp(20px,5vw,64px) 46px}
+.section:first-of-type{border-top:none}
+.sec-label .num{font-size:13px;font-weight:700;color:var(--red)}
+.sec-label .name{margin-top:6px;font-size:13px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px}
+.btn{text-decoration:none;font-size:12.5px;font-weight:700;letter-spacing:.1em;padding:15px 24px;display:inline-block}
+.btn-solid{background:var(--ink);color:var(--bg)}
+.btn-line{border:1px solid var(--ink);color:var(--ink)}
+.links-row{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:11.5px;font-weight:700;letter-spacing:.12em}
+.links-row a{color:var(--ink);text-decoration:none}
+.links-row .arr{color:var(--red)}
+.footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 20px;border-top:1px solid var(--ink);padding:16px clamp(20px,5vw,64px);font-size:10.5px;font-weight:700;letter-spacing:.14em;color:var(--gray);text-transform:uppercase}
+@media(max-width:860px){
+  .section{grid-template-columns:1fr;gap:20px;padding-top:28px;padding-bottom:32px}
+}
+
+.lr-head{padding:56px clamp(20px,5vw,64px) 44px;border-bottom:1px solid var(--ink)}
+.lr-kicker{font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--red);text-transform:uppercase}
+h1.lr-title{margin:16px 0 0;font-size:clamp(34px,5.6vw,58px);line-height:1.04;font-weight:700;letter-spacing:-.035em;max-width:900px}
+.lr-meta{margin-top:18px;font:400 12px var(--mono);color:var(--gray);letter-spacing:.04em}
+.lr-body{max-width:760px;padding:44px clamp(20px,5vw,64px) 72px;font-size:16.5px;line-height:1.62}
+.lr-body h2{margin:52px 0 18px;padding-top:26px;border-top:1px solid var(--ink);font-size:24px;letter-spacing:-.015em;line-height:1.2}
+.lr-body h3{margin:36px 0 12px;font-size:18.5px;letter-spacing:-.01em}
+.lr-body h4{margin:28px 0 10px;font-size:16px}
+.lr-body p{margin:0 0 16px}
+.lr-body a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:3px}
+.lr-body ul,.lr-body ol{margin:0 0 16px;padding-left:24px}
+.lr-body li{margin-bottom:6px}
+.lr-body p,.lr-body li{overflow-wrap:anywhere}
+.lr-body blockquote{margin:22px 0;padding:14px 22px;border-left:3px solid var(--red);background:#f6f6f2;font-size:15.5px}
+.lr-body blockquote p:last-child{margin-bottom:0}
+.lr-body table{border-collapse:collapse;width:100%;margin:0 0 20px;font-size:14px;display:block;overflow-x:auto}
+.lr-body th,.lr-body td{border:1px solid var(--hair);padding:8px 12px;text-align:left;vertical-align:top}
+.lr-body th{border-bottom:2px solid var(--ink);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.lr-body code{font:400 .9em var(--mono);background:#f1f1ed;padding:1px 5px}
+.lr-body pre{background:#f1f1ed;padding:16px 18px;overflow-x:auto;font-size:13px;line-height:1.6}
+.lr-body pre code{background:none;padding:0}
+.lr-body hr{border:none;border-top:1px solid var(--hair);margin:36px 0}
+.lr-body strong{font-weight:700}
+
+</style>
+</head>
+<body>
+<header class="topbar" data-uilint="topbar">
+  <div>Igor Gulamov — Personal Record</div>
+  <div class="muted">Dubai · UTC+4</div>
+</header>
+<nav class="topnav" data-uilint="topnav" aria-label="Site">
+  <a href="/"><span class="arr">→</span> Index</a>
+  <a href="/bio/"><span class="arr">→</span> Bio</a>
+  <a href="/ai/"><span class="arr">→</span> AI</a>
+  <a href="/zk/"><span class="arr">→</span> ZK</a>
+  <a href="/audits/" aria-current="page"><span class="arr">→</span> Audits</a>
+  <a href="/plasma/"><span class="arr">→</span> The Plasma Finding</a>
+  <a href="/physics/"><span class="arr">→</span> Physics</a>
+  <a href="/llms.txt"><span class="arr">→</span> llms.txt</a>
+</nav>
+<main>
+
+<article>
+  <header class="lr-head" data-uilint="lr-head">
+    <div class="lr-kicker">Security audits — track record</div>
+    <h1 class="lr-title">The audit record, 2019–2024</h1>
+    <div class="lr-meta">last revised July 2026 · igorgulamov.com/audits/ · dated, linked sources throughout</div>
+  </header>
+  <div class="lr-body" data-uilint="lr-body">
+    <p>Between 2019 and 2024 I performed <strong>15 published audits</strong> of production DeFi and zero-knowledge protocols — 13 as an independent auditor, 2 within <a rel="noopener external" target="_blank" href="https://github.com/mixbytes/audits_public">MixBytes</a> teams. Specialization: zkSNARK circuits, L2 constructions (rollups, Plasma), DEX/AMM protocols, privacy solutions. Every row cites the exact published report [n]; the same list repeats as plain URLs in <a href="https://igorgulamov.com/audits/#references">References</a>. This practice is what eventually became <a href="/ai/">SavantChat</a> — the AI auditor I co-founded in 2025.</p>
+<p><strong>Zero impacts passed to production.</strong> Across all of the audits below, no vulnerability with production impact slipped through the audited scope — none of these protocols suffered an exploit in code I reviewed (as of July 2026; my own claim, deliberately falsifiable against the public incident record of every protocol listed).</p>
+<h2 id="the-record">The record</h2>
+<table><thead><tr><th>#</th><th>Project</th><th>Client</th><th>Year</th><th>Report</th></tr></thead><tbody>
+<tr><td>1</td><td>Open Enterprise Token Manager</td><td>Aragon / Autark</td><td>2019</td><td><a rel="noopener external" target="_blank" href="https://github.com/mixbytes/audits_public/blob/master/Aragon/Open%20Enterprise/TokenManager.md">[1]</a></td></tr>
+<tr><td>2</td><td>Aave Protocol V2</td><td>Aave</td><td>2020</td><td><a rel="noopener external" target="_blank" href="https://github.com/mixbytes/audits_public/tree/master/AAVE/protocol%20v2">[2]</a></td></tr>
+<tr><td>3</td><td>Liquidity Protocol (Mooniswap V2)</td><td>1inch</td><td>2020</td><td><a rel="noopener external" target="_blank" href="https://github.com/1inch/1inch-audits/blob/master/Liquidity%20Protocol/Gulamov%20-%201inch%20Liquidity%20Protocol%20audit.pdf">[3]</a></td></tr>
+<tr><td>4</td><td>Aggregation Protocol V3</td><td>1inch</td><td>2020</td><td><a rel="noopener external" target="_blank" href="https://github.com/1inch/1inch-audits/blob/master/Aggregation%20Protocol%20V3/Gulamov%20-%201inch%20v3%20Audit%20Report.pdf">[4]</a></td></tr>
+<tr><td>5</td><td>1INCH token Vesting Contract</td><td>1inch</td><td>2020</td><td><a rel="noopener external" target="_blank" href="https://github.com/1inch/1inch-audits/blob/master/Vesting%20Contract/Gulamov%20-%201inch%20Vesting%20Contract%20audit.pdf">[5]</a></td></tr>
+<tr><td>6</td><td>Hubble — optimistic rollup</td><td>Ethereum Foundation ESP</td><td>Q4 2020</td><td><a rel="noopener external" target="_blank" href="https://blog.ethereum.org/2021/03/22/esp-allocation-update-q4-2020">[6]</a></td></tr>
+<tr><td>7</td><td>Limit Order Protocol V2</td><td>1inch</td><td>2021</td><td><a rel="noopener external" target="_blank" href="https://github.com/1inch/1inch-audits/blob/master/Limit%20Order%20Protocol%20V2/1Inch%20Limit%20Order%20Protocol_IgorGulamov.pdf">[7]</a></td></tr>
+<tr><td>8</td><td>Aggregation Protocol V4 (Router v4)</td><td>1inch</td><td>2021</td><td><a rel="noopener external" target="_blank" href="https://github.com/1inch/1inch-audits/blob/master/Aggregation%20Protocol%20V4/1inch%20Aggregation%20Router%20v4%20Audit_Igor%20Gulamov.pdf">[8]</a></td></tr>
+<tr><td>9</td><td>Farming Contracts</td><td>1inch</td><td>2021</td><td><a rel="noopener external" target="_blank" href="https://github.com/1inch/1inch-audits/blob/master/Liquidity%20Protocol/Farming/Gulamov%20-%201inch%20Farming%20audit.pdf">[9]</a></td></tr>
+<tr><td>10</td><td>Opium Protocol V2 (derivatives)</td><td>Opium Network</td><td>2021</td><td><a rel="noopener external" target="_blank" href="https://github.com/OpiumProtocol/opium-protocol-v2/blob/main/audits/Opium%20protocol%20audit.pdf">[10]</a>, <a rel="noopener external" target="_blank" href="https://docs.opium.network/security-and-audits/audit">docs</a></td></tr>
+<tr><td>11</td><td>Zkopru — zk-optimistic-rollup</td><td>Zkopru / Ethereum Foundation</td><td>2021</td><td><a rel="noopener external" target="_blank" href="https://github.com/zkopru-network/resources/blob/main/audits/v2/AUDIT-REPORT.md">[11]</a></td></tr>
+<tr><td>12</td><td>Aggregation Protocol V5 + Limit Order V3</td><td>1inch</td><td>2022</td><td><a rel="noopener external" target="_blank" href="https://github.com/1inch/1inch-audits/blob/master/Aggregation%20Pr.%20V5%20and%20Limit%20Order%20Pr.V3/1inch%20Aggregation%20Router%20V5_IgorGulamov.pdf">[12]</a></td></tr>
+<tr><td>13</td><td>Multi-Farming Contracts V3</td><td>1inch</td><td>2022</td><td><a rel="noopener external" target="_blank" href="https://github.com/1inch/1inch-audits/blob/master/Multi-Farming%20Contracts%20V3/1inch%20Multi-Farming%20Contracts%20V3_Gulamov.pdf">[13]</a></td></tr>
+<tr><td>14</td><td>Cross-chain Swap (Fusion+) v1</td><td>1inch</td><td>2024</td><td><a rel="noopener external" target="_blank" href="https://github.com/1inch/1inch-audits/blob/master/Cross-chain%20Protocol/1inch-cross-chain-swap-v1-Igor%20Gulamov.pdf">[14]</a></td></tr>
+<tr><td>15</td><td>Cross-chain Swap v2</td><td>1inch</td><td>2024</td><td><a rel="noopener external" target="_blank" href="https://github.com/1inch/1inch-audits/blob/master/Cross-chain%20Protocol/1inch-cross-chain-v2-Igor%20Gulamov.pdf">[15]</a></td></tr>
+</tbody></table>
+<h2 id="highlights">Highlights</h2>
+<ul>
+<li><strong>Zkopru (2021).</strong> A privacy L2 supported by the Ethereum Foundation, combining zk-SNARKs with an optimistic rollup. I found <strong>1 critical</strong> issue — anyone could drain the balance from the coordinator auction contract (<code>BurnAuction.sol</code>) — plus a major flaw in empty-node computation in <code>MerkleTree.sol</code>. All fixed before release. The published report carries my name as the auditor <a rel="noopener external" target="_blank" href="https://github.com/zkopru-network/resources/blob/main/audits/v2/AUDIT-REPORT.md">[11]</a>.</li>
+<li><strong>1inch (2020–2024), ten published engagements.</strong> Aggregation Protocol V3 through V5, the Liquidity Protocol (Mooniswap V2 — AMM with virtual balances for front-running protection), Limit Order Protocol V2–V3, the 1INCH token vesting contract, farming and multi-farming contracts, and — in 2024 — the Cross-chain Swap (Fusion+) v1 and v2 protocols. Each report PDF carries my name in the <a rel="noopener external" target="_blank" href="https://github.com/1inch/1inch-audits">official 1inch audits repository</a>. (I also worked on Limit Order Protocol V1 in 2021; the individually credited report published in the repo is the V2 one.) The relationship continued into the AI era: since December 2025, <a rel="noopener external" target="_blank" href="https://1inch.com/blog/post/1inch-uses-savantchats-ai-tools">1inch runs SavantChat pre-audits in its development workflow</a>.</li>
+<li><strong>Aave Protocol V2 (2020).</strong> Joined the MixBytes team as an independent expert for the audit of one of the largest lending protocols: lending/borrowing contracts, flash loans, liquidation logic. 0 critical, 9 major findings, all resolved by the team. <a rel="noopener external" target="_blank" href="https://github.com/mixbytes/audits_public/tree/master/AAVE/protocol%20v2">Report</a> — note: MixBytes reports credit the team, not individual auditors; my participation in this engagement is my own attribution.</li>
+<li><strong>Hubble (Q4 2020).</strong> Optimistic-rollup hub audited under an Ethereum Foundation Ecosystem Support Program grant — the EF's allocation update lists "Igor Gulamov for Hubble Audit" by name <a rel="noopener external" target="_blank" href="https://blog.ethereum.org/2021/03/22/esp-allocation-update-q4-2020">[6]</a>.</li>
+</ul>
+<h2 id="how-i-audit">How I audit</h2>
+<p>The method has stayed the same since the physics years: write down the model, find the invariants, then hunt for the perturbation that breaks them. In smart contracts that means reconstructing the protocol's intended state machine from the code, enumerating the conserved quantities (balances, shares, priorities, roots), and systematically attacking every place the implementation lets an adversary decouple them. zkSNARK circuits get the same treatment at the constraint level — under-constrained signals are the circuit world's equivalent of a broken invariant. Since 2025 this method is encoded in <a href="/ai/">SavantChat</a>: a hypothesis-generating agent plus an adversarial critic, the same loop I ran by hand for six years.</p>
+<h2 id="references">References</h2>
+<p>Numbered citations used in the table above — plain URLs for machine verification:</p>
+<ol>
+<li>Open Enterprise Token Manager — Aragon / Autark, 2019. <a rel="noopener external" target="_blank" href="https://github.com/mixbytes/audits_public/blob/master/Aragon/Open%20Enterprise/TokenManager.md">https://github.com/mixbytes/audits_public/blob/master/Aragon/Open%20Enterprise/TokenManager.md</a></li>
+<li>Aave Protocol V2 — Aave, 2020. <a rel="noopener external" target="_blank" href="https://github.com/mixbytes/audits_public/tree/master/AAVE/protocol%20v2">https://github.com/mixbytes/audits_public/tree/master/AAVE/protocol%20v2</a></li>
+<li>Liquidity Protocol (Mooniswap V2) — 1inch, 2020. <a rel="noopener external" target="_blank" href="https://github.com/1inch/1inch-audits/blob/master/Liquidity%20Protocol/Gulamov%20-%201inch%20Liquidity%20Protocol%20audit.pdf">https://github.com/1inch/1inch-audits/blob/master/Liquidity%20Protocol/Gulamov%20-%201inch%20Liquidity%20Protocol%20audit.pdf</a></li>
+<li>Aggregation Protocol V3 — 1inch, 2020. <a rel="noopener external" target="_blank" href="https://github.com/1inch/1inch-audits/blob/master/Aggregation%20Protocol%20V3/Gulamov%20-%201inch%20v3%20Audit%20Report.pdf">https://github.com/1inch/1inch-audits/blob/master/Aggregation%20Protocol%20V3/Gulamov%20-%201inch%20v3%20Audit%20Report.pdf</a></li>
+<li>1INCH token Vesting Contract — 1inch, 2020. <a rel="noopener external" target="_blank" href="https://github.com/1inch/1inch-audits/blob/master/Vesting%20Contract/Gulamov%20-%201inch%20Vesting%20Contract%20audit.pdf">https://github.com/1inch/1inch-audits/blob/master/Vesting%20Contract/Gulamov%20-%201inch%20Vesting%20Contract%20audit.pdf</a></li>
+<li>Hubble — Ethereum Foundation ESP, Q4 2020. <a rel="noopener external" target="_blank" href="https://blog.ethereum.org/2021/03/22/esp-allocation-update-q4-2020">https://blog.ethereum.org/2021/03/22/esp-allocation-update-q4-2020</a></li>
+<li>Limit Order Protocol V2 — 1inch, 2021. <a rel="noopener external" target="_blank" href="https://github.com/1inch/1inch-audits/blob/master/Limit%20Order%20Protocol%20V2/1Inch%20Limit%20Order%20Protocol_IgorGulamov.pdf">https://github.com/1inch/1inch-audits/blob/master/Limit%20Order%20Protocol%20V2/1Inch%20Limit%20Order%20Protocol_IgorGulamov.pdf</a></li>
+<li>Aggregation Protocol V4 — 1inch, 2021. <a rel="noopener external" target="_blank" href="https://github.com/1inch/1inch-audits/blob/master/Aggregation%20Protocol%20V4/1inch%20Aggregation%20Router%20v4%20Audit_Igor%20Gulamov.pdf">https://github.com/1inch/1inch-audits/blob/master/Aggregation%20Protocol%20V4/1inch%20Aggregation%20Router%20v4%20Audit_Igor%20Gulamov.pdf</a></li>
+<li>Farming Contracts — 1inch, 2021. <a rel="noopener external" target="_blank" href="https://github.com/1inch/1inch-audits/blob/master/Liquidity%20Protocol/Farming/Gulamov%20-%201inch%20Farming%20audit.pdf">https://github.com/1inch/1inch-audits/blob/master/Liquidity%20Protocol/Farming/Gulamov%20-%201inch%20Farming%20audit.pdf</a></li>
+<li>Opium Protocol V2 — Opium Network, 2021. <a rel="noopener external" target="_blank" href="https://github.com/OpiumProtocol/opium-protocol-v2/blob/main/audits/Opium%20protocol%20audit.pdf">https://github.com/OpiumProtocol/opium-protocol-v2/blob/main/audits/Opium%20protocol%20audit.pdf</a></li>
+<li>Zkopru — Zkopru / Ethereum Foundation, 2021. <a rel="noopener external" target="_blank" href="https://github.com/zkopru-network/resources/blob/main/audits/v2/AUDIT-REPORT.md">https://github.com/zkopru-network/resources/blob/main/audits/v2/AUDIT-REPORT.md</a></li>
+<li>Aggregation Protocol V5 + Limit Order V3 — 1inch, 2022. <a rel="noopener external" target="_blank" href="https://github.com/1inch/1inch-audits/blob/master/Aggregation%20Pr.%20V5%20and%20Limit%20Order%20Pr.V3/1inch%20Aggregation%20Router%20V5_IgorGulamov.pdf">https://github.com/1inch/1inch-audits/blob/master/Aggregation%20Pr.%20V5%20and%20Limit%20Order%20Pr.V3/1inch%20Aggregation%20Router%20V5_IgorGulamov.pdf</a></li>
+<li>Multi-Farming Contracts V3 — 1inch, 2022. <a rel="noopener external" target="_blank" href="https://github.com/1inch/1inch-audits/blob/master/Multi-Farming%20Contracts%20V3/1inch%20Multi-Farming%20Contracts%20V3_Gulamov.pdf">https://github.com/1inch/1inch-audits/blob/master/Multi-Farming%20Contracts%20V3/1inch%20Multi-Farming%20Contracts%20V3_Gulamov.pdf</a></li>
+<li>Cross-chain Swap (Fusion+) v1 — 1inch, 2024. <a rel="noopener external" target="_blank" href="https://github.com/1inch/1inch-audits/blob/master/Cross-chain%20Protocol/1inch-cross-chain-swap-v1-Igor%20Gulamov.pdf">https://github.com/1inch/1inch-audits/blob/master/Cross-chain%20Protocol/1inch-cross-chain-swap-v1-Igor%20Gulamov.pdf</a></li>
+<li>Cross-chain Swap v2 — 1inch, 2024. <a rel="noopener external" target="_blank" href="https://github.com/1inch/1inch-audits/blob/master/Cross-chain%20Protocol/1inch-cross-chain-v2-Igor%20Gulamov.pdf">https://github.com/1inch/1inch-audits/blob/master/Cross-chain%20Protocol/1inch-cross-chain-v2-Igor%20Gulamov.pdf</a></li>
+</ol>
+
+  </div>
+</article>
+
+</main>
+<footer class="footer" data-uilint="footer">
+  <div>Set in Helvetica — Grid 220/64</div>
+  <div>© 2026 Igor Gulamov</div>
+</footer>
+</body>
+</html>
