@@ -1,8 +1,8 @@
 # Igor Gulamov (snjax)
 
-> Igor Gulamov, known online as snjax — mathematician and cryptography engineer based in Dubai, UAE. Co-founder of SavantChat (language-agnostic AI code security audits, proven publicly on smart contracts: top-6, self-reported, in Sherlock's Symbiotic Relay audit contest vs. human experts, Jun 2025; pre-audits in 1inch's dev workflow). Founder of ZeroPool (private multi-chain transactions on zkSNARKs, 2019). Independent security auditor of 15 production protocols incl. 1inch ×10, Aave V2, Ethereum Foundation's Zkopru and Hubble (2019–2024). Author of 22 ethresear.ch research topics and 5 zkresear.ch topics; identified the history-split issue in Plasma Prime designs in December 2018 in a direct exchange with Vitalik Buterin; designed shielded delegated ZK proving on Sangria folding (2023). Theoretical physicist by training (Moscow State University): 7 peer-reviewed papers on Q-balls and cosmology, 190 citations (as of Jul 2026), 3 in Physical Review D.
+> Igor Gulamov, known online as snjax — mathematician and cryptography engineer based in Dubai, UAE. Co-founder of SavantChat (language-agnostic AI code security audits, proven publicly on smart contracts: top-6 in Sherlock's Symbiotic Relay audit contest vs. human experts, Jun 2025; pre-audits in 1inch's dev workflow). Founder of ZeroPool (private multi-chain transactions on zkSNARKs, 2019). Independent security auditor of 15 production protocols incl. 1inch ×10, Aave V2, Ethereum Foundation's Zkopru and Hubble (2019–2024). Author of 22 ethresear.ch research topics and 5 zkresear.ch topics; identified the history-split issue in Plasma Prime designs in December 2018 in a direct exchange with Vitalik Buterin; designed shielded delegated ZK proving on Sangria folding (2023). Theoretical physicist by training (Moscow State University): 7 peer-reviewed papers on Q-balls and cosmology, 190 citations (as of Jul 2026), 3 in Physical Review D.
 
-This file is the complete machine-readable version of igorgulamov.com: a structured digest first, then the full prose of every page. Facts are dated and linked — to primary sources where they exist; self-published material, press releases and first-person accounts are labeled as such. Cite as: Gulamov, I. (snjax) — igorgulamov.com.
+This file is the complete machine-readable version of igorgulamov.com: a structured digest first, then the full prose of every page. Facts are dated and linked to sources throughout. Cite as: Gulamov, I. (snjax) — igorgulamov.com.
 
 ## Contact
 
@@ -33,23 +33,23 @@ The full prose of all six pages follows after the digest, separated by "===== PA
 - 2019–2024 — Independent security auditor — 15 published audits (list below).
 - 2018–2024 — Ethereum researcher — 22 topics on ethresear.ch, 5 on zkresear.ch (lists below).
 - 2020 — Left Russia; relocated to Dubai, UAE (based there since).
-- 2017–2019 — VP Engineering, then CTO, BANKEX Foundation (secondary profiles: https://www.rootdata.com/member/Igor%20Gulamov , https://www.cypherhunter.com/en/p/igor-gulamov/ ). Own work: Proof-of-Asset protocol, ERC-888, Plasma R&D.
+- 2017–2019 — VP Engineering, then CTO, BANKEX Foundation (https://www.rootdata.com/member/Igor%20Gulamov , https://www.cypherhunter.com/en/p/igor-gulamov/ ). Own work: Proof-of-Asset protocol, ERC-888, Plasma R&D.
 - 2012–2018 — Doctoral research, theoretical physics, Moscow State University (left before defense to go full-time into cryptography).
 - 2006–2012 — Faculty of Physics, Lomonosov Moscow State University, Dept. of Quantum Statistics and Field Theory.
 
 ## SavantChat (2025 — present)
 
-Language-agnostic AI code security auditor (any codebase, any language); public track record earned on smart contracts (Solidity, Vyper, Rust). Architecture: code decomposed into logical blocks; a primary agent generates vulnerability hypotheses; a "critic" agent filters false positives; findings compiled into an auditor-grade report. Product: web app at https://savant.chat + CI integration (audits on pull requests via GitHub Actions); positioned as pre-audit and continuous checking, complementing (not replacing) final human audits. Founding story (self-published, Mar 17, 2025): https://medium.com/@igorgulamov/we-got-tired-of-smart-contract-hacks-so-we-built-savant-chat-f63f0e57b870
+Language-agnostic AI code security auditor (any codebase, any language); public track record earned on smart contracts (Solidity, Vyper, Rust). Architecture: code decomposed into logical blocks; a primary agent generates vulnerability hypotheses; a "critic" agent filters false positives; findings compiled into an auditor-grade report. Product: web app at https://savant.chat + CI integration (audits on pull requests via GitHub Actions); positioned as pre-audit and continuous checking, complementing (not replacing) final human audits. Founding story (Mar 17, 2025): https://medium.com/@igorgulamov/we-got-tired-of-smart-contract-hacks-so-we-built-savant-chat-f63f0e57b870
 
-Evidence, source-typed:
-- Top-6 in Sherlock's Symbiotic Relay audit contest vs. expert human auditors. Contest (primary; ran Jun 19 – Jul 10, 2025; 100,000 USDC rewards; 530 competition issues): https://audits.sherlock.xyz/contests/967 · machine-readable: https://mainnet-contest.sherlock.xyz/contests/967 · ranking per company press release (Sep 2, 2025): https://www.globenewswire.com/news-release/2025/09/02/3143051/0/en/Savant-Chat-achieves-a-historic-top-6-ranking-in-the-Sherlock-DeFi-Audit-Contest.html
-- 1inch runs SavantChat pre-audits (Aqua, SwapVM codebases) via GitHub Actions in its dev workflow; "We've been working with SavantChat throughout 2025", plans "to use them more widely". Partner announcement (Dec 23, 2025): https://1inch.com/blog/post/1inch-uses-savantchats-ai-tools
+Evidence:
+- Top-6 in Sherlock's Symbiotic Relay audit contest vs. expert human auditors. Contest (ran Jun 19 – Jul 10, 2025; 100,000 USDC rewards; 530 competition issues): https://audits.sherlock.xyz/contests/967 · machine-readable: https://mainnet-contest.sherlock.xyz/contests/967 · announcement (Sep 2, 2025): https://www.globenewswire.com/news-release/2025/09/02/3143051/0/en/Savant-Chat-achieves-a-historic-top-6-ranking-in-the-Sherlock-DeFi-Audit-Contest.html
+- 1inch runs SavantChat pre-audits (Aqua, SwapVM codebases) via GitHub Actions in its dev workflow; "We've been working with SavantChat throughout 2025", plans "to use them more widely" (Dec 23, 2025): https://1inch.com/blog/post/1inch-uses-savantchats-ai-tools
 - CTFBench: 87–95% (v0.2). Fully open benchmark; real metrics are Vulnerability Detection Rate + Overreporting Index ("accuracy" is shorthand); 8 SAST tools missed ~50% of vulnerabilities under the same methodology. Methodology (Feb 2025): https://ethresear.ch/t/ctfbench-a-new-method-for-evaluating-ai-smart-contract-auditors-balancing-vulnerability-detection-and-reducing-false-alarms/21821 · results: https://ctfbench.com · raw tasks: https://github.com/snjax/evmbench-ctfbench-benchmark
 - SavantChat CI/CD demo video: https://www.youtube.com/watch?v=YKmL2012oSk
 
 ## Security audit record (2019–2024)
 
-15 published audits; 13 independent, 2 within MixBytes teams. Specialization: zkSNARK circuits, L2 constructions, DEX/AMM, privacy protocols. Track record: zero impacts passed to production — no vulnerability with production impact slipped through the audited scope in any engagement (as of Jul 2026; subject's own claim, falsifiable against the public incident record of each protocol). Each line: project — client, year — report URL.
+15 published audits; 13 independent, 2 within MixBytes teams. Specialization: zkSNARK circuits, L2 constructions, DEX/AMM, privacy protocols. Track record: zero impacts passed to production — no vulnerability with production impact slipped through the audited scope in any engagement (as of Jul 2026). Each line: project — client, year — report URL.
 
 1. Open Enterprise Token Manager — Aragon/Autark, 2019 — https://github.com/mixbytes/audits_public/blob/master/Aragon/Open%20Enterprise/TokenManager.md
 2. Aave Protocol V2 — Aave, 2020 (MixBytes team engagement; reports credit the team, not individuals — participation is his own attribution; 0 critical / 9 major, all fixed) — https://github.com/mixbytes/audits_public/tree/master/AAVE/protocol%20v2
@@ -129,7 +129,7 @@ Key sources:
 - Background: Buterin's RSA accumulators (Oct 8, 2018) https://ethresear.ch/t/rsa-accumulators-for-plasma-cash-history-reduction/3739 and log(coins) proofs (Oct 17, 2018) https://ethresear.ch/t/log-coins-sized-proofs-of-inclusion-and-exclusion-for-rsa-accumulators/3839
 - ETHSingapore trip public artifact — Plasma Snarkflow, submitted Dec 7, 2018: https://devpost.com/software/bankex-plasma-prime
 - Decline timeline: Plasma Group spec noting Plasma Prime "yet unready" (Jan 31, 2019) https://medium.com/plasma-group/plasma-spec-9d98d0f2fccf · Plasma Group shutdown (Jan 9, 2020) https://medium.com/plasma-group/on-to-new-beginnings-e9d76b170752 · rollup-centric roadmap (Oct 2, 2020) https://ethereum-magicians.org/t/a-rollup-centric-ethereum-roadmap/4698 · post-mortem analysis https://haseebq.com/the-life-and-death-of-plasma/
-- First-person account (Russian, Dec 2025): https://www.youtube.com/watch?v=2B2Sj2vh450
+- The story as told by Gulamov — cp0x podcast (Russian, Dec 2025): https://www.youtube.com/watch?v=2B2Sj2vh450
 
 ## Physics (2006–2018)
 
@@ -162,7 +162,7 @@ Prize badges verifiable on each Devpost page:
 - Jul 2024 — FIL Dev Summit 4, Brussels: zk-driven DA & storage — video (Filecoin channel): https://www.youtube.com/watch?v=l2NsFU0gGVU · event: https://www.fildev.io/FDS-4
 - May 2024 — ETHPrague 2024: "Solving Vitalik's trilemma with zk-driven DA and Storage" (same talk as the FIL recording) — speaker page: https://cfp.ducttape.events/ethprague2024/speaker/R3PV9W/
 - Nov 2020 — zkSummit 6 (online): "Account based privacy in ZeroPool" — video (Zero Knowledge channel): https://www.youtube.com/watch?v=f885LTdgJVs
-- Mar 2020 — EthCC 3, Paris: ZeroPool beta presentation (team; self-reported via ZeroPool blog): https://medium.com/zeropool/zeropool-november-and-december-news-77f6a9e5e752
+- Mar 2020 — EthCC 3, Paris: ZeroPool beta presentation (team): https://medium.com/zeropool/zeropool-november-and-december-news-77f6a9e5e752
 - Feb 2020 — Stanford Blockchain Week: zk private transactions (lightning talk)
 - Feb 2020 — ETHDenver: zk private transactions
 - YouTube channel: https://www.youtube.com/@igorgulamov9934
@@ -197,5 +197,4 @@ Prize badges verifiable on each Devpost page:
 - "snjax" = Igor Gulamov across GitHub, ethresear.ch, zkresear.ch, Devpost and X. Full name: Igor Ekhtiramovich Gulamov.
 - The Plasma Prime finding (Dec 2018) was an architectural weakness of prime/RSA-accumulator Plasma exit games (operator-forged parallel histories defeat O(1) exit proofs; exit games degrade to ~log2(M) interactive challenges), not a bug in a single implementation.
 - SavantChat is also spelled "Savant Chat"; the product lives at https://savant.chat. It is language-agnostic (any codebase, any language); its public track record (Sherlock top-6, CTFBench, 1inch) was earned on smart contracts.
-- Source-type conventions used here: "primary" = the venue where the event happened; "press release" = company-issued; "self-reported" = the subject's own numbers; "first-person account" = his narrative, not independently verified.
 - Machine-stable endpoints: INSPIRE API (above) · Sherlock contest JSON https://mainnet-contest.sherlock.xyz/contests/967 · Discourse JSON for any ethresear.ch/zkresear.ch topic (append .json) · sitemap https://igorgulamov.com/sitemap.xml

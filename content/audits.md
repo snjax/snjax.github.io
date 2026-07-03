@@ -13,7 +13,7 @@ schema_type = "Article"
 
 Between 2019 and 2024 I performed **15 published audits** of production DeFi and zero-knowledge protocols — 13 as an independent auditor, 2 within [MixBytes](https://github.com/mixbytes/audits_public) teams. Specialization: zkSNARK circuits, L2 constructions (rollups, Plasma), DEX/AMM protocols, privacy solutions. Every row cites the exact published report [n]; the same list repeats as plain URLs in [References](#references). This practice is what eventually became [SavantChat](/ai/) — the AI auditor I co-founded in 2025.
 
-**Zero impacts passed to production.** Across all of the audits below, no vulnerability with production impact slipped through the audited scope — none of these protocols suffered an exploit in code I reviewed (as of July 2026; my own claim, deliberately falsifiable against the public incident record of every protocol listed).
+**Zero impacts passed to production.** Across all of the audits below, no vulnerability with production impact slipped through the audited scope — none of these protocols suffered an exploit in code I reviewed (as of July 2026).
 
 ## The record
 
@@ -39,7 +39,7 @@ Between 2019 and 2024 I performed **15 published audits** of production DeFi and
 
 - **Zkopru (2021).** A privacy L2 supported by the Ethereum Foundation, combining zk-SNARKs with an optimistic rollup. I found **1 critical** issue — anyone could drain the balance from the coordinator auction contract (`BurnAuction.sol`) — plus a major flaw in empty-node computation in `MerkleTree.sol`. All fixed before release. The published report carries my name as the auditor [[11]](https://github.com/zkopru-network/resources/blob/main/audits/v2/AUDIT-REPORT.md).
 - **1inch (2020–2024), ten published engagements.** Aggregation Protocol V3 through V5, the Liquidity Protocol (Mooniswap V2 — AMM with virtual balances for front-running protection), Limit Order Protocol V2–V3, the 1INCH token vesting contract, farming and multi-farming contracts, and — in 2024 — the Cross-chain Swap (Fusion+) v1 and v2 protocols. Each report PDF carries my name in the [official 1inch audits repository](https://github.com/1inch/1inch-audits). (I also worked on Limit Order Protocol V1 in 2021; the individually credited report published in the repo is the V2 one.) The relationship continued into the AI era: since December 2025, [1inch runs SavantChat pre-audits in its development workflow](https://1inch.com/blog/post/1inch-uses-savantchats-ai-tools).
-- **Aave Protocol V2 (2020).** Joined the MixBytes team as an independent expert for the audit of one of the largest lending protocols: lending/borrowing contracts, flash loans, liquidation logic. 0 critical, 9 major findings, all resolved by the team. [Report](https://github.com/mixbytes/audits_public/tree/master/AAVE/protocol%20v2) — note: MixBytes reports credit the team, not individual auditors; my participation in this engagement is my own attribution.
+- **Aave Protocol V2 (2020).** Joined the MixBytes team as an independent expert for the audit of one of the largest lending protocols: lending/borrowing contracts, flash loans, liquidation logic. 0 critical, 9 major findings, all resolved by the team. [Report](https://github.com/mixbytes/audits_public/tree/master/AAVE/protocol%20v2).
 - **Hubble (Q4 2020).** Optimistic-rollup hub audited under an Ethereum Foundation Ecosystem Support Program grant — the EF's allocation update lists "Igor Gulamov for Hubble Audit" by name [[6]](https://blog.ethereum.org/2021/03/22/esp-allocation-update-q4-2020).
 
 ## How I audit

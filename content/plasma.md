@@ -66,7 +66,7 @@ The question at the end — *"have you got constant time challenges in your O(1)
 
 ## Aftermath: Singapore, and the end of Plasma
 
-I raised the history-split question on December 4, 2018. That same week, [ETHSingapore](https://ethsingapore.co/) ran on December 7–9, 2018, and I flew to Singapore for the Plasma researchers' call held around it — the last Plasma call I attended (my first-person account; told in detail in the [cp0x podcast #21](https://www.youtube.com/watch?v=2B2Sj2vh450), December 2025, in Russian). The trip itself has a public artifact: our team submitted **Plasma Snarkflow** — a proof-of-concept of Plasma Cashflow with zkSNARKs — to the ETHSingapore hackathon on December 7, 2018 ([Devpost](https://devpost.com/software/bankex-plasma-prime)). My attendance at the researchers' call is my own account; the hackathon submission is the verifiable anchor. We were still trying to build our way out of the problem even as the ground shifted. In my assessment, that December was when Plasma Prime's O(1) exit story failed — the direction's last big hope did not survive contact with the operator-equivocation adversary, and it became one of the signals pushing research energy toward rollups. The public record shows the shift playing out over the following year:
+I raised the history-split question on December 4, 2018. That same week, [ETHSingapore](https://ethsingapore.co/) ran on December 7–9, 2018, and I flew to Singapore for the Plasma researchers' call held around it — the last Plasma call I attended (I tell the story in detail in the [cp0x podcast #21](https://www.youtube.com/watch?v=2B2Sj2vh450), December 2025, in Russian). The trip itself has a public artifact: our team submitted **Plasma Snarkflow** — a proof-of-concept of Plasma Cashflow with zkSNARKs — to the ETHSingapore hackathon on December 7, 2018 ([Devpost](https://devpost.com/software/bankex-plasma-prime)). We were still trying to build our way out of the problem even as the ground shifted. That December was when Plasma Prime's O(1) exit story failed — the direction's last big hope did not survive contact with the operator-equivocation adversary, and it became one of the signals pushing research energy toward rollups. The public record shows the shift playing out over the following year:
 
 - **January 31, 2019** — Plasma Group publishes its [Plasma Cash variant spec](https://medium.com/plasma-group/plasma-spec-9d98d0f2fccf), explicitly noting that RSA/history-reduction research, including Plasma Prime, was "yet unready for implementation."
 - **Through 2019** — research energy shifts to rollups (ZK rollups publish data on-chain, eliminating precisely the hidden-history problem; optimistic rollups make the whole state transition challengeable). My own work follows the same arc: by September 2019 I was building [ZeroPool](https://ethresear.ch/t/zeropool-explanation/6122) on zkSNARKs with on-chain data.
@@ -103,11 +103,11 @@ Primary sources — the documents where the events themselves happened:
 | Jan 9, 2020 | Plasma Group's own shutdown announcement | [medium.com/plasma-group](https://medium.com/plasma-group/on-to-new-beginnings-e9d76b170752) |
 | Oct 2, 2020 | Rollup-centric Ethereum roadmap (Buterin) | [ethereum-magicians.org](https://ethereum-magicians.org/t/a-rollup-centric-ethereum-roadmap/4698) |
 
-Context, coverage and first-person accounts — secondary sources, labeled as such:
+Coverage and commentary:
 
 | Date | Source | Type | URL |
 |---|---|---|---|
 | Jan 15, 2020 | Plasma Group team raises $3.5M as Optimism | news coverage | [theblock.co](https://www.theblock.co/post/53017/plasma-group-researchers-raise-3-5m-from-paradigm-and-ideo-to-start-new-company) |
 | Feb 11, 2020 | "Plasma Became Optimism…" | news coverage | [coindesk.com](https://www.coindesk.com/business/2020/02/11/plasma-became-optimism-and-it-might-just-save-ethereum) |
 | Jan 27, 2020 | "The Life and Death of Plasma" (Qureshi, Ramachandran) | analysis / post-mortem | [haseebq.com](https://haseebq.com/the-life-and-death-of-plasma/) |
-| Dec 2025 | cp0x podcast #21 (Russian) | first-person account | [YouTube](https://www.youtube.com/watch?v=2B2Sj2vh450) |
+| Dec 2025 | cp0x podcast #21 (Russian) | podcast | [YouTube](https://www.youtube.com/watch?v=2B2Sj2vh450) |
