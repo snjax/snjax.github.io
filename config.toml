@@ -1,0 +1,25 @@
+base_url = "https://igorgulamov.com"
+title = "Igor Gulamov (snjax)"
+description = "Igor Gulamov (snjax) — mathematician and cryptography engineer. Co-founder of SavantChat (language-agnostic AI code security audits), founder of ZeroPool. zkSNARKs, code security, Ethereum research."
+default_language = "en"
+compile_sass = false
+build_search_index = false
+generate_feeds = true
+feed_filenames = ["atom.xml"]
+author = "Igor Gulamov"
+
+[markdown]
+smart_punctuation = false
+external_links_target_blank = true
+
+[extra]
+person_name = "Igor Gulamov"
+person_alias = "snjax"
+email_personal = "igor.gulamov@gmail.com"
+email_work = "igor@savant.chat"
+telegram = "https://t.me/igor_gulamov"
+twitter = "https://x.com/igorgulamov"
+linkedin = "https://www.linkedin.com/in/igorgulamov/"
+github = "https://github.com/snjax"
+ethresearch = "https://ethresear.ch/u/snjax"
+inspirehep = "https://inspirehep.net/authors/2337589"

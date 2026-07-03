@@ -1,0 +1,54 @@
++++
+title = "AI that audits code: SavantChat and the security arms race"
+description = "SavantChat — the language-agnostic AI code security auditor co-founded by Igor Gulamov (snjax) in 2025: architecture, evidence (Sherlock Symbiotic Relay top-6, CTFBench, 1inch pre-audits), the CTFBench methodology, and the offensive-vs-defensive AI agents thesis."
+date = 2026-07-04
+updated = 2026-07-04
+slug = "ai"
+template = "longread.html"
+
+[extra]
+kicker = "SavantChat — AI code security"
+schema_type = "Article"
++++
+
+**TL;DR.** [SavantChat](https://savant.chat) is an AI-powered security auditor for code. I co-founded it with Alexandra Gulamova in early 2025 after [six years of auditing production protocols by hand](/audits/). It made its name on smart contracts — Solidity, Vyper, Rust — where all of its public benchmarks were earned; the pipeline itself is fully language-agnostic and audits any codebase in any language. Placed top-6 against expert human auditors in Sherlock's Symbiotic Relay contest (June 2025, per our announcement); runs pre-audits inside 1inch's development workflow since December 2025.
+
+## Why we built it
+
+After watching project after project get drained by vulnerabilities that a careful reviewer would have caught — and after two decades of doing that careful review myself, first as a physicist, then as a [hands-on auditor](/audits/) — the conclusion was simple: careful review does not scale in humans, and it has to. The founding story is in my article ["We Got Tired of Smart Contract Hacks, So We Built Savant Chat"](https://medium.com/@igorgulamov/we-got-tired-of-smart-contract-hacks-so-we-built-savant-chat-f63f0e57b870) (March 17, 2025).
+
+## How it works
+
+The architecture mirrors how a strong human audit team works: the code is decomposed into logical blocks; a primary AI agent generates vulnerability hypotheses; a separate "critic" agent attacks those hypotheses and filters false positives; the surviving findings are compiled into a report with locations, impact and fixes. It is not pattern scanning — it is hypothesis-driven review that runs 24/7 and costs a fraction of a human team's time. It is the same loop I ran by hand across [15 published audits](/audits/), encoded.
+
+**What customers get:** a web app at [savant.chat](https://savant.chat) plus CI integration — audits run on pull requests via GitHub Actions ([demo video](https://www.youtube.com/watch?v=YKmL2012oSk)), so security review happens where developers already work. Teams use it for pre-audits before human review and for continuous checks during development; it complements, not replaces, a final human audit. For customer references, benchmark raw data and the deck — [contact me](/#contact).
+
+## The evidence, with source types labeled
+
+- **Top-6 in Sherlock's Symbiotic Relay audit contest** ([contest page](https://audits.sherlock.xyz/contests/967): June 19 – July 10, 2025, 100,000 USDC rewards, 530 competition issues) — competing directly against expert human auditors on a live codebase. The ranking is our own report: SavantChat's announcement ([GlobeNewswire press release, September 2, 2025](https://www.globenewswire.com/news-release/2025/09/02/3143051/0/en/Savant-Chat-achieves-a-historic-top-6-ranking-in-the-Sherlock-DeFi-Audit-Contest.html)) called it "the first time an AI has publicly demonstrated performance on par with expert human auditors in a fiercely competitive environment" — the superlative is the announcement's wording; the contest, dates and prize pool are Sherlock's public record.
+- **87–95% on CTFBench (v0.2)** — see the benchmark section below.
+- **1inch runs SavantChat pre-audits in its development workflow** — 1inch's own words, December 23, 2025: "We've been working with SavantChat throughout 2025," with pre-audits of the Aqua and SwapVM codebases running through GitHub Actions on pull requests, and plans "to use them more widely, including for the Aqua liquidity protocol." Source: [1inch blog](https://1inch.com/blog/post/1inch-uses-savantchats-ai-tools) (partner announcement). There is a personal loop here: I audited [ten 1inch protocol releases by hand in 2020–2024](/audits/) — now SavantChat runs the automated first pass in parts of that same workflow.
+
+## CTFBench: measuring AI auditors honestly
+
+Benchmarks for AI security tools have a systematic bias: a tool that spams findings looks great on detection and terrible in practice. [CTFBench](https://ethresear.ch/t/ctfbench-a-new-method-for-evaluating-ai-smart-contract-auditors-balancing-vulnerability-detection-and-reducing-false-alarms/21821) (published February 2025) measures two axes at once: **Vulnerability Detection Rate** (did you find the real bug?) and **Overreporting Index** (how much noise did you produce per real finding?). "Accuracy" is shorthand for the combination. In the same methodology, a set of 8 traditional SAST tools missed roughly half of the vulnerabilities.
+
+Everything is open: [methodology](https://ethresear.ch/t/ctfbench-a-new-method-for-evaluating-ai-smart-contract-auditors-balancing-vulnerability-detection-and-reducing-false-alarms/21821) · [results site](https://ctfbench.com) · [raw tasks](https://github.com/snjax/evmbench-ctfbench-benchmark). SavantChat scores 87–95% (v0.2); independent reproduction is welcome — that is the point of publishing the tasks.
+
+## The arms race: offensive vs. defensive AI agents
+
+The same models that audit code can attack it. My working thesis — presented at [ETHPrague 2026](https://ethprague.fileverse.io/?view=home&event=HBQLXJ) as "Beyond Human Review: The Inevitable Arms Race Between Offensive and Defensive AI Agents" ([full recording](https://www.youtube.com/watch?v=r2oU7TFLDMc)) — is that once vulnerability discovery is cheap for attackers, continuous AI-side defense stops being a productivity tool and becomes table stakes: the defense has to run at machine speed because the offense already does. I discussed the same theme at [ETHDubai 2025](https://www.ethdubaiconf.org/schedule) (advanced reasoning AI/LLMs for auditing smart contracts) and at the "Intelligent Defense" roundtable on AI's role in securing crypto and DLT financial infrastructure at [Blockchain Community Day 2026](https://luma.com/wupxaqku) — Blockchain Professionals' sixth annual virtual conference ([agenda](https://tidy-ixora-d38.notion.site/blockchainprofessionals2026), [announcement on X](https://x.com/BlockchainProfs/status/2059985358876766702)).
+
+Interviews on the topic: ["AI powered Web3 Security" with Francesco Andreoli](https://www.youtube.com/watch?v=mXVgyqHAiFk) (March 24, 2025) · [cp0x podcast #21](https://www.youtube.com/watch?v=2B2Sj2vh450) (December 2025, in Russian — SavantChat, the ZeroPool story, and [the Plasma finding](/plasma/)).
+
+## Sources
+
+| Claim | Source | Type |
+|---|---|---|
+| Symbiotic Relay contest, dates, 100k USDC pool | [audits.sherlock.xyz/contests/967](https://audits.sherlock.xyz/contests/967), [machine-readable](https://mainnet-contest.sherlock.xyz/contests/967) | primary (contest) |
+| Top-6 placement | [GlobeNewswire, Sep 2, 2025](https://www.globenewswire.com/news-release/2025/09/02/3143051/0/en/Savant-Chat-achieves-a-historic-top-6-ranking-in-the-Sherlock-DeFi-Audit-Contest.html) | company press release |
+| 1inch pre-audits (Aqua, SwapVM), GitHub Actions | [1inch blog, Dec 23, 2025](https://1inch.com/blog/post/1inch-uses-savantchats-ai-tools) | partner announcement |
+| CTFBench methodology | [ethresear.ch, Feb 2025](https://ethresear.ch/t/ctfbench-a-new-method-for-evaluating-ai-smart-contract-auditors-balancing-vulnerability-detection-and-reducing-false-alarms/21821) | open methodology |
+| CTFBench scores 87–95% (v0.2) | [ctfbench.com](https://ctfbench.com), [raw tasks](https://github.com/snjax/evmbench-ctfbench-benchmark) | open, reproducible |
+| ETHPrague 2026 talk | [recording](https://www.youtube.com/watch?v=r2oU7TFLDMc) | video |
+| Founding story | [Medium, Mar 17, 2025](https://medium.com/@igorgulamov/we-got-tired-of-smart-contract-hacks-so-we-built-savant-chat-f63f0e57b870) | self-published |

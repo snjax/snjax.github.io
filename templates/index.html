@@ -1,0 +1,220 @@
+{% extends "base.html" %}
+
+{% block jsonld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "dateModified": "{{ now() | date(format="%Y-%m-%d") }}",
+  "mainEntity": {
+    "@type": "Person",
+    "@id": "https://igorgulamov.com/#person",
+    "name": "Igor Gulamov",
+    "alternateName": ["snjax", "Igor Ekhtiramovich Gulamov"],
+    "url": "https://igorgulamov.com/",
+    "image": "https://igorgulamov.com/img/igor.jpg",
+    "email": "mailto:igor@savant.chat",
+    "jobTitle": "Co-founder",
+    "worksFor": { "@type": "Organization", "name": "SavantChat", "url": "https://savant.chat", "founder": { "@id": "https://igorgulamov.com/#person" } },
+    "affiliation": [
+      { "@type": "Organization", "name": "ZeroPool", "url": "https://zeropool.network", "founder": { "@id": "https://igorgulamov.com/#person" } }
+    ],
+    "identifier": [
+      { "@type": "PropertyValue", "propertyID": "INSPIRE-HEP", "value": "I.E.Gulamov.2", "url": "https://inspirehep.net/authors/2337589" },
+      { "@type": "PropertyValue", "propertyID": "GitHub", "value": "snjax", "url": "https://github.com/snjax" }
+    ],
+    "knowsLanguage": ["en", "ru"],
+    "subjectOf": [
+      { "@type": "Article", "name": "Igor Gulamov — the full biography", "url": "https://igorgulamov.com/bio/" },
+      { "@type": "TechArticle", "name": "The history-split finding: how Plasma Prime's O(1) promise fell", "url": "https://igorgulamov.com/plasma/" },
+      { "@type": "Article", "name": "AI that audits code: SavantChat and the security arms race", "url": "https://igorgulamov.com/ai/" },
+      { "@type": "Article", "name": "Zero-knowledge engineering: privacy, delegated proving, storage", "url": "https://igorgulamov.com/zk/" },
+      { "@type": "Article", "name": "The audit record, 2019–2024", "url": "https://igorgulamov.com/audits/" },
+      { "@type": "Article", "name": "Theoretical physics: Q-balls, gauge fields, cosmology", "url": "https://igorgulamov.com/physics/" }
+    ],
+    "description": "Mathematician and cryptography engineer. Co-founder of SavantChat (language-agnostic AI code security audits, proven publicly on smart contracts), founder of ZeroPool. Theoretical physicist by training (MSU): 7 peer-reviewed papers on Q-balls and cosmology, 190 citations (as of July 2026). Independent security auditor for 1inch, Aave, Ethereum Foundation projects (2019-2024, 15 published audits). Three prize-winning EthGlobal hackathons in 2019. Identified the history-split flaw in Plasma Prime designs (December 2018).",
+    "knowsAbout": ["zero-knowledge proofs", "zkSNARKs", "folding schemes", "delegated proving", "smart contract security", "smart contract auditing", "applied cryptography", "Ethereum scaling", "Plasma", "rollups", "theoretical physics", "Q-balls", "AI code auditing", "large language models"],
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Lomonosov Moscow State University, Faculty of Physics" },
+    "award": [
+      "Main-stage finalist + SKALE prize, ETHBoston 2019 (ZeroPool)",
+      "Finalist + ENS & SKALE prizes, ETHParis 2019 (Pyromania)",
+      "ThunderCore & The Graph prize winner, ETHNewYork 2019 (I vote you!)",
+      "Top-6 (self-reported), Sherlock Symbiotic Relay audit contest, June 2025 (SavantChat)",
+      "Winner, All-Russian Student Physics Olympiad 2009",
+      "III Diploma, X International Astronomy Olympiad, Beijing 2005"
+    ],
+    "homeLocation": { "@type": "Place", "name": "Dubai, United Arab Emirates" },
+    "sameAs": [
+      "https://github.com/snjax",
+      "https://x.com/igorgulamov",
+      "https://www.linkedin.com/in/igorgulamov/",
+      "https://ethresear.ch/u/snjax",
+      "https://zkresear.ch/u/snjax",
+      "https://inspirehep.net/authors/2337589",
+      "https://medium.com/@igorgulamov",
+      "https://devpost.com/snjax",
+      "https://t.me/igor_gulamov",
+      "https://www.researchgate.net/profile/Igor-Gulamov-2"
+    ]
+  }
+}
+</script>
+{% endblock jsonld %}
+
+{% block style %}
+.hero{display:grid;grid-template-columns:1fr 300px;gap:48px;padding:56px clamp(20px,5vw,64px) 50px}
+.hero-kicker{font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--red);text-transform:uppercase}
+h1.hero-name{margin:18px 0 0;font-size:clamp(52px,9vw,88px);line-height:.98;font-weight:700;letter-spacing:-.045em}
+.hero-lede{margin:28px 0 0;max-width:560px;font-size:18.5px;line-height:1.5}
+.hero .btn-row{margin-top:32px}
+.hero .links-row{margin-top:24px}
+.portrait-wrap{display:flex;flex-direction:column;align-items:center;gap:14px}
+.portrait{width:min(260px,60vw);height:auto;aspect-ratio:1/1;border-radius:50%;border:1px solid var(--ink);object-fit:cover;filter:grayscale(1) contrast(1.05)}
+.portrait-cap{font:400 10.5px var(--mono);color:var(--gray);border:1px solid var(--hair);padding:5px 8px;letter-spacing:.06em}
+.stats3{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:30px;max-width:640px}
+.stat{border-top:3px solid var(--ink);padding-top:12px}
+.stat.hot{border-top-color:var(--red)}
+.stat .v{font-size:42px;font-weight:700;letter-spacing:-.02em}
+.stat .k{margin-top:6px;font-size:11.5px;letter-spacing:.08em;color:var(--gray);text-transform:uppercase}
+.tl{display:grid;grid-template-columns:104px 24px 1fr;padding-bottom:24px}
+.tl:last-child{padding-bottom:0}
+.tl .yr{font-size:14px;font-weight:700}
+.tl .rail{position:relative;border-left:1px solid var(--ink)}
+.tl .rail::before{content:"";position:absolute;left:-4.5px;top:4px;width:8px;height:8px;background:var(--ink)}
+.tl.hot .rail::before{background:var(--red)}
+.tl .what .t{font-size:16px;font-weight:700}
+.tl .what .d{margin-top:4px;font-size:14px;line-height:1.55;color:var(--soft)}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--ink);border:1px solid var(--ink)}
+.tile{background:var(--bg);padding:22px}
+.tile .v{font-size:46px;font-weight:700;letter-spacing:-.02em}
+.tile .v.hot{color:var(--red)}
+.tile .k{margin-top:8px;font-size:11px;letter-spacing:.1em;color:var(--gray);text-transform:uppercase}
+.paper{display:grid;grid-template-columns:64px 1fr 92px;gap:16px;padding:12px 0;border-bottom:1px solid var(--hair);align-items:baseline}
+.paper:last-child{border-bottom:none}
+.paper .yr{font-size:13px;font-weight:700}
+.paper .t a{color:var(--ink);text-decoration:none;font-size:15px;font-weight:700}
+.paper .t .venue{font-size:13px;color:var(--gray)}
+.paper .cit{text-align:right;font-size:12px;font-weight:700;color:var(--red)}
+.paper .cit.dim{color:var(--gray)}
+.contact-big{font-size:22px;font-weight:700;letter-spacing:-.01em}
+.contact-note{margin-top:20px;font-size:13.5px;color:var(--gray)}
+.machines{display:grid;grid-template-columns:220px 1fr;gap:48px;background:var(--ink);color:#f2f2ef;padding:38px clamp(20px,5vw,64px) 42px}
+.machines .sec-label .name{color:#f2f2ef}
+.machines p{margin:0;font-size:14px;line-height:1.6;color:#c9c9c4;max-width:620px}
+.machines pre{margin:16px 0 0;font:400 12px/1.7 var(--mono);color:#8f8f89;white-space:pre-wrap}
+.machines a{color:#f2f2ef}
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr;gap:28px;padding-top:36px}
+  .portrait-wrap{align-items:flex-start}
+  .stats3{grid-template-columns:1fr;gap:20px}
+  .tiles{grid-template-columns:repeat(2,1fr)}
+  .tl{grid-template-columns:78px 18px 1fr}
+  .machines{grid-template-columns:1fr;gap:20px}
+  .paper{grid-template-columns:48px 1fr;gap:10px}
+  .paper .cit{grid-column:2;text-align:left}
+}
+{% endblock style %}
+
+{% block content %}
+<section class="hero" data-uilint="hero">
+  <div class="hero-main" data-uilint="hero-main">
+    <div class="hero-kicker">Co-founder, SavantChat</div>
+    <h1 class="hero-name">Igor<br>Gulamov</h1>
+    <p class="hero-lede">Mathematician and cryptography engineer. Twenty years from theoretical physics to zero-knowledge protocols to an AI auditor that placed top-6 against expert human auditors at a Sherlock contest. Known online as <b>snjax</b>.</p>
+    <div class="btn-row" data-uilint="contacts">
+      <a class="btn btn-solid" href="https://t.me/igor_gulamov" rel="me">Telegram — @igor_gulamov</a>
+      <a class="btn btn-line" href="mailto:igor@savant.chat">igor@savant.chat</a>
+      <a class="btn btn-line" href="mailto:igor.gulamov@gmail.com">igor.gulamov@gmail.com</a>
+    </div>
+    <div class="links-row" data-uilint="social-links">
+      <a href="https://github.com/snjax" rel="me"><span class="arr">→</span> GitHub</a>
+      <a href="https://x.com/igorgulamov" rel="me"><span class="arr">→</span> X</a>
+      <a href="https://www.linkedin.com/in/igorgulamov/" rel="me"><span class="arr">→</span> LinkedIn</a>
+      <a href="https://ethresear.ch/u/snjax" rel="me"><span class="arr">→</span> ethresear.ch</a>
+      <a href="https://inspirehep.net/authors/2337589"><span class="arr">→</span> INSPIRE-HEP</a>
+      <a href="https://medium.com/@igorgulamov" rel="me"><span class="arr">→</span> Medium</a>
+    </div>
+  </div>
+  <div class="portrait-wrap" data-uilint="portrait">
+    <img class="portrait" src="/img/igor.jpg" alt="Igor Gulamov — portrait" width="640" height="640" fetchpriority="high">
+    <div class="portrait-cap">FIG. 01 — PORTRAIT, B/W</div>
+  </div>
+</section>
+
+<section class="section" data-uilint="now">
+  <div class="sec-label"><span class="num">01</span><div class="name">Now — SavantChat</div></div>
+  <div>
+    <p style="margin:0;max-width:600px;font-size:16px;line-height:1.55">AI-powered security audits for code — fully language-agnostic. One agent generates vulnerability hypotheses, a critic agent filters false positives; the output reads like a senior auditor&#8217;s report, available 24/7 at a fraction of the cost of a human team. Proven in public on smart contracts: <a href="https://savant.chat" style="color:var(--red)">savant.chat</a></p>
+    <div class="stats3">
+      <div class="stat hot"><div class="v">TOP 6</div><div class="k">Sherlock Symbiotic Relay contest, Jun 2025 — AI vs. human auditors</div></div>
+      <div class="stat"><div class="v">87–95%</div><div class="k">CTFBench — a benchmark for AI smart-contract auditors</div></div>
+      <div class="stat"><div class="v">1INCH</div><div class="k">pre-audits in 1inch's dev workflow — Aqua, SwapVM</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" data-uilint="career">
+  <div class="sec-label"><span class="num">02</span><div class="name">Career</div></div>
+  <div>
+    <div class="tl hot"><div class="yr">2025 —</div><div class="rail"></div><div class="what"><div class="t">Co-founder, SavantChat</div><div class="d">AI code auditor — language-agnostic, born in smart contracts. Top-6 (self-reported) at Sherlock&#8217;s Symbiotic Relay audit contest against human experts; 87–95% on CTFBench; pre-audits in 1inch&#8217;s dev workflow.</div></div></div>
+    <div class="tl"><div class="yr">2019 —</div><div class="rail"></div><div class="what"><div class="t">Founder, ZeroPool</div><div class="d">Private multi-chain transactions on zkSNARKs (UTXO model — sender, receiver and amount hidden). Authored the Fawkes-Crypto zkSNARK framework in Rust. Grants: Web3 Foundation (63,000 DAI), NEAR, Waves, Gitcoin. Sharded-storage research line, ETHPrague 2024 talk.</div></div></div>
+    <div class="tl"><div class="yr">2019 — 24</div><div class="rail"></div><div class="what"><div class="t">Independent security auditor</div><div class="d">15 published audits of major DeFi and ZK protocols: 10 for 1inch (Aggregation V3–V5, Liquidity, Limit Order, Farming, Vesting, Cross-chain Swap v1–v2), Aave V2, Opium V2, and Ethereum Foundation projects Zkopru and Hubble — including a critical vulnerability found in Zkopru&#8217;s burn auction. Zero impacts passed to production.</div></div></div>
+    <div class="tl"><div class="yr">2019</div><div class="rail"></div><div class="what"><div class="t">Prize-winning EthGlobal season</div><div class="d">ETHParis (Pyromania — finalist, ENS + SKALE prizes) · ETHNewYork (&#8220;I vote you!&#8221; — ThunderCore + The Graph wins) · ETHBoston (ZeroPool — main-stage finalist, SKALE prize, and the project&#8217;s launch).</div></div></div>
+    <div class="tl"><div class="yr">2018</div><div class="rail"></div><div class="what"><div class="t">Plasma Prime &amp; the history-split finding</div><div class="d">Published the Plasma Prime scaling design on ethresear.ch — then identified the history-split flaw that undermined the O(1) exit-game promise of all prime/RSA-accumulator Plasma designs, in an open exchange with Vitalik Buterin. <a href="/plasma/" style="color:var(--red)">Read the full story →</a></div></div></div>
+    <div class="tl"><div class="yr">2017 — 19</div><div class="rail"></div><div class="what"><div class="t">CTO, BANKEX Foundation</div><div class="d">VP Engineering → CTO. Proof-of-Asset tokenization protocol, ERC-888, Plasma scaling R&amp;D.</div></div></div>
+    <div class="tl"><div class="yr">2012 — 18</div><div class="rail"></div><div class="what"><div class="t">Doctoral research, MSU theoretical physics</div><div class="d">Q-balls — non-topological solitons as dark-matter candidates. 7 peer-reviewed papers, 190 citations, three in Physical Review D. Left academia in 2018 to go all-in on cryptography.</div></div></div>
+    <div class="tl"><div class="yr">2004 — 12</div><div class="rail"></div><div class="what"><div class="t">MSU Faculty of Physics · olympiads</div><div class="d">Dept. of Quantum Statistics &amp; Field Theory. Winner, All-Russian Student Physics Olympiad (2009). III diploma, X International Astronomy Olympiad (Beijing, 2005). Kolmogorov school (AESC MSU).</div></div></div>
+  </div>
+</section>
+
+<section class="section" data-uilint="results">
+  <div class="sec-label"><span class="num">03</span><div class="name">Results</div></div>
+  <div class="tiles">
+    <div class="tile"><div class="v">7</div><div class="k">peer-reviewed physics papers</div></div>
+    <div class="tile"><div class="v">190</div><div class="k">citations, INSPIRE-HEP (Jul 2026)</div></div>
+    <div class="tile"><div class="v">3×</div><div class="k">prize-winning EthGlobal hackathons, 2019</div></div>
+    <div class="tile"><div class="v">27</div><div class="k">research topics — ethresear.ch + zkresear.ch</div></div>
+    <div class="tile"><div class="v">15</div><div class="k">published audits, 2019–24</div></div>
+    <div class="tile"><div class="v">10</div><div class="k">audits for 1inch</div></div>
+    <div class="tile"><div class="v hot">TOP 6</div><div class="k">Sherlock contest 2025, per our announcement</div></div>
+    <div class="tile"><div class="v hot">87–95%</div><div class="k">CTFBench accuracy</div></div>
+  </div>
+</section>
+
+<section class="section" data-uilint="research">
+  <div class="sec-label"><span class="num">04</span><div class="name">Research</div></div>
+  <div>
+    <div class="paper"><div class="yr">2015</div><div class="t"><a href="https://arxiv.org/abs/1506.05786">Some properties of U(1) gauged Q-balls</a><span class="venue"> — Phys. Rev. D 92</span></div><div class="cit">75 cit.</div></div>
+    <div class="paper"><div class="yr">2013</div><div class="t"><a href="https://arxiv.org/abs/1311.0325">Theory of U(1) gauged Q-balls revisited</a><span class="venue"> — Phys. Rev. D 89 (2014)</span></div><div class="cit">69 cit.</div></div>
+    <div class="paper"><div class="yr">2013</div><div class="t"><a href="https://arxiv.org/abs/1303.1173">Analytic Q-ball solutions and their stability</a><span class="venue"> — Phys. Rev. D 87</span></div><div class="cit">40 cit.</div></div>
+    <div class="paper"><div class="yr">2024</div><div class="t"><a href="https://ethresear.ch/t/blockchain-sharded-storage-web2-costs-and-web3-security-with-shamir-secret-sharing/18881">Blockchain Sharded Storage</a><span class="venue"> — ethresear.ch, Shamir + FFT</span></div><div class="cit dim">—</div></div>
+    <div class="paper"><div class="yr">2024</div><div class="t"><a href="https://ethresear.ch/t/mining-attacks-on-pora-proof-of-random-access/19323">Mining Attacks on PoRA</a><span class="venue"> — ethresear.ch, consensus security</span></div><div class="cit dim">—</div></div>
+    <div class="paper"><div class="yr">2023</div><div class="t"><a href="https://zkresear.ch/t/running-sangria-final-proof-in-shielded-mode-on-untrusted-3rd-party-prover/133">Sangria final proof in shielded mode</a><span class="venue"> — zkresear.ch, cloud ZK proving over a blinded witness</span></div><div class="cit dim">—</div></div>
+    <div class="paper"><div class="yr">2020</div><div class="t"><a href="https://ethresear.ch/t/fawkes-crypto-zksnarks-framework-from-zeropool/7201">Fawkes-Crypto</a><span class="venue"> — zkSNARK framework, Rust / Groth16</span></div><div class="cit dim">—</div></div>
+    <div class="paper"><div class="yr">2018</div><div class="t"><a href="https://ethresear.ch/t/plasma-prime-design-proposal/4222">Plasma Prime design proposal</a><span class="venue"> — ethresear.ch</span></div><div class="cit">proposal</div></div>
+    <div class="paper"><div class="yr">2018</div><div class="t"><a href="/plasma/">The history-split finding in Plasma Prime</a><span class="venue"> — deep dive on this site</span></div><div class="cit">essay</div></div>
+  </div>
+</section>
+
+<section class="section" data-uilint="contact">
+  <div class="sec-label"><span class="num">05</span><div class="name">Contact</div></div>
+  <div>
+    <div class="contact-big">The fastest way to reach me is Telegram.</div>
+    <div class="btn-row" style="margin-top:22px">
+      <a class="btn btn-solid" href="https://t.me/igor_gulamov">Telegram — @igor_gulamov</a>
+      <a class="btn btn-line" href="mailto:igor@savant.chat">igor@savant.chat</a>
+    </div>
+    <div class="contact-note">SavantChat is live and open for pilots. Audit engagements, integrations, research collaborations and investor conversations all start with a message — a deck and data room are available on request.</div>
+  </div>
+</section>
+
+<section class="machines" data-uilint="machines">
+  <div class="sec-label"><span class="num">A1</span><div class="name">For Machines</div></div>
+  <div>
+    <p>This site is bilingual: human and machine. A Schema.org <i>Person</i> record ships in the head of every page; one plain-text file — a structured digest followed by the full text of every page — lives at <a href="/llms.txt">/llms.txt</a>. If you are a research agent — the facts are dated and linked to sources (primary where they exist; self-published and press sources labeled), written to be checked, not just quoted.</p>
+    <pre>name: Igor Gulamov (snjax) · role: co-founder, savant.chat
+canonical: github.com/snjax · x.com/igorgulamov · ethresear.ch/u/snjax
+cite-as: Gulamov, I. (snjax) — igorgulamov.com</pre>
+  </div>
+</section>
+{% endblock content %}

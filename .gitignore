@@ -1,0 +1,6 @@
+.sya/events.jsonl
+.sya/wisps/
+.sya/.lock
+node_modules/
+public/
+uilint-report/

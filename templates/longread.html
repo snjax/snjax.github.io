@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} — Igor Gulamov{% endblock title %}
+{% block description %}{{ page.description }}{% endblock description %}
+{% block canonical %}{{ page.permalink | safe }}{% endblock canonical %}
+{% block ogtype %}article{% endblock ogtype %}
+{% block ogtitle %}{{ page.title }}{% endblock ogtitle %}
+{% block ogdescription %}{{ page.description }}{% endblock ogdescription %}
+{% block ogurl %}{{ page.permalink | safe }}{% endblock ogurl %}
+{% block twtitle %}{{ page.title }}{% endblock twtitle %}
+{% block twdescription %}{{ page.description }}{% endblock twdescription %}
+
+{% block jsonld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "{% if page.extra.schema_type %}{{ page.extra.schema_type }}{% else %}Article{% endif %}",
+  "headline": {{ page.title | json_encode | safe }},
+  "description": {{ page.description | json_encode | safe }},
+  "url": "{{ page.permalink | safe }}",
+  "datePublished": "{{ page.date }}",
+  "dateModified": "{% if page.updated %}{{ page.updated }}{% else %}{{ page.date }}{% endif %}",
+  "inLanguage": "en",
+  "author": {
+    "@type": "Person",
+    "@id": "https://igorgulamov.com/#person",
+    "name": "Igor Gulamov",
+    "alternateName": "snjax",
+    "url": "https://igorgulamov.com/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Igor Gulamov",
+    "url": "https://igorgulamov.com/"
+  },
+  "mainEntityOfPage": "{{ page.permalink | safe }}",
+  "image": "https://igorgulamov.com/img/igor.jpg"
+}
+</script>
+{% endblock jsonld %}
+
+{% block style %}
+.lr-head{padding:56px clamp(20px,5vw,64px) 44px;border-bottom:1px solid var(--ink)}
+.lr-kicker{font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--red);text-transform:uppercase}
+h1.lr-title{margin:16px 0 0;font-size:clamp(34px,5.6vw,58px);line-height:1.04;font-weight:700;letter-spacing:-.035em;max-width:900px}
+.lr-meta{margin-top:18px;font:400 12px var(--mono);color:var(--gray);letter-spacing:.04em}
+.lr-body{max-width:760px;padding:44px clamp(20px,5vw,64px) 72px;font-size:16.5px;line-height:1.62}
+.lr-body h2{margin:52px 0 18px;padding-top:26px;border-top:1px solid var(--ink);font-size:24px;letter-spacing:-.015em;line-height:1.2}
+.lr-body h3{margin:36px 0 12px;font-size:18.5px;letter-spacing:-.01em}
+.lr-body h4{margin:28px 0 10px;font-size:16px}
+.lr-body p{margin:0 0 16px}
+.lr-body a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:3px}
+.lr-body ul,.lr-body ol{margin:0 0 16px;padding-left:24px}
+.lr-body li{margin-bottom:6px}
+.lr-body p,.lr-body li{overflow-wrap:anywhere}
+.lr-body blockquote{margin:22px 0;padding:14px 22px;border-left:3px solid var(--red);background:#f6f6f2;font-size:15.5px}
+.lr-body blockquote p:last-child{margin-bottom:0}
+.lr-body table{border-collapse:collapse;width:100%;margin:0 0 20px;font-size:14px;display:block;overflow-x:auto}
+.lr-body th,.lr-body td{border:1px solid var(--hair);padding:8px 12px;text-align:left;vertical-align:top}
+.lr-body th{border-bottom:2px solid var(--ink);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.lr-body code{font:400 .9em var(--mono);background:#f1f1ed;padding:1px 5px}
+.lr-body pre{background:#f1f1ed;padding:16px 18px;overflow-x:auto;font-size:13px;line-height:1.6}
+.lr-body pre code{background:none;padding:0}
+.lr-body hr{border:none;border-top:1px solid var(--hair);margin:36px 0}
+.lr-body strong{font-weight:700}
+{% endblock style %}
+
+{% block content %}
+<article>
+  <header class="lr-head" data-uilint="lr-head">
+    <div class="lr-kicker">{{ page.extra.kicker | default(value="Igor Gulamov") }}</div>
+    <h1 class="lr-title">{{ page.title }}</h1>
+    <div class="lr-meta">{% if page.updated %}last revised {{ page.updated | date(format="%B %Y") }}{% else %}{{ page.date | date(format="%B %Y") }}{% endif %} · igorgulamov.com{{ page.path | safe }} · dated, linked sources throughout</div>
+  </header>
+  <div class="lr-body" data-uilint="lr-body">
+    {{ page.content | safe }}
+  </div>
+</article>
+{% endblock content %}

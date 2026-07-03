@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}{{ config.title }}{% endblock title %}</title>
+<meta name="description" content="{% block description %}{{ config.description }}{% endblock description %}">
+<meta name="author" content="Igor Gulamov">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="{% block canonical %}{{ config.base_url | safe }}/{% endblock canonical %}">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="alternate" type="application/atom+xml" title="Igor Gulamov" href="/atom.xml">
+<link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
+<meta property="og:type" content="{% block ogtype %}profile{% endblock ogtype %}">
+<meta property="og:site_name" content="Igor Gulamov (snjax)">
+<meta property="og:title" content="{% block ogtitle %}{{ config.title }}{% endblock ogtitle %}">
+<meta property="og:description" content="{% block ogdescription %}{{ config.description }}{% endblock ogdescription %}">
+<meta property="og:url" content="{% block ogurl %}{{ config.base_url | safe }}/{% endblock ogurl %}">
+<meta property="og:image" content="{{ config.base_url | safe }}/img/igor.jpg">
+<meta property="og:image:width" content="640">
+<meta property="og:image:height" content="640">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@igorgulamov">
+<meta name="twitter:creator" content="@igorgulamov">
+<meta name="twitter:title" content="{% block twtitle %}{{ config.title }}{% endblock twtitle %}">
+<meta name="twitter:description" content="{% block twdescription %}{{ config.description }}{% endblock twdescription %}">
+<meta name="twitter:image" content="{{ config.base_url | safe }}/img/igor.jpg">
+{% block jsonld %}{% endblock jsonld %}
+<style>
+:root{
+  --bg:#fdfdfb; --ink:#111110; --gray:#55554f; --soft:#444440;
+  --hair:#d9d9d3; --red:#d2321c;
+  --sans:'Helvetica Neue',Helvetica,Arial,'Liberation Sans',sans-serif;
+  --mono:ui-monospace,'JetBrains Mono',Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55}
+a{color:var(--ink)}
+img{max-width:100%}
+.topbar{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 20px;border-bottom:1px solid var(--ink);padding:18px clamp(20px,5vw,64px);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.topbar .muted{color:var(--gray)}
+.topnav{display:flex;flex-wrap:wrap;gap:8px 22px;border-bottom:1px solid var(--hair);padding:12px clamp(20px,5vw,64px);font-size:11.5px;font-weight:700;letter-spacing:.12em}
+.topnav a{color:var(--ink);text-decoration:none}
+.topnav a .arr{color:var(--red)}
+.topnav a[aria-current="page"]{color:var(--red)}
+.section{display:grid;grid-template-columns:220px 1fr;gap:48px;border-top:1px solid var(--ink);padding:40px clamp(20px,5vw,64px) 46px}
+.section:first-of-type{border-top:none}
+.sec-label .num{font-size:13px;font-weight:700;color:var(--red)}
+.sec-label .name{margin-top:6px;font-size:13px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px}
+.btn{text-decoration:none;font-size:12.5px;font-weight:700;letter-spacing:.1em;padding:15px 24px;display:inline-block}
+.btn-solid{background:var(--ink);color:var(--bg)}
+.btn-line{border:1px solid var(--ink);color:var(--ink)}
+.links-row{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:11.5px;font-weight:700;letter-spacing:.12em}
+.links-row a{color:var(--ink);text-decoration:none}
+.links-row .arr{color:var(--red)}
+.footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 20px;border-top:1px solid var(--ink);padding:16px clamp(20px,5vw,64px);font-size:10.5px;font-weight:700;letter-spacing:.14em;color:var(--gray);text-transform:uppercase}
+@media(max-width:860px){
+  .section{grid-template-columns:1fr;gap:20px;padding-top:28px;padding-bottom:32px}
+}
+{% block style %}{% endblock style %}
+</style>
+</head>
+<body>
+<header class="topbar" data-uilint="topbar">
+  <div>Igor Gulamov — Personal Record</div>
+  <div class="muted">Dubai · UTC+4</div>
+</header>
+<nav class="topnav" data-uilint="topnav" aria-label="Site">
+  <a href="/"{% if current_path and current_path == "/" %} aria-current="page"{% endif %}><span class="arr">→</span> Index</a>
+  <a href="/bio/"{% if current_path and current_path == "/bio/" %} aria-current="page"{% endif %}><span class="arr">→</span> Bio</a>
+  <a href="/ai/"{% if current_path and current_path == "/ai/" %} aria-current="page"{% endif %}><span class="arr">→</span> AI</a>
+  <a href="/zk/"{% if current_path and current_path == "/zk/" %} aria-current="page"{% endif %}><span class="arr">→</span> ZK</a>
+  <a href="/audits/"{% if current_path and current_path == "/audits/" %} aria-current="page"{% endif %}><span class="arr">→</span> Audits</a>
+  <a href="/plasma/"{% if current_path and current_path == "/plasma/" %} aria-current="page"{% endif %}><span class="arr">→</span> The Plasma Finding</a>
+  <a href="/physics/"{% if current_path and current_path == "/physics/" %} aria-current="page"{% endif %}><span class="arr">→</span> Physics</a>
+  <a href="/llms.txt"><span class="arr">→</span> llms.txt</a>
+</nav>
+<main>
+{% block content %}{% endblock content %}
+</main>
+<footer class="footer" data-uilint="footer">
+  <div>Set in Helvetica — Grid 220/64</div>
+  <div>© {{ now() | date(format="%Y") }} Igor Gulamov</div>
+</footer>
+</body>
+</html>
