@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ page.title }} — Igor Gulamov{% endblock title %}
+{% block title %}{% if page.extra.seo_title %}{{ page.extra.seo_title }}{% else %}{{ page.title }}{% endif %} — Igor Gulamov{% endblock title %}
 {% block description %}{{ page.description }}{% endblock description %}
 {% block canonical %}{{ page.permalink | safe }}{% endblock canonical %}
 {% block ogtype %}article{% endblock ogtype %}
@@ -9,6 +9,11 @@
 {% block ogurl %}{{ page.permalink | safe }}{% endblock ogurl %}
 {% block twtitle %}{{ page.title }}{% endblock twtitle %}
 {% block twdescription %}{{ page.description }}{% endblock twdescription %}
+{% if page.extra.keywords %}{% block keywords %}{{ page.extra.keywords }}{% endblock keywords %}{% endif %}
+{% block ogextra %}<meta property="article:published_time" content="{{ page.date }}">
+<meta property="article:modified_time" content="{% if page.updated %}{{ page.updated }}{% else %}{{ page.date }}{% endif %}">
+<meta property="article:author" content="Igor Gulamov">
+<meta property="article:section" content="{{ page.extra.kicker | default(value='Personal record') }}">{% endblock ogextra %}
 
 {% block jsonld %}
 <script type="application/ld+json">
@@ -30,11 +35,23 @@
   },
   "publisher": {
     "@type": "Person",
+    "@id": "https://igorgulamov.com/#person",
     "name": "Igor Gulamov",
-    "url": "https://igorgulamov.com/"
+    "url": "https://igorgulamov.com/",
+    "image": "https://igorgulamov.com/img/igor.jpg"
   },
   "mainEntityOfPage": "{{ page.permalink | safe }}",
   "image": "https://igorgulamov.com/img/igor.jpg"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://igorgulamov.com/" },
+    { "@type": "ListItem", "position": 2, "name": {{ page.title | json_encode | safe }}, "item": "{{ page.permalink | safe }}" }
+  ]
 }
 </script>
 {% endblock jsonld %}

@@ -1,12 +1,13 @@
 +++
 title = "The audit record, 2019–2024"
-description = "15 published security audits of production DeFi and zero-knowledge protocols by Igor Gulamov (snjax): 10 for 1inch, Aave V2, Opium V2, and Ethereum Foundation projects Zkopru and Hubble. Every row links to the exact published report."
+description = "15 published smart-contract security audits by Igor Gulamov (snjax): 1inch, Aave, Opium and Ethereum Foundation projects Zkopru and Hubble."
 date = 2026-07-03
 updated = 2026-07-04
 slug = "audits"
 template = "longread.html"
 
 [extra]
+keywords = "smart contract audit, Igor Gulamov auditor, 1inch audit, Aave audit, Zkopru, Hubble, Opium, DeFi security audit, zkSNARK circuit audit, snjax"
 kicker = "Security audits — track record"
 schema_type = "Article"
 +++

@@ -1,6 +1,6 @@
 base_url = "https://igorgulamov.com"
 title = "Igor Gulamov (snjax)"
-description = "Igor Gulamov (snjax) — mathematician and cryptography engineer. Co-founder of SavantChat (language-agnostic AI code security audits), founder of ZeroPool. zkSNARKs, code security, Ethereum research."
+description = "Igor Gulamov (snjax): cryptography engineer, SavantChat co-founder, ZeroPool founder, zkSNARK researcher and smart-contract auditor."
 default_language = "en"
 compile_sass = false
 build_search_index = false

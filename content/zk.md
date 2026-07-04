@@ -1,12 +1,14 @@
 +++
 title = "Zero-knowledge engineering: privacy, delegated proving, storage"
-description = "Igor Gulamov's (snjax) zero-knowledge track: ZeroPool private transactions (Web3 Foundation, NEAR, Waves grants), the Fawkes-Crypto zkSNARK framework, shielded delegated proving on Sangria folding (2023), and the sharded storage / DA research line (2024)."
+description = "Igor Gulamov's zero-knowledge work: ZeroPool private transactions, the Fawkes-Crypto framework, shielded delegated proving and sharded storage."
 date = 2026-07-04
 updated = 2026-07-04
 slug = "zk"
 template = "longread.html"
 
 [extra]
+seo_title = "Zero-knowledge engineering"
+keywords = "ZeroPool, zkSNARK, zero-knowledge proofs, private transactions, Fawkes-Crypto, Sangria folding, delegated proving, sharded storage, data availability, Igor Gulamov, snjax"
 kicker = "Zero-knowledge — 2018–2024"
 schema_type = "Article"
 +++
@@ -61,7 +63,7 @@ In 2024 the research line shifted to the data problem: how to store and prove la
 - [**Using FRI for DA with optimistic correctable commitments in rollups**](https://ethresear.ch/t/using-fri-for-da-with-optimistic-correctable-commitments-in-rollups/20467) (September 2024).
 - Research index: [zeropool.network/research](https://zeropool.network/research/).
 
-I presented the sharded-storage work at [ETHPrague 2024](https://cfp.ducttape.events/ethprague2024/talk/MZ8ZZE/) ("Solving Vitalik's trilemma with zk-driven DA and Storage" — [recording from FIL Dev Summit 4, Brussels](https://www.youtube.com/watch?v=l2NsFU0gGVU), same talk).
+I gave the "Solving Vitalik's trilemma with zk-driven DA and Storage" talk at three 2024 events: [ETHPrague 2024](https://www.youtube.com/watch?v=9wi_UUqNJq4), [ETH Belgrade 2024](https://www.youtube.com/watch?v=9mR1zHiW9tk), and [FIL Dev Summit 4, Brussels](https://www.youtube.com/watch?v=l2NsFU0gGVU).
 
 ## Where it started, and where it went
 

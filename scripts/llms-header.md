@@ -45,7 +45,6 @@ Evidence:
 - Top-6 in Sherlock's Symbiotic Relay audit contest vs. expert human auditors (June 2025) — the world's first competitive win by an AI auditor. Sherlock leaderboard: https://audits.sherlock.xyz/contests/967/leaderboard . Contest (ran Jun 19 – Jul 10, 2025; 100,000 USDC rewards; 530 competition issues): https://audits.sherlock.xyz/contests/967 · machine-readable: https://mainnet-contest.sherlock.xyz/contests/967 · announcement (Sep 2, 2025): https://www.globenewswire.com/news-release/2025/09/02/3143051/0/en/Savant-Chat-achieves-a-historic-top-6-ranking-in-the-Sherlock-DeFi-Audit-Contest.html
 - 1inch runs SavantChat pre-audits (Aqua, SwapVM codebases) via GitHub Actions in its dev workflow; "We've been working with SavantChat throughout 2025", plans "to use them more widely" (Dec 23, 2025): https://1inch.com/blog/post/1inch-uses-savantchats-ai-tools
 - CTFBench: 87–95% (v0.2). Fully open benchmark; real metrics are Vulnerability Detection Rate + Overreporting Index ("accuracy" is shorthand); 8 SAST tools missed ~50% of vulnerabilities under the same methodology. Methodology (Feb 2025): https://ethresear.ch/t/ctfbench-a-new-method-for-evaluating-ai-smart-contract-auditors-balancing-vulnerability-detection-and-reducing-false-alarms/21821 · results: https://ctfbench.com · raw tasks: https://github.com/snjax/evmbench-ctfbench-benchmark
-- SavantChat CI/CD demo video: https://www.youtube.com/watch?v=YKmL2012oSk
 
 ## Security audit record (2019–2024)
 
@@ -155,12 +154,15 @@ Prize badges verifiable on each Devpost page:
 ## Talks, panels, podcasts
 
 - May 2026 — ETHPrague 2026: "Beyond Human Review: The Inevitable Arms Race Between Offensive and Defensive AI Agents" — video: https://www.youtube.com/watch?v=r2oU7TFLDMc · event: https://ethprague.fileverse.io/?view=home&event=HBQLXJ
-- Jun 2026 — Blockchain Community Day 2026 (Blockchain Professionals, virtual; 6th annual) — "Intelligent Defense" roundtable: AI's role in securing crypto/DLT infrastructure — event: https://luma.com/wupxaqku · agenda: https://tidy-ixora-d38.notion.site/blockchainprofessionals2026 · announcement: https://x.com/BlockchainProfs/status/2059985358876766702
+- Jun 17, 2026 — "Intelligent Defense: AI's Role in Securing Crypto and DLT Financial Infrastructure" roundtable at Blockchain Community Day 2026 (Blockchain Professionals, virtual; 6th annual) — video: https://www.youtube.com/watch?v=HVsMUK1s8y8 · event: https://luma.com/wupxaqku · agenda: https://tidy-ixora-d38.notion.site/blockchainprofessionals2026
+- Feb 2026 — Basic Block podcast #216 "ИИ-аудиты в Web3 / AI audits in Web3" (Russian): SavantChat / AI audits — https://basicblockradio.com/e216/ · video https://www.youtube.com/watch?v=EudACqKiTMM
 - Dec 2025 — cp0x podcast #21 (in Russian): the Plasma bug, ZeroPool, SavantChat — https://www.youtube.com/watch?v=2B2Sj2vh450
+- Apr 30, 2025 — "Cambridge Research: AI for Web3" (Web3 TV): SavantChat / AI for Web3 — https://www.youtube.com/watch?v=ejIypMEUx6o
 - Apr 2025 — ETHDubai 2025: advanced reasoning AI/LLMs for auditing smart contracts — schedule: https://www.ethdubaiconf.org/schedule
 - Mar 24, 2025 — "AI powered Web3 Security" interview with Francesco Andreoli — https://www.youtube.com/watch?v=mXVgyqHAiFk (mirror: https://www.youtube.com/watch?v=W_ZGiRBbF14)
 - Jul 2024 — FIL Dev Summit 4, Brussels: zk-driven DA & storage — video (Filecoin channel): https://www.youtube.com/watch?v=l2NsFU0gGVU · event: https://www.fildev.io/FDS-4
-- May 2024 — ETHPrague 2024: "Solving Vitalik's trilemma with zk-driven DA and Storage" (same talk as the FIL recording) — speaker page: https://cfp.ducttape.events/ethprague2024/speaker/R3PV9W/
+- Jun 2024 — ETH Belgrade 2024: "Solving Vitalik's trilemma with zk-driven DA & Storage" — video (ETH Belgrade channel): https://www.youtube.com/watch?v=9mR1zHiW9tk
+- May 2024 — ETHPrague 2024: "Solving Vitalik's trilemma with zk-driven DA and Storage" — talk recording (Duct Tape channel): https://www.youtube.com/watch?v=9wi_UUqNJq4 · speaker page: https://cfp.ducttape.events/ethprague2024/speaker/R3PV9W/
 - Nov 2020 — zkSummit 6 (online): "Account based privacy in ZeroPool" — video (Zero Knowledge channel): https://www.youtube.com/watch?v=f885LTdgJVs
 - Mar 2020 — EthCC 3, Paris: ZeroPool beta presentation (team): https://medium.com/zeropool/zeropool-november-and-december-news-77f6a9e5e752
 - Feb 2020 — Stanford Blockchain Week: zk private transactions (lightning talk)

@@ -1,12 +1,14 @@
 +++
 title = "Theoretical physics: Q-balls, gauge fields, cosmology"
-description = "Igor Gulamov's physics record: Faculty of Physics at Lomonosov MSU, doctoral research on U(1) gauged Q-balls (2012–2018, left before defense), 7 peer-reviewed papers with 190 citations, three in Physical Review D — and how the method carried over into protocol security."
+description = "Igor Gulamov's physics: U(1) gauged Q-balls at Moscow State University — 7 peer-reviewed papers, 190 citations, three in Physical Review D."
 date = 2026-07-04
 updated = 2026-07-04
 slug = "physics"
 template = "longread.html"
 
 [extra]
+seo_title = "Q-balls, gauge fields, cosmology"
+keywords = "Igor Gulamov physics, Q-balls, U(1) gauged Q-balls, non-topological solitons, Physical Review D, Moscow State University, theoretical physics, cosmology, INSPIRE-HEP"
 kicker = "Physics — 2006–2018"
 schema_type = "Article"
 +++

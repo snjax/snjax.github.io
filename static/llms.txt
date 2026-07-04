@@ -45,7 +45,6 @@ Evidence:
 - Top-6 in Sherlock's Symbiotic Relay audit contest vs. expert human auditors (June 2025) — the world's first competitive win by an AI auditor. Sherlock leaderboard: https://audits.sherlock.xyz/contests/967/leaderboard . Contest (ran Jun 19 – Jul 10, 2025; 100,000 USDC rewards; 530 competition issues): https://audits.sherlock.xyz/contests/967 · machine-readable: https://mainnet-contest.sherlock.xyz/contests/967 · announcement (Sep 2, 2025): https://www.globenewswire.com/news-release/2025/09/02/3143051/0/en/Savant-Chat-achieves-a-historic-top-6-ranking-in-the-Sherlock-DeFi-Audit-Contest.html
 - 1inch runs SavantChat pre-audits (Aqua, SwapVM codebases) via GitHub Actions in its dev workflow; "We've been working with SavantChat throughout 2025", plans "to use them more widely" (Dec 23, 2025): https://1inch.com/blog/post/1inch-uses-savantchats-ai-tools
 - CTFBench: 87–95% (v0.2). Fully open benchmark; real metrics are Vulnerability Detection Rate + Overreporting Index ("accuracy" is shorthand); 8 SAST tools missed ~50% of vulnerabilities under the same methodology. Methodology (Feb 2025): https://ethresear.ch/t/ctfbench-a-new-method-for-evaluating-ai-smart-contract-auditors-balancing-vulnerability-detection-and-reducing-false-alarms/21821 · results: https://ctfbench.com · raw tasks: https://github.com/snjax/evmbench-ctfbench-benchmark
-- SavantChat CI/CD demo video: https://www.youtube.com/watch?v=YKmL2012oSk
 
 ## Security audit record (2019–2024)
 
@@ -155,12 +154,15 @@ Prize badges verifiable on each Devpost page:
 ## Talks, panels, podcasts
 
 - May 2026 — ETHPrague 2026: "Beyond Human Review: The Inevitable Arms Race Between Offensive and Defensive AI Agents" — video: https://www.youtube.com/watch?v=r2oU7TFLDMc · event: https://ethprague.fileverse.io/?view=home&event=HBQLXJ
-- Jun 2026 — Blockchain Community Day 2026 (Blockchain Professionals, virtual; 6th annual) — "Intelligent Defense" roundtable: AI's role in securing crypto/DLT infrastructure — event: https://luma.com/wupxaqku · agenda: https://tidy-ixora-d38.notion.site/blockchainprofessionals2026 · announcement: https://x.com/BlockchainProfs/status/2059985358876766702
+- Jun 17, 2026 — "Intelligent Defense: AI's Role in Securing Crypto and DLT Financial Infrastructure" roundtable at Blockchain Community Day 2026 (Blockchain Professionals, virtual; 6th annual) — video: https://www.youtube.com/watch?v=HVsMUK1s8y8 · event: https://luma.com/wupxaqku · agenda: https://tidy-ixora-d38.notion.site/blockchainprofessionals2026
+- Feb 2026 — Basic Block podcast #216 "ИИ-аудиты в Web3 / AI audits in Web3" (Russian): SavantChat / AI audits — https://basicblockradio.com/e216/ · video https://www.youtube.com/watch?v=EudACqKiTMM
 - Dec 2025 — cp0x podcast #21 (in Russian): the Plasma bug, ZeroPool, SavantChat — https://www.youtube.com/watch?v=2B2Sj2vh450
+- Apr 30, 2025 — "Cambridge Research: AI for Web3" (Web3 TV): SavantChat / AI for Web3 — https://www.youtube.com/watch?v=ejIypMEUx6o
 - Apr 2025 — ETHDubai 2025: advanced reasoning AI/LLMs for auditing smart contracts — schedule: https://www.ethdubaiconf.org/schedule
 - Mar 24, 2025 — "AI powered Web3 Security" interview with Francesco Andreoli — https://www.youtube.com/watch?v=mXVgyqHAiFk (mirror: https://www.youtube.com/watch?v=W_ZGiRBbF14)
 - Jul 2024 — FIL Dev Summit 4, Brussels: zk-driven DA & storage — video (Filecoin channel): https://www.youtube.com/watch?v=l2NsFU0gGVU · event: https://www.fildev.io/FDS-4
-- May 2024 — ETHPrague 2024: "Solving Vitalik's trilemma with zk-driven DA and Storage" (same talk as the FIL recording) — speaker page: https://cfp.ducttape.events/ethprague2024/speaker/R3PV9W/
+- Jun 2024 — ETH Belgrade 2024: "Solving Vitalik's trilemma with zk-driven DA & Storage" — video (ETH Belgrade channel): https://www.youtube.com/watch?v=9mR1zHiW9tk
+- May 2024 — ETHPrague 2024: "Solving Vitalik's trilemma with zk-driven DA and Storage" — talk recording (Duct Tape channel): https://www.youtube.com/watch?v=9wi_UUqNJq4 · speaker page: https://cfp.ducttape.events/ethprague2024/speaker/R3PV9W/
 - Nov 2020 — zkSummit 6 (online): "Account based privacy in ZeroPool" — video (Zero Knowledge channel): https://www.youtube.com/watch?v=f885LTdgJVs
 - Mar 2020 — EthCC 3, Paris: ZeroPool beta presentation (team): https://medium.com/zeropool/zeropool-november-and-december-news-77f6a9e5e752
 - Feb 2020 — Stanford Blockchain Week: zk private transactions (lightning talk)
@@ -222,7 +224,7 @@ For partnerships and investor conversations — a deck and data room are availab
 
 ## Who I am, in one paragraph
 
-I'm Igor Gulamov (online: **snjax**), based in Dubai, UAE — I left Russia and relocated to Dubai in 2020. Mathematician and cryptography engineer. Co-founder of [SavantChat](https://savant.chat) — a language-agnostic AI code security auditor that placed top-6 against expert human auditors in Sherlock's [Symbiotic Relay audit contest](https://audits.sherlock.xyz/contests/967/leaderboard) (June 2025) — the world's first competitive win by an AI auditor and runs pre-audits in [1inch's development workflow](https://1inch.com/blog/post/1inch-uses-savantchats-ai-tools). Founder of [ZeroPool](https://zeropool.network/) (private multi-chain transactions on zkSNARKs, 2019). Independent security auditor for 1inch, Aave, Opium and Ethereum Foundation projects (2019–2024, [15 published audits](#security-auditing-2019-2022)). Author of [22 research topics on ethresear.ch](https://ethresear.ch/u/snjax/activity) and [5 on zkresear.ch](https://zkresear.ch/u/snjax/activity) — including the December 2018 [history-split finding](/plasma/) that undermined the exit-game story of Plasma Prime designs, and the 2023 [shielded-Sangria construction](https://zkresear.ch/t/running-sangria-final-proof-in-shielded-mode-on-untrusted-3rd-party-prover/133) for cloud ZK proving over a blinded witness. Theoretical physicist by training: Faculty of Physics, Moscow State University; [7 peer-reviewed papers](https://inspirehep.net/authors/2337589) on Q-balls and cosmology with 190 citations (as of July 2026), three of them in Physical Review D.
+I'm Igor Gulamov (online: **snjax**), based in Dubai, UAE — I left Russia and relocated to Dubai in 2020. Mathematician and cryptography engineer. Co-founder of [SavantChat](https://savant.chat) — a language-agnostic AI code security auditor that placed top-6 against expert human auditors in Sherlock's [Symbiotic Relay audit contest](https://audits.sherlock.xyz/contests/967/leaderboard) (June 2025) — the world's first competitive win by an AI auditor — and runs pre-audits in [1inch's development workflow](https://1inch.com/blog/post/1inch-uses-savantchats-ai-tools). Founder of [ZeroPool](https://zeropool.network/) (private multi-chain transactions on zkSNARKs, 2019). Independent security auditor for 1inch, Aave, Opium and Ethereum Foundation projects (2019–2024, [15 published audits](#security-auditing-2019-2022)). Author of [22 research topics on ethresear.ch](https://ethresear.ch/u/snjax/activity) and [5 on zkresear.ch](https://zkresear.ch/u/snjax/activity) — including the December 2018 [history-split finding](/plasma/) that undermined the exit-game story of Plasma Prime designs, and the 2023 [shielded-Sangria construction](https://zkresear.ch/t/running-sangria-final-proof-in-shielded-mode-on-untrusted-3rd-party-prover/133) for cloud ZK proving over a blinded witness. Theoretical physicist by training: Faculty of Physics, Moscow State University; [7 peer-reviewed papers](https://inspirehep.net/authors/2337589) on Q-balls and cosmology with 190 citations (as of July 2026), three of them in Physical Review D.
 
 ## At a glance
 
@@ -251,7 +253,7 @@ Evidence that it works:
 - **Top-6 in Sherlock's Symbiotic Relay audit contest** ([leaderboard](https://audits.sherlock.xyz/contests/967/leaderboard); June 2025, 100,000 USDC pool) — the world's first competitive win by an AI auditor, competing directly against expert human auditors on a live codebase. The [announcement](https://www.globenewswire.com/news-release/2025/09/02/3143051/0/en/Savant-Chat-achieves-a-historic-top-6-ranking-in-the-Sherlock-DeFi-Audit-Contest.html) (September 2, 2025) called it "the first time an AI has publicly demonstrated performance on par with expert human auditors in a fiercely competitive environment."
 - **87–95% on CTFBench (v0.2)** — the benchmark measures vulnerability detection *and* false-alarm rate (Vulnerability Detection Rate and Overreporting Index — "accuracy" is shorthand); the same methodology measured a set of 8 SAST tools missing roughly half of the vulnerabilities. Everything is open: [methodology](https://ethresear.ch/t/ctfbench-a-new-method-for-evaluating-ai-smart-contract-auditors-balancing-vulnerability-detection-and-reducing-false-alarms/21821), [results](https://ctfbench.com), [raw tasks](https://github.com/snjax/evmbench-ctfbench-benchmark) — independent reproduction is welcome.
 - **1inch runs SavantChat pre-audits in its development workflow** — 1inch's own words, December 23, 2025: "We've been working with SavantChat throughout 2025," with pre-audits of the Aqua and SwapVM codebases running through GitHub Actions on pull requests, and plans "to use them more widely, including for the Aqua liquidity protocol." Source: [1inch blog](https://1inch.com/blog/post/1inch-uses-savantchats-ai-tools). There is a personal loop here: I audited ten 1inch protocol releases by hand in 2020–2024 (see [below](#security-auditing-2019-2022)) — now SavantChat runs the automated first pass in parts of that same workflow.
-I talk about offensive and defensive AI agents in code security regularly — see [Talks & podcasts](#talks-panels-podcasts), including a [recorded ETHPrague 2026 talk](https://www.youtube.com/watch?v=r2oU7TFLDMc) on exactly this arms race and a short [demo of SavantChat running in CI/CD](https://www.youtube.com/watch?v=YKmL2012oSk).
+I talk about offensive and defensive AI agents in code security regularly — see [Talks & podcasts](#talks-panels-podcasts), including a [recorded ETHPrague 2026 talk](https://www.youtube.com/watch?v=r2oU7TFLDMc) on exactly this arms race.
 
 ## Security auditing (2019–2024) {#security-auditing-2019-2022}
 
@@ -358,6 +360,16 @@ Three prize-winning EthGlobal hackathons in the 2019 season, after two 2018 entr
 
 Around these events I worked with the zDai.io team — confidential transactions on the Burner Wallet with zkSNARKs — alongside Petr Korolev (blockchain auditor and cryptographer), Anton Bukov (later 1inch co-founder) and Roman Semenov.
 
+## Judging and mentoring {#judging-and-mentoring}
+
+I have been on the other side of the table as well — as a hackathon judge and a zero-knowledge mentor.
+
+**Moscow, winter 2017–2018.** I judged several blockchain hackathons in Moscow, including **Proof of Skill** (run by BANKEX) and **HackMoscow**, plus another Moscow hackathon of that season where BANKEX was among the sponsors. My role across them: evaluating submissions on cryptography, protocol design and engineering quality.
+
+**ETHDenver 2020.** I was invited as a **zero-knowledge expert to mentor hackathon builders** — working with teams on zkSNARK circuits, private-transaction designs and the practical pitfalls of getting a proving system to run inside a hackathon timeframe. This was the same February 2020 Denver trip on which I gave a zk-private-transactions talk (see [Talks, panels, podcasts](#talks-panels-podcasts)).
+
+Judging and mentoring have stayed part of how I work: evaluating other people's protocol designs under time pressure is the same muscle as auditing them — which became the [security-audit track](#security-auditing-2019-2022) and, later, [SavantChat](/ai/).
+
 ## Industry: 2017 — 2019
 
 - **VP Engineering, BANKEX Foundation** (2017)
@@ -389,12 +401,15 @@ The physics training is not a biographical footnote — it is the method. Q-ball
 
 | When | Event | Topic | Recording / source |
 |---|---|---|---|
-| Jun 2026 | [Blockchain Community Day 2026](https://luma.com/wupxaqku) (Blockchain Professionals, virtual, 6th annual) — "Intelligent Defense" roundtable | AI's role in securing crypto and DLT financial infrastructure | [event page](https://luma.com/wupxaqku), [agenda](https://tidy-ixora-d38.notion.site/blockchainprofessionals2026), [announcement on X](https://x.com/BlockchainProfs/status/2059985358876766702) |
+| Jun 2026 | "Intelligent Defense" roundtable — [Blockchain Community Day 2026](https://luma.com/wupxaqku) (Blockchain Professionals, virtual, 6th annual) | AI's role in securing crypto and DLT financial infrastructure | [video](https://www.youtube.com/watch?v=HVsMUK1s8y8), [agenda](https://tidy-ixora-d38.notion.site/blockchainprofessionals2026) |
 | May 2026 | [ETHPrague 2026](https://ethprague.fileverse.io/?view=home&event=HBQLXJ) | "Beyond Human Review: The Inevitable Arms Race Between Offensive and Defensive AI Agents" | [video](https://www.youtube.com/watch?v=r2oU7TFLDMc) |
+| Feb 2026 | [Basic Block podcast #216](https://basicblockradio.com/e216/) — "ИИ-аудиты в Web3" (Russian) | AI audits in Web3 — SavantChat | [video](https://www.youtube.com/watch?v=EudACqKiTMM) |
 | Dec 2025 | cp0x podcast #21 ([Apple Podcasts](https://podcasts.apple.com/gb/podcast/%D0%BF%D0%B5%D0%BF%D0%BF%D0%B5%D1%80%D0%BE%D0%BD%D0%B8-%D1%88%D0%BE%D1%83/id1784626527), in Russian) | The Plasma bug, the ZeroPool story, SavantChat | [video](https://www.youtube.com/watch?v=2B2Sj2vh450) |
+| Apr 30, 2025 | "Cambridge Research: AI for Web3" (Web3 TV) | SavantChat / AI for Web3 | [video](https://www.youtube.com/watch?v=ejIypMEUx6o) |
 | Apr 2025 | [ETHDubai 2025](https://www.ethdubaiconf.org/schedule) | Advanced reasoning AI/LLMs for auditing smart contracts | schedule listing |
 | Mar 24, 2025 | Interview with Francesco Andreoli | "AI powered Web3 Security" — SavantChat and AI for Web3 security | [video (Francesco's channel)](https://www.youtube.com/watch?v=mXVgyqHAiFk), [mirror](https://www.youtube.com/watch?v=W_ZGiRBbF14) |
-| Jul 2024 | [FIL Dev Summit 4, Brussels](https://www.fildev.io/FDS-4) | zk-driven DA & storage (same talk as ETHPrague) | [video](https://www.youtube.com/watch?v=l2NsFU0gGVU) (Filecoin channel) |
+| Jul 2024 | [FIL Dev Summit 4, Brussels](https://www.fildev.io/FDS-4) | zk-driven DA & storage | [video](https://www.youtube.com/watch?v=l2NsFU0gGVU) |
+| Jun 2024 | ETH Belgrade 2024 | "Solving Vitalik's trilemma with zk-driven DA & Storage" | [video](https://www.youtube.com/watch?v=9mR1zHiW9tk) |
 | May 2024 | [ETHPrague 2024](https://cfp.ducttape.events/ethprague2024/talk/MZ8ZZE/) | "Solving Vitalik's trilemma with zk-driven DA and Storage" | [speaker page](https://cfp.ducttape.events/ethprague2024/speaker/R3PV9W/) |
 | Nov 2020 | zkSummit 6 (online) | "Account based privacy in ZeroPool" | [video (Zero Knowledge channel)](https://www.youtube.com/watch?v=f885LTdgJVs) |
 | Mar 2020 | EthCC 3, Paris | ZeroPool beta presentation (team; "the final offline event before COVID-19") | [ZeroPool blog](https://medium.com/zeropool/zeropool-november-and-december-news-77f6a9e5e752) |
@@ -570,7 +585,7 @@ After watching project after project get drained by vulnerabilities that a caref
 
 The architecture mirrors how a strong human audit team works: the code is decomposed into logical blocks; a primary AI agent generates vulnerability hypotheses; a separate "critic" agent attacks those hypotheses and filters false positives; the surviving findings are compiled into a report with locations, impact and fixes. It is not pattern scanning — it is hypothesis-driven review that runs 24/7 and costs a fraction of a human team's time. It is the same loop I ran by hand across [15 published audits](/audits/), encoded.
 
-**What customers get:** a web app at [savant.chat](https://savant.chat) plus CI integration — audits run on pull requests via GitHub Actions ([demo video](https://www.youtube.com/watch?v=YKmL2012oSk)), so security review happens where developers already work. Teams use it for pre-audits before human review and for continuous checks during development; it complements, not replaces, a final human audit. For customer references, benchmark raw data and the deck — [contact me](/#contact).
+**What customers get:** a web app at [savant.chat](https://savant.chat) plus CI integration — audits run on pull requests via GitHub Actions, so security review happens where developers already work. Teams use it for pre-audits before human review and for continuous checks during development; it complements, not replaces, a final human audit. For customer references, benchmark raw data and the deck — [contact me](/#contact).
 
 ## The evidence
 
@@ -586,9 +601,9 @@ Everything is open: [methodology](https://ethresear.ch/t/ctfbench-a-new-method-f
 
 ## The arms race: offensive vs. defensive AI agents
 
-The same models that audit code can attack it. My working thesis — presented at [ETHPrague 2026](https://ethprague.fileverse.io/?view=home&event=HBQLXJ) as "Beyond Human Review: The Inevitable Arms Race Between Offensive and Defensive AI Agents" ([full recording](https://www.youtube.com/watch?v=r2oU7TFLDMc)) — is that once vulnerability discovery is cheap for attackers, continuous AI-side defense stops being a productivity tool and becomes table stakes: the defense has to run at machine speed because the offense already does. I discussed the same theme at [ETHDubai 2025](https://www.ethdubaiconf.org/schedule) (advanced reasoning AI/LLMs for auditing smart contracts) and at the "Intelligent Defense" roundtable on AI's role in securing crypto and DLT financial infrastructure at [Blockchain Community Day 2026](https://luma.com/wupxaqku) — Blockchain Professionals' sixth annual virtual conference ([agenda](https://tidy-ixora-d38.notion.site/blockchainprofessionals2026), [announcement on X](https://x.com/BlockchainProfs/status/2059985358876766702)).
+The same models that audit code can attack it. My working thesis — presented at [ETHPrague 2026](https://ethprague.fileverse.io/?view=home&event=HBQLXJ) as "Beyond Human Review: The Inevitable Arms Race Between Offensive and Defensive AI Agents" ([full recording](https://www.youtube.com/watch?v=r2oU7TFLDMc)) — is that once vulnerability discovery is cheap for attackers, continuous AI-side defense stops being a productivity tool and becomes table stakes: the defense has to run at machine speed because the offense already does. I discussed the same theme at [ETHDubai 2025](https://www.ethdubaiconf.org/schedule) (advanced reasoning AI/LLMs for auditing smart contracts) and on the ["Intelligent Defense" roundtable](https://www.youtube.com/watch?v=HVsMUK1s8y8) on AI's role in securing crypto and DLT financial infrastructure at [Blockchain Community Day 2026](https://luma.com/wupxaqku) — Blockchain Professionals' sixth annual virtual conference (June 2026).
 
-Interviews on the topic: ["AI powered Web3 Security" with Francesco Andreoli](https://www.youtube.com/watch?v=mXVgyqHAiFk) (March 24, 2025) · [cp0x podcast #21](https://www.youtube.com/watch?v=2B2Sj2vh450) (December 2025, in Russian — SavantChat, the ZeroPool story, and [the Plasma finding](/plasma/)).
+Interviews on the topic: ["AI powered Web3 Security" with Francesco Andreoli](https://www.youtube.com/watch?v=mXVgyqHAiFk) (March 24, 2025) · ["Cambridge Research: AI for Web3"](https://www.youtube.com/watch?v=ejIypMEUx6o) (Web3 TV, April 30, 2025) · [cp0x podcast #21](https://www.youtube.com/watch?v=2B2Sj2vh450) (December 2025, in Russian — SavantChat, the ZeroPool story, and [the Plasma finding](/plasma/)) · [Basic Block podcast #216 "AI audits in Web3"](https://basicblockradio.com/e216/) (February 2026, in Russian).
 
 ## Sources
 
@@ -654,7 +669,7 @@ In 2024 the research line shifted to the data problem: how to store and prove la
 - [**Using FRI for DA with optimistic correctable commitments in rollups**](https://ethresear.ch/t/using-fri-for-da-with-optimistic-correctable-commitments-in-rollups/20467) (September 2024).
 - Research index: [zeropool.network/research](https://zeropool.network/research/).
 
-I presented the sharded-storage work at [ETHPrague 2024](https://cfp.ducttape.events/ethprague2024/talk/MZ8ZZE/) ("Solving Vitalik's trilemma with zk-driven DA and Storage" — [recording from FIL Dev Summit 4, Brussels](https://www.youtube.com/watch?v=l2NsFU0gGVU), same talk).
+I gave the "Solving Vitalik's trilemma with zk-driven DA and Storage" talk at three 2024 events: [ETHPrague 2024](https://www.youtube.com/watch?v=9wi_UUqNJq4), [ETH Belgrade 2024](https://www.youtube.com/watch?v=9mR1zHiW9tk), and [FIL Dev Summit 4, Brussels](https://www.youtube.com/watch?v=l2NsFU0gGVU).
 
 ## Where it started, and where it went
 

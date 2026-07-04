@@ -5,27 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% block title %}{{ config.title }}{% endblock title %}</title>
 <meta name="description" content="{% block description %}{{ config.description }}{% endblock description %}">
+<meta name="keywords" content="{% block keywords %}Igor Gulamov, snjax, SavantChat, AI code audit, AI smart contract audit, ZeroPool, zkSNARK, zero-knowledge proofs, smart contract security, Ethereum, Plasma, cryptography engineer{% endblock keywords %}">
 <meta name="author" content="Igor Gulamov">
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <link rel="canonical" href="{% block canonical %}{{ config.base_url | safe }}/{% endblock canonical %}">
 <link rel="icon" type="image/png" href="/img/favicon.png">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <link rel="alternate" type="application/atom+xml" title="Igor Gulamov" href="/atom.xml">
 <link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
+<meta name="theme-color" content="#fdfdfb">
 <meta property="og:type" content="{% block ogtype %}profile{% endblock ogtype %}">
 <meta property="og:site_name" content="Igor Gulamov (snjax)">
+<meta property="og:locale" content="en_US">
 <meta property="og:title" content="{% block ogtitle %}{{ config.title }}{% endblock ogtitle %}">
 <meta property="og:description" content="{% block ogdescription %}{{ config.description }}{% endblock ogdescription %}">
 <meta property="og:url" content="{% block ogurl %}{{ config.base_url | safe }}/{% endblock ogurl %}">
 <meta property="og:image" content="{{ config.base_url | safe }}/img/igor.jpg">
+<meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="640">
 <meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="Igor Gulamov (snjax) — portrait">
+{% block ogextra %}{% endblock ogextra %}
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@igorgulamov">
 <meta name="twitter:creator" content="@igorgulamov">
 <meta name="twitter:title" content="{% block twtitle %}{{ config.title }}{% endblock twtitle %}">
 <meta name="twitter:description" content="{% block twdescription %}{{ config.description }}{% endblock twdescription %}">
 <meta name="twitter:image" content="{{ config.base_url | safe }}/img/igor.jpg">
+<meta name="twitter:image:alt" content="Igor Gulamov (snjax) — portrait">
 {% block jsonld %}{% endblock jsonld %}
 <style>
 :root{
@@ -48,7 +56,7 @@ img{max-width:100%}
 .section{display:grid;grid-template-columns:220px 1fr;gap:48px;border-top:1px solid var(--ink);padding:40px clamp(20px,5vw,64px) 46px}
 .section:first-of-type{border-top:none}
 .sec-label .num{font-size:13px;font-weight:700;color:var(--red)}
-.sec-label .name{margin-top:6px;font-size:13px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+.sec-label .name{margin:6px 0 0;font-size:13px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
 .btn-row{display:flex;flex-wrap:wrap;gap:12px}
 .btn{text-decoration:none;font-size:12.5px;font-weight:700;letter-spacing:.1em;padding:15px 24px;display:inline-block}
 .btn-solid{background:var(--ink);color:var(--bg)}

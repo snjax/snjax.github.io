@@ -1,12 +1,14 @@
 +++
 title = "The history-split finding: how Plasma Prime's O(1) promise fell"
-description = "In December 2018 Igor Gulamov (snjax) identified the history-split issue in Plasma Prime designs — a malicious operator can forge hidden parallel histories, and compact RSA-accumulator proofs cannot resolve exits in O(1). Primary sources, verbatim quotes, and the full technical story."
+description = "How Igor Gulamov's December 2018 history-split finding broke Plasma Prime's O(1) exit promise — explained with verbatim primary sources."
 date = 2026-07-03
 updated = 2026-07-03
 slug = "plasma"
 template = "longread.html"
 
 [extra]
+seo_title = "The Plasma Prime history-split finding"
+keywords = "Plasma Prime, history-split, Igor Gulamov, snjax, Vitalik Buterin, RSA accumulator, exit game, Ethereum scaling, Plasma Cash, rollups, ethresearch"
 kicker = "Research record — December 2018"
 schema_type = "TechArticle"
 +++

@@ -1,12 +1,14 @@
 +++
 title = "AI that audits code: SavantChat and the security arms race"
-description = "SavantChat — the language-agnostic AI code security auditor co-founded by Igor Gulamov (snjax) in 2025: architecture, evidence (Sherlock Symbiotic Relay top-6, CTFBench, 1inch pre-audits), the CTFBench methodology, and the offensive-vs-defensive AI agents thesis."
+description = "SavantChat, the AI code-security auditor co-founded by Igor Gulamov — its Sherlock top-6 win, CTFBench, 1inch pre-audits and how it works."
 date = 2026-07-04
 updated = 2026-07-04
 slug = "ai"
 template = "longread.html"
 
 [extra]
+seo_title = "AI code audits by SavantChat"
+keywords = "SavantChat, AI code audit, AI smart contract audit, Igor Gulamov, Sherlock audit contest, CTFBench, 1inch security, AI security auditor, offensive defensive AI agents, LLM code review"
 kicker = "SavantChat — AI code security"
 schema_type = "Article"
 +++
@@ -21,7 +23,7 @@ After watching project after project get drained by vulnerabilities that a caref
 
 The architecture mirrors how a strong human audit team works: the code is decomposed into logical blocks; a primary AI agent generates vulnerability hypotheses; a separate "critic" agent attacks those hypotheses and filters false positives; the surviving findings are compiled into a report with locations, impact and fixes. It is not pattern scanning — it is hypothesis-driven review that runs 24/7 and costs a fraction of a human team's time. It is the same loop I ran by hand across [15 published audits](/audits/), encoded.
 
-**What customers get:** a web app at [savant.chat](https://savant.chat) plus CI integration — audits run on pull requests via GitHub Actions ([demo video](https://www.youtube.com/watch?v=YKmL2012oSk)), so security review happens where developers already work. Teams use it for pre-audits before human review and for continuous checks during development; it complements, not replaces, a final human audit. For customer references, benchmark raw data and the deck — [contact me](/#contact).
+**What customers get:** a web app at [savant.chat](https://savant.chat) plus CI integration — audits run on pull requests via GitHub Actions, so security review happens where developers already work. Teams use it for pre-audits before human review and for continuous checks during development; it complements, not replaces, a final human audit. For customer references, benchmark raw data and the deck — [contact me](/#contact).
 
 ## The evidence
 
@@ -37,9 +39,9 @@ Everything is open: [methodology](https://ethresear.ch/t/ctfbench-a-new-method-f
 
 ## The arms race: offensive vs. defensive AI agents
 
-The same models that audit code can attack it. My working thesis — presented at [ETHPrague 2026](https://ethprague.fileverse.io/?view=home&event=HBQLXJ) as "Beyond Human Review: The Inevitable Arms Race Between Offensive and Defensive AI Agents" ([full recording](https://www.youtube.com/watch?v=r2oU7TFLDMc)) — is that once vulnerability discovery is cheap for attackers, continuous AI-side defense stops being a productivity tool and becomes table stakes: the defense has to run at machine speed because the offense already does. I discussed the same theme at [ETHDubai 2025](https://www.ethdubaiconf.org/schedule) (advanced reasoning AI/LLMs for auditing smart contracts) and at the "Intelligent Defense" roundtable on AI's role in securing crypto and DLT financial infrastructure at [Blockchain Community Day 2026](https://luma.com/wupxaqku) — Blockchain Professionals' sixth annual virtual conference ([agenda](https://tidy-ixora-d38.notion.site/blockchainprofessionals2026), [announcement on X](https://x.com/BlockchainProfs/status/2059985358876766702)).
+The same models that audit code can attack it. My working thesis — presented at [ETHPrague 2026](https://ethprague.fileverse.io/?view=home&event=HBQLXJ) as "Beyond Human Review: The Inevitable Arms Race Between Offensive and Defensive AI Agents" ([full recording](https://www.youtube.com/watch?v=r2oU7TFLDMc)) — is that once vulnerability discovery is cheap for attackers, continuous AI-side defense stops being a productivity tool and becomes table stakes: the defense has to run at machine speed because the offense already does. I discussed the same theme at [ETHDubai 2025](https://www.ethdubaiconf.org/schedule) (advanced reasoning AI/LLMs for auditing smart contracts) and on the ["Intelligent Defense" roundtable](https://www.youtube.com/watch?v=HVsMUK1s8y8) on AI's role in securing crypto and DLT financial infrastructure at [Blockchain Community Day 2026](https://luma.com/wupxaqku) — Blockchain Professionals' sixth annual virtual conference (June 2026).
 
-Interviews on the topic: ["AI powered Web3 Security" with Francesco Andreoli](https://www.youtube.com/watch?v=mXVgyqHAiFk) (March 24, 2025) · [cp0x podcast #21](https://www.youtube.com/watch?v=2B2Sj2vh450) (December 2025, in Russian — SavantChat, the ZeroPool story, and [the Plasma finding](/plasma/)).
+Interviews on the topic: ["AI powered Web3 Security" with Francesco Andreoli](https://www.youtube.com/watch?v=mXVgyqHAiFk) (March 24, 2025) · ["Cambridge Research: AI for Web3"](https://www.youtube.com/watch?v=ejIypMEUx6o) (Web3 TV, April 30, 2025) · [cp0x podcast #21](https://www.youtube.com/watch?v=2B2Sj2vh450) (December 2025, in Russian — SavantChat, the ZeroPool story, and [the Plasma finding](/plasma/)) · [Basic Block podcast #216 "AI audits in Web3"](https://basicblockradio.com/e216/) (February 2026, in Russian).
 
 ## Sources
 
