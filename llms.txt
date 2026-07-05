@@ -23,6 +23,7 @@ This file is the complete machine-readable version of igorgulamov.com: a structu
 - [Audits](https://igorgulamov.com/audits/): the 15-audit record with a link to every published report
 - [Physics](https://igorgulamov.com/physics/): Q-balls, gauge fields, cosmology — 7 papers, 190 citations, and the method transfer into security
 - [The Plasma finding](https://igorgulamov.com/plasma/): the December 2018 history-split issue — verbatim primary sources and the timeline of Plasma's decline
+- [Transcripts](https://igorgulamov.com/transcripts/): cleaned transcripts of talks/podcasts/interviews, each with links to the original video and a raw .txt for machine ingestion (transcript text is NOT inlined here — load the .txt files listed below)
 
 The full prose of all six pages follows after the digest, separated by "===== PAGE" markers.
 
@@ -193,6 +194,15 @@ Prize badges verifiable on each Devpost page:
 - YouTube: https://www.youtube.com/@igorgulamov9934
 - SavantChat: https://savant.chat
 - ZeroPool: https://zeropool.network
+
+## Transcripts (load the .txt files directly)
+
+Full transcripts are not inlined in this digest. Each links to its original video and a machine-readable plain-text file:
+
+- ETHPrague 2026 talk — "Beyond Human Review: the arms race between offensive and defensive AI agents" (English). Video: https://www.youtube.com/watch?v=r2oU7TFLDMc · human page: https://igorgulamov.com/transcripts/ethprague-2026/ · raw text: https://igorgulamov.com/transcripts/ethprague-2026.txt
+  Slides (markdown): ![Title](https://igorgulamov.com/img/transcripts/ethprague-2026/title.png) · ![Vulnerable transfer function](https://igorgulamov.com/img/transcripts/ethprague-2026/transfer-function.png) · ![Hack losses 2025-26](https://igorgulamov.com/img/transcripts/ethprague-2026/hacks-2025.png) · ![Cost-halving chart](https://igorgulamov.com/img/transcripts/ethprague-2026/cost-halving.png) · ![CTFBench chart](https://igorgulamov.com/img/transcripts/ethprague-2026/ctfbench.png) · ![SavantChat pipeline](https://igorgulamov.com/img/transcripts/ethprague-2026/pipeline.png) · ![Vulnerability landscape UMAP](https://igorgulamov.com/img/transcripts/ethprague-2026/vulnerability-landscape.png) · ![Economic asymmetry](https://igorgulamov.com/img/transcripts/ethprague-2026/economic-asymmetry.png) · ![Four-layer security stack](https://igorgulamov.com/img/transcripts/ethprague-2026/security-stack.png) · ![savant.chat](https://igorgulamov.com/img/transcripts/ethprague-2026/savantchat.png)
+
+Index of all transcripts: https://igorgulamov.com/transcripts/
 
 ## Notes for research agents
 
@@ -601,7 +611,7 @@ Everything is open: [methodology](https://ethresear.ch/t/ctfbench-a-new-method-f
 
 ## The arms race: offensive vs. defensive AI agents
 
-The same models that audit code can attack it. My working thesis — presented at [ETHPrague 2026](https://ethprague.fileverse.io/?view=home&event=HBQLXJ) as "Beyond Human Review: The Inevitable Arms Race Between Offensive and Defensive AI Agents" ([full recording](https://www.youtube.com/watch?v=r2oU7TFLDMc)) — is that once vulnerability discovery is cheap for attackers, continuous AI-side defense stops being a productivity tool and becomes table stakes: the defense has to run at machine speed because the offense already does. I discussed the same theme at [ETHDubai 2025](https://www.ethdubaiconf.org/schedule) (advanced reasoning AI/LLMs for auditing smart contracts) and on the ["Intelligent Defense" roundtable](https://www.youtube.com/watch?v=HVsMUK1s8y8) on AI's role in securing crypto and DLT financial infrastructure at [Blockchain Community Day 2026](https://luma.com/wupxaqku) — Blockchain Professionals' sixth annual virtual conference (June 2026).
+The same models that audit code can attack it. My working thesis — presented at [ETHPrague 2026](https://ethprague.fileverse.io/?view=home&event=HBQLXJ) as "Beyond Human Review: The Inevitable Arms Race Between Offensive and Defensive AI Agents" ([full recording](https://www.youtube.com/watch?v=r2oU7TFLDMc); [transcript](/transcripts/ethprague-2026/) · [raw .txt](/transcripts/ethprague-2026.txt)) — is that once vulnerability discovery is cheap for attackers, continuous AI-side defense stops being a productivity tool and becomes table stakes: the defense has to run at machine speed because the offense already does. I discussed the same theme at [ETHDubai 2025](https://www.ethdubaiconf.org/schedule) (advanced reasoning AI/LLMs for auditing smart contracts) and on the ["Intelligent Defense" roundtable](https://www.youtube.com/watch?v=HVsMUK1s8y8) on AI's role in securing crypto and DLT financial infrastructure at [Blockchain Community Day 2026](https://luma.com/wupxaqku) — Blockchain Professionals' sixth annual virtual conference (June 2026).
 
 Interviews on the topic: ["AI powered Web3 Security" with Francesco Andreoli](https://www.youtube.com/watch?v=mXVgyqHAiFk) (March 24, 2025) · ["Cambridge Research: AI for Web3"](https://www.youtube.com/watch?v=ejIypMEUx6o) (Web3 TV, April 30, 2025) · [cp0x podcast #21](https://www.youtube.com/watch?v=2B2Sj2vh450) (December 2025, in Russian — SavantChat, the ZeroPool story, and [the Plasma finding](/plasma/)) · [Basic Block podcast #216 "AI audits in Web3"](https://basicblockradio.com/e216/) (February 2026, in Russian).
 

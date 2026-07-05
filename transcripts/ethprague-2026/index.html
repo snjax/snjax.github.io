@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ETHPrague 2026 talk transcript — Igor Gulamov</title>
+<meta name="description" content="Transcript of Igor Gulamov&#x27;s ETHPrague 2026 talk on the offensive-vs-defensive AI arms race in smart-contract security, SavantChat, CTFBench and the economics of AI audits.">
+<meta name="keywords" content="Igor Gulamov, snjax, SavantChat, AI code audit, AI smart contract audit, ZeroPool, zkSNARK, zero-knowledge proofs, smart contract security, Ethereum, Plasma, cryptography engineer">
+<meta name="author" content="Igor Gulamov">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://igorgulamov.com/transcripts/ethprague-2026/">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<link rel="alternate" type="application/atom+xml" title="Igor Gulamov" href="/atom.xml">
+<link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
+<meta name="theme-color" content="#fdfdfb">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Igor Gulamov (snjax)">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Beyond Human Review: the arms race between offensive and defensive AI agents">
+<meta property="og:description" content="Transcript of Igor Gulamov&#x27;s ETHPrague 2026 talk on the offensive-vs-defensive AI arms race in smart-contract security, SavantChat, CTFBench and the economics of AI audits.">
+<meta property="og:url" content="https://igorgulamov.com/transcripts/ethprague-2026/">
+<meta property="og:image" content="https://igorgulamov.com/img/igor.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="640">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="Igor Gulamov (snjax) — portrait">
+<meta property="article:published_time" content="2026-05-01">
+<meta property="article:modified_time" content="2026-07-05">
+<meta property="article:author" content="Igor Gulamov">
+<meta property="article:section" content="Transcripts">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@igorgulamov">
+<meta name="twitter:creator" content="@igorgulamov">
+<meta name="twitter:title" content="Beyond Human Review: the arms race between offensive and defensive AI agents">
+<meta name="twitter:description" content="Transcript of Igor Gulamov&#x27;s ETHPrague 2026 talk on the offensive-vs-defensive AI arms race in smart-contract security, SavantChat, CTFBench and the economics of AI audits.">
+<meta name="twitter:image" content="https://igorgulamov.com/img/igor.jpg">
+<meta name="twitter:image:alt" content="Igor Gulamov (snjax) — portrait">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "Beyond Human Review: the arms race between offensive and defensive AI agents",
+  "description": "Transcript of Igor Gulamov's ETHPrague 2026 talk on the offensive-vs-defensive AI arms race in smart-contract security, SavantChat, CTFBench and the economics of AI audits.",
+  "uploadDate": "2026-05-01",
+  "thumbnailUrl": "https://igorgulamov.com/img/igor.jpg",
+  "contentUrl": "https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=r2oU7TFLDMc",
+  "embedUrl": "https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=r2oU7TFLDMc",
+  "transcript": "https://igorgulamov.com/transcripts/ethprague-2026/",
+  "author": { "@type": "Person", "@id": "https://igorgulamov.com/#person", "name": "Igor Gulamov", "url": "https://igorgulamov.com/" },
+  "publisher": { "@type": "Person", "@id": "https://igorgulamov.com/#person", "name": "Igor Gulamov", "url": "https://igorgulamov.com/", "image": "https://igorgulamov.com/img/igor.jpg" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://igorgulamov.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Transcripts", "item": "https://igorgulamov.com/transcripts/" },
+    { "@type": "ListItem", "position": 3, "name": "Beyond Human Review: the arms race between offensive and defensive AI agents", "item": "https://igorgulamov.com/transcripts/ethprague-2026/" }
+  ]
+}
+</script>
+
+<style>
+:root{
+  --bg:#fdfdfb; --ink:#111110; --gray:#55554f; --soft:#444440;
+  --hair:#d9d9d3; --red:#d2321c;
+  --sans:'Helvetica Neue',Helvetica,Arial,'Liberation Sans',sans-serif;
+  --mono:ui-monospace,'JetBrains Mono',Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55}
+a{color:var(--ink)}
+img{max-width:100%}
+.topbar{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 20px;border-bottom:1px solid var(--ink);padding:18px clamp(20px,5vw,64px);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.topbar .muted{color:var(--gray)}
+.topnav{display:flex;flex-wrap:wrap;gap:8px 22px;border-bottom:1px solid var(--hair);padding:12px clamp(20px,5vw,64px);font-size:11.5px;font-weight:700;letter-spacing:.12em}
+.topnav a{color:var(--ink);text-decoration:none}
+.topnav a .arr{color:var(--red)}
+.topnav a[aria-current="page"]{color:var(--red)}
+.section{display:grid;grid-template-columns:220px 1fr;gap:48px;border-top:1px solid var(--ink);padding:40px clamp(20px,5vw,64px) 46px}
+.section:first-of-type{border-top:none}
+.sec-label .num{font-size:13px;font-weight:700;color:var(--red)}
+.sec-label .name{margin:6px 0 0;font-size:13px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px}
+.btn{text-decoration:none;font-size:12.5px;font-weight:700;letter-spacing:.1em;padding:15px 24px;display:inline-block}
+.btn-solid{background:var(--ink);color:var(--bg)}
+.btn-line{border:1px solid var(--ink);color:var(--ink)}
+.links-row{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:11.5px;font-weight:700;letter-spacing:.12em}
+.links-row a{color:var(--ink);text-decoration:none}
+.links-row .arr{color:var(--red)}
+.footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 20px;border-top:1px solid var(--ink);padding:16px clamp(20px,5vw,64px);font-size:10.5px;font-weight:700;letter-spacing:.14em;color:var(--gray);text-transform:uppercase}
+@media(max-width:860px){
+  .section{grid-template-columns:1fr;gap:20px;padding-top:28px;padding-bottom:32px}
+}
+
+.lr-head{padding:56px clamp(20px,5vw,64px) 44px;border-bottom:1px solid var(--ink)}
+.lr-kicker{font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--red);text-transform:uppercase}
+h1.lr-title{margin:16px 0 0;font-size:clamp(30px,5vw,50px);line-height:1.06;font-weight:700;letter-spacing:-.03em;max-width:900px}
+.src-box{margin:22px 0 0;display:flex;flex-wrap:wrap;gap:8px 10px;font:400 12px var(--mono)}
+.src-box a,.src-box span{display:inline-block;border:1px solid var(--hair);padding:6px 11px;text-decoration:none;color:var(--ink)}
+.src-box a:hover{border-color:var(--ink)}
+.src-box .llm{border-color:var(--red);color:var(--red)}
+.src-meta{margin-top:14px;font:400 12px var(--mono);color:var(--gray);letter-spacing:.03em}
+.lr-body{max-width:760px;padding:36px clamp(20px,5vw,64px) 72px;font-size:16.5px;line-height:1.62}
+.lr-body p{margin:0 0 14px;overflow-wrap:anywhere}
+.lr-body p strong{font-weight:700}
+.lr-body a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:3px}
+.lr-body hr{border:none;border-top:1px solid var(--hair);margin:26px 0}
+.lr-body em{color:var(--gray)}
+.lr-body figure{margin:24px 0}
+.lr-body figure img{width:100%;border:1px solid var(--hair)}
+.lr-body figcaption{margin-top:6px;font:400 12px var(--mono);color:var(--gray)}
+.lr-body h2{margin:40px 0 14px;padding-top:22px;border-top:1px solid var(--ink);font-size:22px;letter-spacing:-.01em}
+
+</style>
+</head>
+<body>
+<header class="topbar" data-uilint="topbar">
+  <div>Igor Gulamov — Personal Record</div>
+  <div class="muted">Dubai · UTC+4</div>
+</header>
+<nav class="topnav" data-uilint="topnav" aria-label="Site">
+  <a href="/"><span class="arr">→</span> Index</a>
+  <a href="/bio/"><span class="arr">→</span> Bio</a>
+  <a href="/ai/"><span class="arr">→</span> AI</a>
+  <a href="/zk/"><span class="arr">→</span> ZK</a>
+  <a href="/audits/"><span class="arr">→</span> Audits</a>
+  <a href="/plasma/"><span class="arr">→</span> The Plasma Finding</a>
+  <a href="/physics/"><span class="arr">→</span> Physics</a>
+  <a href="/transcripts/" aria-current="page"><span class="arr">→</span> Transcripts</a>
+  <a href="/llms.txt"><span class="arr">→</span> llms.txt</a>
+</nav>
+<main>
+
+<article>
+  <header class="lr-head" data-uilint="lr-head">
+    <div class="lr-kicker">Transcript · Conference talk · ETHPrague 2026</div>
+    <h1 class="lr-title">Beyond Human Review: the arms race between offensive and defensive AI agents</h1>
+    <div class="src-box" data-uilint="src-box">
+      <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=r2oU7TFLDMc">▶ Original video — YouTube (Igor Gulamov)</a>
+      <a class="llm" href="&#x2F;transcripts&#x2F;ethprague-2026.txt" title="Plain-text transcript for LLMs and AI agents">ↆ Raw .txt (for LLMs)</a>
+      <a href="/transcripts/">↑ All transcripts</a>
+    </div>
+    <div class="src-meta">English · speakers: Host (MC), Igor Gulamov · auto-transcribed &amp; edited</div>
+  </header>
+  <div class="lr-body" data-uilint="lr-body">
+    <p><em>ETHPrague 2026 · "Beyond Human Review: The Inevitable Arms Race Between Offensive and Defensive AI Agents" · <a rel="noopener external" target="_blank" href="https://www.youtube.com/watch?v=r2oU7TFLDMc">original video</a> · <a href="/transcripts/ethprague-2026.txt">raw transcript for LLMs</a></em></p>
+<p><em>Transcribed with automatic diarization and edited for readability; technical terms normalized. Speakers: the event <strong>Host</strong> and <strong>Igor Gulamov</strong>.</em></p>
+<hr />
+<p><strong>Host:</strong> Next on stage we have Igor Gulamov, founder of ZeroPool and SavantChat. He's a security researcher and an AI engineer, among other things. He has audited 1inch and Aave, and today he's going to talk about "Beyond Human Review: the inevitable arms race between offensive and defensive AI." Welcome.</p>
+<figure><img src="/img/transcripts/ethprague-2026/title.png" alt="Beyond Human Review: your contract isn't broken, it's misunderstood — slide from Igor Gulamov's ETHPrague 2026 talk" loading="lazy" width="1400"><figcaption>Title slide — "Beyond Human Review: The Inevitable Arms Race Between Offensive and Defensive AI Agents."</figcaption></figure>
+<p><strong>Igor Gulamov:</strong> So — "Beyond Human Review: the inevitable arms race between offensive and defensive AI." I'm Igor Gulamov, from SavantChat.</p>
+<figure><img src="/img/transcripts/ethprague-2026/transfer-function.png" alt="Vulnerable ERC-20 transfer function where from == to mints tokens — slide from Igor Gulamov's ETHPrague 2026 talk" loading="lazy" width="1400"><figcaption>The seed task: a transfer function where `from == to` writes the same slot twice and mints tokens — unsolved by models before 2025.</figcaption></figure>
+<p>We started building our solution about a year ago, in February 2025. We had some simple security tasks for AI, like this one. This is a transfer function with a vulnerability: when the <code>from</code> and <code>to</code> addresses are equal, the same memory slot is written twice, and you can mint tokens. We tested it with GPT-3.5, GPT-4, GPT-4o, Claude Opus and so on. In 2024 and earlier, no model could solve it. But in 2025, with a bit of help, they can. So we decided to build a solution to find security vulnerabilities and help protect projects from hackers.</p>
+<figure><img src="/img/transcripts/ethprague-2026/hacks-2025.png" alt="$1.1B+ stolen; April 2026 worst month; 76% of hacks Lazarus-attributed — slide from Igor Gulamov's ETHPrague 2026 talk" loading="lazy" width="1400"><figcaption>The other side of the table: 2025–26 hack losses, and the rise of AI-improved, cross-domain exploits.</figcaption></figure>
+<p>But hackers also weaponize AI. Here we see the value of hacks in 2025 and the beginning of 2026 — and April 2026 was the worst month ever: a lot of hacks, and most of them AI-improved. We can see many signs that the hacks over the last year were AI-improved — things like <code>console.log</code> calls left in attacker contracts, or cross-domain hacks.</p>
+<p>Take the Bunni hack or the Balancer hack: before, we usually had crypto-economic hacks or access-control hacks, and they were separate. But now the reality is that a hack can be cross-domain, where the exploit is built from several different areas — PhD-level mathematics on one side, clever assembly tricks on the other — all combined into a single exploit. That was very rare in this market before, because I don't think Lazarus has a lot of PhD-level people. But now it's reality, because AI brings that level of expertise to black hats.</p>
+<p>About our solution: SavantChat reproduces the root cause of close to 100% of the vulnerabilities from 2025. That doesn't mean we reproduce every exploit path, but we find the root cause — what could be fixed so the exploit never happens. There are also academic benchmarks, and benchmarks from AI companies and independent researchers, showing that the ability to find security vulnerabilities and exploit paths is growing for these models.</p>
+<figure><img src="/img/transcripts/ethprague-2026/cost-halving.png" alt="Chart: cost to reach a fixed intelligence level halves every 1–5 months — slide from Igor Gulamov's ETHPrague 2026 talk" loading="lazy" width="1400"><figcaption>Cost to reach a fixed intelligence level keeps collapsing — halving every one to five months.</figcaption></figure>
+<p>This is a graph of how intelligence is being commoditized and getting cheaper. Each line is an intelligence level: it starts from a state-of-the-art model, and then you get the same intelligence from cheaper models later on. The cost halves every one to five months — it's not linear anymore, it's much faster. For example, the price became about 91 times cheaper over nine months for a certain reasoning-model level.</p>
+<p>So first you have a state-of-the-art model, and you use it to find vulnerabilities, wrapping a lot of harness around it to make requests efficiently — reducing the number of requests, using caching, advanced prompt engineering and so on — to make your product find vulnerabilities efficiently rather than expensively. Nine months pass, and now you can use that same intelligence for cheap commodity work — marking up lines in the codebase, chunking it for later stages. So you use it as the cheapest commodity on the market.</p>
+<p>Here are some results from METR: for LLMs, we see that a model can do big chunks of a job independently and get high results — like on SWE-bench. That kind of benchmark is important for building proofs of concept — not for finding the bugs, but for verifying them. Harness matters too.</p>
+<p>For example, we built CTFBench in February 2025 to measure the ability of AI to find security vulnerabilities and to measure the noise level — because if you have a very high detection rate but 100,000 slop reports, that one true signal is buried. So we measured CTFBench across agents from the market and found that they can often find something, but they're far from the state of the art. For example, our tool is free and public and works in minutes, not hours — but a competitor found only 4 of 7 issues in CTFBench.</p>
+<p>I showed earlier that a transfer function can be vulnerable; that transfer function, with a valid harness, was solvable with a reasoning model in February 2025, and all of CTFBench was solved by June 2025 with Gemini 2.5 Pro.</p>
+<figure><img src="/img/transcripts/ethprague-2026/ctfbench.png" alt="CTFBench scatter: over-reporting index vs. vulnerability detection rate — slide from Igor Gulamov's ETHPrague 2026 talk" loading="lazy" width="1400"><figcaption>CTFBench — detection rate against the over-reporting (noise) index, scoring AI auditors like human ones.</figcaption></figure>
+<p>Here is how CTFBench works. On the X axis we have the rate of reports per line of code — a high number of reports means high noise, lower is better. On the Y axis we have the share of detected vulnerabilities. We have several contracts with N vulnerabilities and measure the over-reporting index, and we measure the models' ability to find those vulnerabilities. We now see CTFBench being solved by GPT-5.5 and Gemini 3.1 Pro. There will be more powerful models on the market that can find more security vulnerabilities.</p>
+<p>This is EVMBench — we ran it a few days ago, and here are the results. We have a lower bound for our solution, because in this test we run our agent only on small inputs and from a single angle. It looks like cheating, but it's cheating in the other direction: in production our agent takes each chunk of code and runs a small research pass from several different angles, whereas in this check we used only one angle. Why? Because it's expensive, and this approach lets us spend only about 1% of the inference.</p>
+<figure><img src="/img/transcripts/ethprague-2026/pipeline.png" alt="SavantChat pipeline: sampling, per-angle research, critic, PoC validation — slide from Igor Gulamov's ETHPrague 2026 talk" loading="lazy" width="1400"><figcaption>The SavantChat pipeline — each block is a race-against-cost closer, ending in critic filtering and PoC validation.</figcaption></figure>
+<p>This is how SavantChat works. On the input we have the source code and documentation. We extract samples — different chunking and ranking — and then run research passes on each sample. On the last check we also use a database of about 20,000 issues. Then a critic agent disputes more than 95% of the hypotheses, we remove duplicates, and so on.</p>
+<figure><img src="/img/transcripts/ethprague-2026/vulnerability-landscape.png" alt="UMAP map of ~6,500 distilled vulnerability patterns — slide from Igor Gulamov's ETHPrague 2026 talk" loading="lazy" width="1400"><figcaption>The vulnerability landscape — a fully-automated UMAP of distilled vulnerability patterns (works for any language).</figcaption></figure>
+<p>For the database, we take 20,000 vulnerabilities, select about 6,500 real ones, distill each one away from its project-specific details into a small, academic-style example of how that kind of vulnerability works and in which context, and then classify them. This is a UMAP of those classes. The map is obtained fully automatically, so it can be built not only for Solidity but for any area — Rust, C and other languages. This approach increases performance by 20 to 50%. It works like a senior auditor: when a senior auditor works with an LLM, they can recall how similar smart contracts were hacked before.</p>
+<p>The critic subagent is also important, because if you have a lot of noise it's hard to work with the hypotheses. The share of real findings in our reports is over 50%, if the codebase hasn't already been heavily audited and fixed.</p>
+<figure><img src="/img/transcripts/ethprague-2026/economic-asymmetry.png" alt="Economics: ~10x cost advantage toward the attacker vs. white hats — slide from Igor Gulamov's ETHPrague 2026 talk" loading="lazy" width="1400"><figcaption>Economic asymmetry — the roughly 10× cost advantage that currently favours the attacker over the white hat.</figcaption></figure>
+<p>Let's talk about the economic asymmetry between black hats, white hats and auditors. Say we have a $1 million contract and a black hat who can simply drain it. To find the vulnerability, the black hat has to spend, say, $100,000 on research — a lot of deep research to build the full exploit path from working pieces. But for a white hat, the bug-bounty reward on a $1 million contract won't be $1 million — it'll be some tens of thousands of dollars. And if the cost to find the vulnerability is $100,000, the economics don't work for white hats.</p>
+<p>That's the issue today. We already know a lot of AI-powered black hats, because their market hasn't stabilized yet, and building exploit paths isn't 100% automatic yet. But when it becomes fully automatic, economic factors will outweigh the personal ethics of the actors on the market. That's the problem.</p>
+<p>So what's the solution? The solution is preventing hacks through audits — because an auditor can work with much weaker security assumptions. If an auditor finds a broken invariant, it doesn't matter exactly how bad it is: the auditor flags that the invariant is broken and that parties could take value from other people's balances, and that's enough to fix it. If all invariants hold, there's no room for a million-dollar attack. And finding a broken invariant is an easier problem — one that is essentially 100% automated by AI today.</p>
+<p>So, three roles. What's coming next? First, agentic testing: before, we had retrieval — our models just read the code and made hypotheses and checked them. But now we can run experiments: write an experiment, execute it, and get feedback — the way this became possible in software engineering some time ago. Here we're talking about auditing and finding vulnerabilities. That's deep research, so we need thousands of times more inference — and now that's possible. Before, it would have been possible in theory, but it cost millions of dollars. Now you can write scripts describing what to check, hand them to the models, and it works.</p>
+<p>Next is formal verification. AI can now write formal proofs in tools like Certora or Halmos. That means an AI agent can ask high-level questions — what happens to this invariant if something goes wrong? — and this approach reduces inference a lot and reduces hallucinations a lot.</p>
+<p>Next is model orchestration. We already do some: we use cheap models to mark up the codebase, slice chunks and find related documentation. But now there's a very big gap between super-smart models and super-cheap models, with a lot of grades in between. That means we should use the next level of orchestration — different tiers of intelligence for different tasks, so we don't need PhD-level math or economics on every request, but we do need advanced orchestration across all these models. In production, orchestration and proof-of-concept building are automated, and we're actively working on implementing formal verification.</p>
+<figure><img src="/img/transcripts/ethprague-2026/security-stack.png" alt="Four-layer security stack: static analyzers, AI scanners, PoCs, human auditors — slide from Igor Gulamov's ETHPrague 2026 talk" loading="lazy" width="1400"><figcaption>The four-layer security stack of late 2026: static analyzers → AI scanners → PoC/formal proofs → human auditors.</figcaption></figure>
+<p>About the future security stack: it should go static analyzers first, then AI scanners, then proofs for the different properties, then human auditors for business logic and architecture. So the race isn't over. And it's important to understand that with auditors, AI, white and black hats, we now have two separate domains of vulnerabilities: the human domain and the AI domain. They're parallel, separate stories. In each domain there are weak, simple vulnerabilities and hard ones that are very hard to catch. To be safe, a project should now use state-of-the-art AI tools to protect against AI black hats, and the best human auditors to protect against top human black hats.</p>
+<figure><img src="/img/transcripts/ethprague-2026/savantchat.png" alt="Thank you, ETHPrague — savant.chat — slide from Igor Gulamov's ETHPrague 2026 talk" loading="lazy" width="1400"><figcaption>Closing slide — savant.chat.</figcaption></figure>
+<p>So — thank you for your attention. If you have questions, I can answer.</p>
+<p><strong>Host:</strong> We have many. One last question from the audience before we continue — otherwise I'm sure people can find you afterwards.</p>
+
+  </div>
+</article>
+
+</main>
+<footer class="footer" data-uilint="footer">
+  <div>Set in Helvetica — Grid 220/64</div>
+  <div>© 2026 Igor Gulamov</div>
+</footer>
+</body>
+</html>

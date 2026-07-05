@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transcripts — Igor Gulamov</title>
+<meta name="description" content="Transcripts of Igor Gulamov&#x27;s (snjax) talks, podcasts and interviews — each linked to the original video, in human-readable and raw-text (LLM-friendly) formats.">
+<meta name="keywords" content="Igor Gulamov, snjax, SavantChat, AI code audit, AI smart contract audit, ZeroPool, zkSNARK, zero-knowledge proofs, smart contract security, Ethereum, Plasma, cryptography engineer">
+<meta name="author" content="Igor Gulamov">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://igorgulamov.com/transcripts/">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<link rel="alternate" type="application/atom+xml" title="Igor Gulamov" href="/atom.xml">
+<link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
+<meta name="theme-color" content="#fdfdfb">
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Igor Gulamov (snjax)">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Transcripts — Igor Gulamov (snjax)">
+<meta property="og:description" content="Transcripts of Igor Gulamov&#x27;s (snjax) talks, podcasts and interviews — each linked to the original video, in human-readable and raw-text (LLM-friendly) formats.">
+<meta property="og:url" content="https://igorgulamov.com/transcripts/">
+<meta property="og:image" content="https://igorgulamov.com/img/igor.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="640">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="Igor Gulamov (snjax) — portrait">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@igorgulamov">
+<meta name="twitter:creator" content="@igorgulamov">
+<meta name="twitter:title" content="Transcripts — Igor Gulamov (snjax)">
+<meta name="twitter:description" content="Transcripts of Igor Gulamov&#x27;s (snjax) talks, podcasts and interviews — each linked to the original video, in human-readable and raw-text (LLM-friendly) formats.">
+<meta name="twitter:image" content="https://igorgulamov.com/img/igor.jpg">
+<meta name="twitter:image:alt" content="Igor Gulamov (snjax) — portrait">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Transcripts — Igor Gulamov (snjax)",
+  "description": "Transcripts of Igor Gulamov's (snjax) talks, podcasts and interviews — each linked to the original video, in human-readable and raw-text (LLM-friendly) formats.",
+  "url": "https://igorgulamov.com/transcripts/",
+  "about": { "@id": "https://igorgulamov.com/#person" }
+}
+</script>
+
+<style>
+:root{
+  --bg:#fdfdfb; --ink:#111110; --gray:#55554f; --soft:#444440;
+  --hair:#d9d9d3; --red:#d2321c;
+  --sans:'Helvetica Neue',Helvetica,Arial,'Liberation Sans',sans-serif;
+  --mono:ui-monospace,'JetBrains Mono',Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55}
+a{color:var(--ink)}
+img{max-width:100%}
+.topbar{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 20px;border-bottom:1px solid var(--ink);padding:18px clamp(20px,5vw,64px);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.topbar .muted{color:var(--gray)}
+.topnav{display:flex;flex-wrap:wrap;gap:8px 22px;border-bottom:1px solid var(--hair);padding:12px clamp(20px,5vw,64px);font-size:11.5px;font-weight:700;letter-spacing:.12em}
+.topnav a{color:var(--ink);text-decoration:none}
+.topnav a .arr{color:var(--red)}
+.topnav a[aria-current="page"]{color:var(--red)}
+.section{display:grid;grid-template-columns:220px 1fr;gap:48px;border-top:1px solid var(--ink);padding:40px clamp(20px,5vw,64px) 46px}
+.section:first-of-type{border-top:none}
+.sec-label .num{font-size:13px;font-weight:700;color:var(--red)}
+.sec-label .name{margin:6px 0 0;font-size:13px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px}
+.btn{text-decoration:none;font-size:12.5px;font-weight:700;letter-spacing:.1em;padding:15px 24px;display:inline-block}
+.btn-solid{background:var(--ink);color:var(--bg)}
+.btn-line{border:1px solid var(--ink);color:var(--ink)}
+.links-row{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:11.5px;font-weight:700;letter-spacing:.12em}
+.links-row a{color:var(--ink);text-decoration:none}
+.links-row .arr{color:var(--red)}
+.footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 20px;border-top:1px solid var(--ink);padding:16px clamp(20px,5vw,64px);font-size:10.5px;font-weight:700;letter-spacing:.14em;color:var(--gray);text-transform:uppercase}
+@media(max-width:860px){
+  .section{grid-template-columns:1fr;gap:20px;padding-top:28px;padding-bottom:32px}
+}
+
+.lr-head{padding:56px clamp(20px,5vw,64px) 40px;border-bottom:1px solid var(--ink)}
+.lr-kicker{font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--red);text-transform:uppercase}
+h1.lr-title{margin:16px 0 0;font-size:clamp(34px,5.6vw,58px);line-height:1.04;font-weight:700;letter-spacing:-.035em}
+.lr-intro{max-width:760px;padding:32px clamp(20px,5vw,64px) 8px;font-size:16.5px;line-height:1.62}
+.lr-intro a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:3px}
+.tx-list{padding:16px clamp(20px,5vw,64px) 72px;max-width:900px}
+.tx{border-top:1px solid var(--hair);padding:22px 0}
+.tx:first-child{border-top:1px solid var(--ink)}
+.tx .meta{font:400 11.5px var(--mono);color:var(--gray);letter-spacing:.04em;text-transform:uppercase}
+.tx .t{margin:6px 0 0;font-size:19px;font-weight:700;letter-spacing:-.01em}
+.tx .t a{color:var(--ink);text-decoration:none}
+.tx .t a:hover{text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:3px}
+.tx .links{margin-top:10px;display:flex;flex-wrap:wrap;gap:7px 9px;font:400 12px var(--mono)}
+.tx .links a{display:inline-block;border:1px solid var(--hair);padding:5px 10px;text-decoration:none;color:var(--ink)}
+.tx .links a:hover{border-color:var(--ink)}
+.tx .links a.llm{border-color:var(--red);color:var(--red)}
+.tx .links a.orig{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+</style>
+</head>
+<body>
+<header class="topbar" data-uilint="topbar">
+  <div>Igor Gulamov — Personal Record</div>
+  <div class="muted">Dubai · UTC+4</div>
+</header>
+<nav class="topnav" data-uilint="topnav" aria-label="Site">
+  <a href="/"><span class="arr">→</span> Index</a>
+  <a href="/bio/"><span class="arr">→</span> Bio</a>
+  <a href="/ai/"><span class="arr">→</span> AI</a>
+  <a href="/zk/"><span class="arr">→</span> ZK</a>
+  <a href="/audits/"><span class="arr">→</span> Audits</a>
+  <a href="/plasma/"><span class="arr">→</span> The Plasma Finding</a>
+  <a href="/physics/"><span class="arr">→</span> Physics</a>
+  <a href="/transcripts/" aria-current="page"><span class="arr">→</span> Transcripts</a>
+  <a href="/llms.txt"><span class="arr">→</span> llms.txt</a>
+</nav>
+<main>
+
+<header class="lr-head" data-uilint="lr-head">
+  <div class="lr-kicker">Igor Gulamov (snjax)</div>
+  <h1 class="lr-title">Transcripts</h1>
+</header>
+<div class="lr-intro"><p>Cleaned transcripts of my talks, panels, podcasts and interviews. Each is linked to its original video and published in two formats: a <strong>human-readable page</strong> and a <strong>raw <code>.txt</code></strong> meant for LLMs and AI research agents to ingest.</p>
+<p>Speech was transcribed with automatic speaker diarization, then edited to remove recognition artifacts and disfluencies; technical terms and names are normalized to match <a href="/bio/">the rest of this site</a>. For Russian-language sources, a Russian transcript and a separate English translation are both published.</p>
+</div>
+<div class="tx-list" data-uilint="tx-list">
+
+  <div class="tx">
+    <div class="meta">Conference talk · ETHPrague 2026 · May 2026 · English</div>
+    <div class="t"><a href="https://igorgulamov.com/transcripts/ethprague-2026/">Beyond Human Review: the arms race between offensive and defensive AI agents</a></div>
+    <div class="links">
+      <a class="orig" href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=r2oU7TFLDMc">▶ Original video</a>
+      <a href="https://igorgulamov.com/transcripts/ethprague-2026/">Read transcript</a>
+      <a class="llm" href="&#x2F;transcripts&#x2F;ethprague-2026.txt" title="Plain-text transcript for LLMs / AI agents (machine-readable)">Raw .txt — for LLMs</a>
+      
+      
+    </div>
+  </div>
+
+</div>
+
+</main>
+<footer class="footer" data-uilint="footer">
+  <div>Set in Helvetica — Grid 220/64</div>
+  <div>© 2026 Igor Gulamov</div>
+</footer>
+</body>
+</html>
