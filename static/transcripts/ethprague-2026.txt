@@ -1,0 +1,85 @@
+Beyond Human Review: the arms race between offensive and defensive AI agents
+Igor Gulamov (snjax) — ETHPrague 2026
+Original video: https://www.youtube.com/watch?v=r2oU7TFLDMc
+Human-readable version: https://igorgulamov.com/transcripts/ethprague-2026/
+Machine-readable transcript (this file) for LLMs and AI research agents.
+Auto-transcribed with speaker diarization and edited for readability; terms normalized to match https://igorgulamov.com/bio/
+Speakers: Host (MC), Igor Gulamov.
+Slide images referenced inline as markdown.
+====================================================================
+
+ETHPrague 2026 · "Beyond Human Review: The Inevitable Arms Race Between Offensive and Defensive AI Agents" · original video · raw transcript for LLMs
+
+Transcribed with automatic diarization and edited for readability; technical terms normalized. Speakers: the event Host and Igor Gulamov.
+
+
+
+Host: Next on stage we have Igor Gulamov, founder of ZeroPool and SavantChat. He's a security researcher and an AI engineer, among other things. He has audited 1inch and Aave, and today he's going to talk about "Beyond Human Review: the inevitable arms race between offensive and defensive AI." Welcome.
+
+![Title slide — "Beyond Human Review: The Inevitable Arms Race Between Offensive and Defensive AI Agents."](https://igorgulamov.com/img/transcripts/ethprague-2026/title.png)
+
+Igor Gulamov: So — "Beyond Human Review: the inevitable arms race between offensive and defensive AI." I'm Igor Gulamov, from SavantChat.
+
+![The seed task: a transfer function where `from == to` writes the same slot twice and mints tokens — unsolved by models before 2025.](https://igorgulamov.com/img/transcripts/ethprague-2026/transfer-function.png)
+
+We started building our solution about a year ago, in February 2025. We had some simple security tasks for AI, like this one. This is a transfer function with a vulnerability: when the `from` and `to` addresses are equal, the same memory slot is written twice, and you can mint tokens. We tested it with GPT-3.5, GPT-4, GPT-4o, Claude Opus and so on. In 2024 and earlier, no model could solve it. But in 2025, with a bit of help, they can. So we decided to build a solution to find security vulnerabilities and help protect projects from hackers.
+
+![The other side of the table: 2025–26 hack losses, and the rise of AI-improved, cross-domain exploits.](https://igorgulamov.com/img/transcripts/ethprague-2026/hacks-2025.png)
+
+But hackers also weaponize AI. Here we see the value of hacks in 2025 and the beginning of 2026 — and April 2026 was the worst month ever: a lot of hacks, and most of them AI-improved. We can see many signs that the hacks over the last year were AI-improved — things like `console.log` calls left in attacker contracts, or cross-domain hacks.
+
+Take the Bunni hack or the Balancer hack: before, we usually had crypto-economic hacks or access-control hacks, and they were separate. But now the reality is that a hack can be cross-domain, where the exploit is built from several different areas — PhD-level mathematics on one side, clever assembly tricks on the other — all combined into a single exploit. That was very rare in this market before, because I don't think Lazarus has a lot of PhD-level people. But now it's reality, because AI brings that level of expertise to black hats.
+
+About our solution: SavantChat reproduces the root cause of close to 100% of the vulnerabilities from 2025. That doesn't mean we reproduce every exploit path, but we find the root cause — what could be fixed so the exploit never happens. There are also academic benchmarks, and benchmarks from AI companies and independent researchers, showing that the ability to find security vulnerabilities and exploit paths is growing for these models.
+
+![Cost to reach a fixed intelligence level keeps collapsing — halving every one to five months.](https://igorgulamov.com/img/transcripts/ethprague-2026/cost-halving.png)
+
+This is a graph of how intelligence is being commoditized and getting cheaper. Each line is an intelligence level: it starts from a state-of-the-art model, and then you get the same intelligence from cheaper models later on. The cost halves every one to five months — it's not linear anymore, it's much faster. For example, the price became about 91 times cheaper over nine months for a certain reasoning-model level.
+
+So first you have a state-of-the-art model, and you use it to find vulnerabilities, wrapping a lot of harness around it to make requests efficiently — reducing the number of requests, using caching, advanced prompt engineering and so on — to make your product find vulnerabilities efficiently rather than expensively. Nine months pass, and now you can use that same intelligence for cheap commodity work — marking up lines in the codebase, chunking it for later stages. So you use it as the cheapest commodity on the market.
+
+Here are some results from METR: for LLMs, we see that a model can do big chunks of a job independently and get high results — like on SWE-bench. That kind of benchmark is important for building proofs of concept — not for finding the bugs, but for verifying them. Harness matters too.
+
+For example, we built CTFBench in February 2025 to measure the ability of AI to find security vulnerabilities and to measure the noise level — because if you have a very high detection rate but 100,000 slop reports, that one true signal is buried. So we measured CTFBench across agents from the market and found that they can often find something, but they're far from the state of the art. For example, our tool is free and public and works in minutes, not hours — but a competitor found only 4 of 7 issues in CTFBench.
+
+I showed earlier that a transfer function can be vulnerable; that transfer function, with a valid harness, was solvable with a reasoning model in February 2025, and all of CTFBench was solved by June 2025 with Gemini 2.5 Pro.
+
+![CTFBench — detection rate against the over-reporting (noise) index, scoring AI auditors like human ones.](https://igorgulamov.com/img/transcripts/ethprague-2026/ctfbench.png)
+
+Here is how CTFBench works. On the X axis we have the rate of reports per line of code — a high number of reports means high noise, lower is better. On the Y axis we have the share of detected vulnerabilities. We have several contracts with N vulnerabilities and measure the over-reporting index, and we measure the models' ability to find those vulnerabilities. We now see CTFBench being solved by GPT-5.5 and Gemini 3.1 Pro. There will be more powerful models on the market that can find more security vulnerabilities.
+
+This is EVMBench — we ran it a few days ago, and here are the results. Note: SavantChat scored 73.3% in May 2026 and 81.2% in June 2026; results and report: [auditdbio/savant-chat-evmbench-report.]
+
+![The SavantChat pipeline — each block is a race-against-cost closer, ending in critic filtering and PoC validation.](https://igorgulamov.com/img/transcripts/ethprague-2026/pipeline.png)
+
+This is how SavantChat works. On the input we have the source code and documentation. We extract samples — different chunking and ranking — and then run research passes on each sample. On the last check we also use a database of about 20,000 issues. Then a critic agent disputes more than 95% of the hypotheses, we remove duplicates, and so on.
+
+![The vulnerability landscape — a fully-automated UMAP of distilled vulnerability patterns (works for any language).](https://igorgulamov.com/img/transcripts/ethprague-2026/vulnerability-landscape.png)
+
+For the database, we take 20,000 vulnerabilities, select about 6,500 real ones, distill each one away from its project-specific details into a small, academic-style example of how that kind of vulnerability works and in which context, and then classify them. This is a UMAP of those classes. The map is obtained fully automatically, so it can be built not only for Solidity but for any area — Rust, C and other languages. This approach increases performance by 20 to 50%. It works like a senior auditor: when a senior auditor works with an LLM, they can recall how similar smart contracts were hacked before.
+
+The critic subagent is also important, because if you have a lot of noise it's hard to work with the hypotheses. The share of real findings in our reports is over 50%, if the codebase hasn't already been heavily audited and fixed.
+
+![Economic asymmetry — the roughly 10× cost advantage that currently favours the attacker over the white hat.](https://igorgulamov.com/img/transcripts/ethprague-2026/economic-asymmetry.png)
+
+Let's talk about the economic asymmetry between black hats, white hats and auditors. Say we have a $1 million contract and a black hat who can simply drain it. To find the vulnerability, the black hat has to spend, say, $100,000 on research — a lot of deep research to build the full exploit path from working pieces. But for a white hat, the bug-bounty reward on a $1 million contract won't be $1 million — it'll be some tens of thousands of dollars. And if the cost to find the vulnerability is $100,000, the economics don't work for white hats.
+
+That's the issue today. We already know a lot of AI-powered black hats, because their market hasn't stabilized yet, and building exploit paths isn't 100% automatic yet. But when it becomes fully automatic, economic factors will outweigh the personal ethics of the actors on the market. That's the problem.
+
+So what's the solution? The solution is preventing hacks through audits — because an auditor can work with much weaker security assumptions. If an auditor finds a broken invariant, it doesn't matter exactly how bad it is: the auditor flags that the invariant is broken and that parties could take value from other people's balances, and that's enough to fix it. If all invariants hold, there's no room for a million-dollar attack. And finding a broken invariant is an easier problem — one that is essentially 100% automated by AI today.
+
+So, three roles. What's coming next? First, agentic testing: before, we had retrieval — our models just read the code and made hypotheses and checked them. But now we can run experiments: write an experiment, execute it, and get feedback — the way this became possible in software engineering some time ago. Here we're talking about auditing and finding vulnerabilities. That's deep research, so we need thousands of times more inference — and now that's possible. Before, it would have been possible in theory, but it cost millions of dollars. Now you can write scripts describing what to check, hand them to the models, and it works.
+
+Next is formal verification. AI can now write formal proofs in tools like Certora or Halmos. That means an AI agent can ask high-level questions — what happens to this invariant if something goes wrong? — and this approach reduces inference a lot and reduces hallucinations a lot.
+
+Next is model orchestration. We already do some: we use cheap models to mark up the codebase, slice chunks and find related documentation. But now there's a very big gap between super-smart models and super-cheap models, with a lot of grades in between. That means we should use the next level of orchestration — different tiers of intelligence for different tasks, so we don't need PhD-level math or economics on every request, but we do need advanced orchestration across all these models. In production, orchestration and proof-of-concept building are automated, and we're actively working on implementing formal verification.
+
+![The four-layer security stack of late 2026: static analyzers → AI scanners → PoC/formal proofs → human auditors.](https://igorgulamov.com/img/transcripts/ethprague-2026/security-stack.png)
+
+About the future security stack: it should go static analyzers first, then AI scanners, then proofs for the different properties, then human auditors for business logic and architecture. So the race isn't over. And it's important to understand that with auditors, AI, white and black hats, we now have two separate domains of vulnerabilities: the human domain and the AI domain. They're parallel, separate stories. In each domain there are weak, simple vulnerabilities and hard ones that are very hard to catch. To be safe, a project should now use state-of-the-art AI tools to protect against AI black hats, and the best human auditors to protect against top human black hats.
+
+![Closing slide — savant.chat.](https://igorgulamov.com/img/transcripts/ethprague-2026/savantchat.png)
+
+So — thank you for your attention. If you have questions, I can answer.
+
+Host: We have many. One last question from the audience before we continue — otherwise I'm sure people can find you afterwards.

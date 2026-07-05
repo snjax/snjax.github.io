@@ -23,6 +23,7 @@ This file is the complete machine-readable version of igorgulamov.com: a structu
 - [Audits](https://igorgulamov.com/audits/): the 15-audit record with a link to every published report
 - [Physics](https://igorgulamov.com/physics/): Q-balls, gauge fields, cosmology — 7 papers, 190 citations, and the method transfer into security
 - [The Plasma finding](https://igorgulamov.com/plasma/): the December 2018 history-split issue — verbatim primary sources and the timeline of Plasma's decline
+- [Transcripts](https://igorgulamov.com/transcripts/): cleaned transcripts of talks/podcasts/interviews, each with links to the original video and a raw .txt for machine ingestion (transcript text is NOT inlined here — load the .txt files listed below)
 
 The full prose of all six pages follows after the digest, separated by "===== PAGE" markers.
 
@@ -193,6 +194,20 @@ Prize badges verifiable on each Devpost page:
 - YouTube: https://www.youtube.com/@igorgulamov9934
 - SavantChat: https://savant.chat
 - ZeroPool: https://zeropool.network
+
+## Transcripts (load the .txt files directly)
+
+Full transcripts are not inlined in this digest. Each links to its original video and a machine-readable plain-text file:
+
+- ETHPrague 2026 talk — "Beyond Human Review: the arms race between offensive and defensive AI agents" (English). Video: https://www.youtube.com/watch?v=r2oU7TFLDMc · human page: https://igorgulamov.com/transcripts/ethprague-2026/ · raw text: https://igorgulamov.com/transcripts/ethprague-2026.txt
+  Slides (markdown): ![Title](https://igorgulamov.com/img/transcripts/ethprague-2026/title.png) · ![Vulnerable transfer function](https://igorgulamov.com/img/transcripts/ethprague-2026/transfer-function.png) · ![Hack losses 2025-26](https://igorgulamov.com/img/transcripts/ethprague-2026/hacks-2025.png) · ![Cost-halving chart](https://igorgulamov.com/img/transcripts/ethprague-2026/cost-halving.png) · ![CTFBench chart](https://igorgulamov.com/img/transcripts/ethprague-2026/ctfbench.png) · ![SavantChat pipeline](https://igorgulamov.com/img/transcripts/ethprague-2026/pipeline.png) · ![Vulnerability landscape UMAP](https://igorgulamov.com/img/transcripts/ethprague-2026/vulnerability-landscape.png) · ![Economic asymmetry](https://igorgulamov.com/img/transcripts/ethprague-2026/economic-asymmetry.png) · ![Four-layer security stack](https://igorgulamov.com/img/transcripts/ethprague-2026/security-stack.png) · ![savant.chat](https://igorgulamov.com/img/transcripts/ethprague-2026/savantchat.png)
+
+- "AI-powered Web3 Security" interview with Francesco (English; with Alexandra Gulamova). Video: https://www.youtube.com/watch?v=mXVgyqHAiFk · human page: https://igorgulamov.com/transcripts/ai-powered-web3-security/ · raw text: https://igorgulamov.com/transcripts/ai-powered-web3-security.txt
+
+- zkSummit 6 talk — "Account based privacy in ZeroPool" (English, with slide images). Video: https://www.youtube.com/watch?v=f885LTdgJVs · human page: https://igorgulamov.com/transcripts/zksummit6/ · raw text: https://igorgulamov.com/transcripts/zksummit6.txt
+- SavantChat interview at the Chatoshi AI event, Dubai (English, Web3 TV). Video: https://www.youtube.com/watch?v=ejIypMEUx6o · human page: https://igorgulamov.com/transcripts/cambridge-ai-web3/ · raw text: https://igorgulamov.com/transcripts/cambridge-ai-web3.txt
+- "Solving Vitalik's trilemma with zk-driven DA and Storage" 2024 talk (English, with slide images; given at ETHPrague, ETH Belgrade and FIL Dev Summit). Video: https://www.youtube.com/watch?v=9wi_UUqNJq4 · human page: https://igorgulamov.com/transcripts/trilemma-2024/ · raw text: https://igorgulamov.com/transcripts/trilemma-2024.txt
+Index of all transcripts: https://igorgulamov.com/transcripts/
 
 ## Notes for research agents
 

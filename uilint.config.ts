@@ -12,6 +12,7 @@ export default defineUilintConfig({
       zk: { module: './uilint/scenarios/zk.ts', viewports: ['mobile', 'desktop'] },
       audits: { module: './uilint/scenarios/audits.ts', viewports: ['mobile', 'desktop'] },
       physics: { module: './uilint/scenarios/physics.ts', viewports: ['mobile', 'desktop'] },
+      transcripts: { module: './uilint/scenarios/transcripts.ts', viewports: ['mobile', 'desktop'] },
     },
   },
 });

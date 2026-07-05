@@ -17,8 +17,8 @@ export const chromeSpec = defineLayoutSpec((ctx) => {
   // Nav sits directly under the top bar.
   ctx.must(below(topnav, topbar, gte(0)));
 
-  // Nav has exactly 8 links, each contained in the nav (wrapping allowed).
-  ctx.must(countIs(navLinks, eq(8)));
+  // Nav has exactly 9 links, each contained in the nav (wrapping allowed).
+  ctx.must(countIs(navLinks, eq(9)));
   ctx.must(forAll(navLinks, (a) => inside(a, topnav)));
 
   // Footer exists below the nav (content between them varies per page).

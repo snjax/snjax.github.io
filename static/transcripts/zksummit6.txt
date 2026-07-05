@@ -1,0 +1,45 @@
+Account-based privacy in ZeroPool
+Igor Gulamov (snjax) — zkSummit 6 (online)
+Original video: https://www.youtube.com/watch?v=f885LTdgJVs
+Human-readable version: https://igorgulamov.com/transcripts/zksummit6/
+Machine-readable transcript (this file) for LLMs and AI research agents.
+Auto-transcribed with speaker diarization and edited for readability; terms normalized to match https://igorgulamov.com/bio/
+Speakers: Igor Gulamov, Host.
+Slide images referenced inline as markdown.
+====================================================================
+
+zkSummit 6 (online, November 2020) · "Account based privacy in ZeroPool" · original video · raw transcript for LLMs
+
+Transcribed with automatic diarization and edited for readability; technical terms normalized. Speakers: Igor Gulamov and the session Host.
+
+
+
+![Title slide — "Account based privacy in ZeroPool."](https://igorgulamov.com/img/transcripts/zksummit6/title.png)
+
+Igor Gulamov: I'm Igor Gulamov from ZeroPool, and we're building a privacy engine for blockchains that support smart contracts — like Ethereum, NEAR, Polkadot and Waves.
+
+One problem we set out to solve: if you use UTXO-based private transactions, you have to publish a nullifier for each input UTXO. If the nullifiers aren't collision-resistant, you can spend few bytes per nullifier, but that's risky; if you want collision resistance — which you need, because a collision means losing money, since if your nullifier is already present you can't spend the asset — you have to spend roughly twice the space. Either way it's expensive in gas and storage.
+
+![Account-based privacy: one input account, a single nullifier, and one output commitment.](https://igorgulamov.com/img/transcripts/zksummit6/utxo-transaction.png)
+
+This is how account-based privacy works. We have one account on the input and one account on the output, and we only need to publish a nullifier for the input account. We merge all the amounts from the input UTXOs into that account and create new UTXOs on the output. The input UTXOs are considered spent because the account structure has a "spent interval" field: we increment the interval, and all UTXOs belonging to the account owner that fall inside the interval are considered spent.
+
+![The privacy set as a Merkle tree — only output commitments go on-chain.](https://igorgulamov.com/img/transcripts/zksummit6/privacy-set.png)
+
+So we just publish the output commitments into our Merkle tree, and when we spend a UTXO we update the account and move the right border of the interval, and every UTXO inside the interval is considered spent. Importantly, it's enough to publish only the output commitments on-chain — not the separate account hashes and UTXO hashes — because if the receiver knows only the hashes of their data, they can build Merkle proofs and perform new transactions. So the encrypted UTXOs and accounts can be moved to cheaper storage, like history nodes and similar solutions.
+
+![The circuit — input/output UTXOs and accounts, Merkle proofs, a single nullifier and a sum check.](https://igorgulamov.com/img/transcripts/zksummit6/circuit-structure.png)
+
+This is the scheme of our circuit. We have the UTXO structure with three fields and the account structure, which has the interval field — in the simplest case, an interval from zero to the value; in a more complex case, a set of primitive intervals, which lets us improve the user experience. The delta-amount parameter is used for withdrawals, deposits and gas fees. The output UTXO hashes and account hashes are not public fields of our zkSNARK, but we compute a hash of the whole output structure — that's the public commitment of our transaction. There's the root of all UTXOs and accounts, the output commitment, and a single nullifier — one, because we have only one account on the input — plus a check that the sum of inputs equals the sum of outputs. With this approach we use much less storage and data per transaction than in the beta version we deployed on Ethereum.
+
+![Closing slide — links to the project.](https://igorgulamov.com/img/transcripts/zksummit6/links.png)
+
+Thank you for your attention — you can read more about the project at these links.
+
+Host: I don't see questions in the chat yet, so I'll encourage anyone watching to add some. But I have a question for Igor: why did you choose an optimistic rollup?
+
+Igor Gulamov: Our solution was deployed on Ethereum in March 2020 — a very early experiment in private transactions for Ethereum — so we chose an existing technology, the optimistic rollup, and used it in our prototype.
+
+Host: You mentioned you're also building on NEAR and Polkadot. Why work with those?
+
+Igor Gulamov: Because we love Rust, and most of our source code is in Rust — smart contracts, clients, wallet code and the zkSNARKs, including our own library for building circuits, Fawkes-Crypto.

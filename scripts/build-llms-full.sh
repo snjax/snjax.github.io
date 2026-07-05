@@ -3,6 +3,8 @@
 # followed by the full prose of every page, so the machine-readable file never
 # drifts from the published pages. Run before `zola build`.
 set -euo pipefail
+
+python3 scripts/gen-transcript-txt.py >/dev/null 2>&1 || true
 cd "$(dirname "$0")/.."
 
 strip_frontmatter() {

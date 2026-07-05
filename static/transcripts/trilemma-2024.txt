@@ -1,0 +1,53 @@
+Solving Vitalik's trilemma with zk-driven DA and storage
+Igor Gulamov (snjax) — ETHPrague / ETH Belgrade 2024
+Original video: https://www.youtube.com/watch?v=9wi_UUqNJq4
+Human-readable version: https://igorgulamov.com/transcripts/trilemma-2024/
+Machine-readable transcript (this file) for LLMs and AI research agents.
+Auto-transcribed with speaker diarization and edited for readability; terms normalized to match https://igorgulamov.com/bio/
+Speakers: Igor Gulamov, Host.
+Slide images referenced inline as markdown.
+====================================================================
+
+ETHPrague / ETH Belgrade 2024 · "Solving Vitalik's trilemma with zk-driven DA and Storage" · original video · raw transcript for LLMs
+
+Transcribed with automatic diarization and edited for readability; technical terms normalized. Speakers: Igor Gulamov and the Host. (Igor gave this talk at three 2024 events — ETHPrague, ETH Belgrade and FIL Dev Summit; this recording is from ETHPrague.)
+
+
+
+Host: Thank you for coming for the next talk. Please welcome Igor Gulamov — he's going to give a talk about solving Vitalik's trilemma with zk-driven DA and storage. Welcome.
+
+Igor Gulamov: Hi. I'll tell you about our solution to Vitalik's trilemma with zk-driven data availability and storage.
+
+What is Vitalik's trilemma? We have three properties of a decentralized ledger — scalability, security and decentralization — and the trilemma says you can pick only two of the three. Solving it matters because mass adoption, especially migrating from web2 to web3, needs scalability at very low cost: solutions like Farcaster need a lot of storage and transactions. That's what makes heavier applications possible — not just a decentralized Twitter, but a decentralized Instagram, Facebook, maybe YouTube.
+
+![The historical approaches to the trilemma, up to today's data-availability layers.](https://igorgulamov.com/img/transcripts/trilemma-2024/historical.png)
+
+The historical review: first came the multi-chain ecosystems proposed by Polkadot and Cosmos — a core engine on which multiple blockchains are implemented and which they use for cross-chain communication. Next was Plasma, based on game theory: if something goes wrong, anyone can start a game, win it, and get their assets back. Then came the evolution of Plasma — optimistic rollups, ZK rollups and ZK validiums. The most recent solution is the data-availability layer, implemented in Ethereum as proto-danksharding, and by projects like Celestia, EigenDA and Avail. One issue with data availability is that the data is stored only for a short time — two weeks or a month. That comes from Plasma, where it was enough to watch the operator for two weeks: you save the data you need, and then you can transact with it.
+
+![Rollups scale computation but not data — the data still floats up to L1.](https://igorgulamov.com/img/transcripts/trilemma-2024/why-rollups.png)
+
+Why aren't rollups enough to solve the trilemma? Because rollups don't scale the data. A rollup has an L2 with state-transition proofs, but it also has the data, and it must publish that data in a high-soundness way, because all users need it to transact — you can't transact on a rollup if you don't have the data. That's also why you can't simply deploy rollups inside rollups: the data floats up from L2 to L1. Before danksharding it was stored as calldata; now it's danksharding, or another DA solution — but either way it's a bottleneck, and current DA solutions store the data only for a short window, after which users must store it themselves or trust some off-chain third party. To solve the trilemma we need recursive rollups, and we need to solve this "data floating up" problem.
+
+![The data-centric approach — and the two improvements it needs.](https://igorgulamov.com/img/transcripts/trilemma-2024/storage-centric.png)
+
+Our approach is data-centric. Existing solutions — Filecoin, Arweave, Ethstorage — use data-availability sampling to prove the data is stored and available, and miners earn rewards for the data their nodes store. To solve the trilemma we need two improvements. First, Reed-Solomon codes, for more than 10× better storage utilization: today's solutions use replication, so for high-soundness storage you make many copies and hope at least one survives. With Reed-Solomon codes you mix all the data together into a blow-up, and if any sufficient fraction of the blown-up data is available, you can reconstruct the source — far more efficient than replication, with higher soundness. Second, a whole-chain provable ZK proof. Mina showed you can compress many state transitions and consensus operations into a single proof; in our research we showed that all the data-specific functionality a data-centric blockchain needs can be proven with zkSNARKs in one single proof. It works like a ZK data-availability-and-storage oracle — very useful for solving the trilemma and building a recursive rollup system.
+
+![Reed-Solomon codes — encode the data as a polynomial, blow it up, and recover from any sufficient subset of points.](https://igorgulamov.com/img/transcripts/trilemma-2024/rs-codes.png)
+
+Here's how Reed-Solomon codes work. Say we have four numbers; we encode them as a degree-3 polynomial. Then we blow it up — we find more points. If we later lose part of the data, any four points are enough to fix a degree-3 polynomial, so we can recover the source data. That's much more efficient than taking those four points, making many copies and hoping each point survives — because if the data is large, there's a high probability at least one point is lost. Reed-Solomon codes are better because we can prove that all the data is safe.
+
+The important problem is how to prove to every storage node that its shard is correct. We do it with polynomial commitments: we have a commitment to the source data, and a polynomial equation that proves each node's shard commitment is a correct Reed-Solomon shard. So every node is sure it received the right chunk, and anyone can collect a subset of shards. With a blow-up factor of 8 — 64 out of 512 — if you collect any 64 of the 512 shards, you can reconstruct the source.
+
+Here's how the data-centric layer works: a data storage network across L2 and L1. We make zero-knowledge proofs that the data is stored and available — we can, because we can prove in a SNARK everything related to storage and availability, including state transitions, random data-availability samplings and node mining. Then we join that with the rollup's execution proof, so the combined proof carries both the state transition and the data availability. When we publish it on-chain, we don't need to float the blocks up: the proof already guarantees the data is stored and available, and users can use it.
+
+![Parameters of the data-centric rollup — and the unlock: recursion.](https://igorgulamov.com/img/transcripts/trilemma-2024/parameters.png)
+
+Some parameters of such a rollup: capacity over 1 petabyte; soundness over 110 bits — meaning that even if half the network is malicious, data is lost only with probability 2⁻¹¹⁰; and a cost of $0.15 per gigabyte per year on a Hetzner node, already including the 8× blow-up (cheaper on specialized storage rigs). And recursion is unlocked, because this rollup provides data for itself: it can be deployed inside a rollup without floating any blocks up, so you can build decentralized infrastructure of rollups.
+
+Can we get more scalability? Yes — because we unlocked recursive rollups, we can build a network of rollups into an infinitely scalable system. The one overhead is that we have to manage the mining nodes on the top layer to prevent a concentration of malicious nodes in a single segment. We modeled all of this and have a strict proof that the soundness estimate holds asymptotically for an infinitely scalable system with this architecture: when someone leaves the pool we find a replacement node, and we do two random mixings — enough to prevent malicious nodes from concentrating in one rollup.
+
+![Closing slide — links to the sharded-storage and recursive-zkDA research.](https://igorgulamov.com/img/transcripts/trilemma-2024/links.png)
+
+Here are some links to our research. I think solving Vitalik's trilemma matters for the migration from web2 to web3 — not just a decentralized Twitter, but a decentralized Uber, Instagram, Facebook and so on — and for general-purpose blockchain problems too. Thank you for your attention.
+
+Host: Thank you, Igor. Any questions? … No questions. Thank you very much for your presentation.

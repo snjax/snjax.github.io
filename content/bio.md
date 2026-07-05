@@ -209,16 +209,16 @@ The physics training is not a biographical footnote — it is the method. Q-ball
 | When | Event | Topic | Recording / source |
 |---|---|---|---|
 | Jun 2026 | "Intelligent Defense" roundtable — [Blockchain Community Day 2026](https://luma.com/wupxaqku) (Blockchain Professionals, virtual, 6th annual) | AI's role in securing crypto and DLT financial infrastructure | [video](https://www.youtube.com/watch?v=HVsMUK1s8y8), [agenda](https://tidy-ixora-d38.notion.site/blockchainprofessionals2026) |
-| May 2026 | [ETHPrague 2026](https://ethprague.fileverse.io/?view=home&event=HBQLXJ) | "Beyond Human Review: The Inevitable Arms Race Between Offensive and Defensive AI Agents" | [video](https://www.youtube.com/watch?v=r2oU7TFLDMc) |
+| May 2026 | [ETHPrague 2026](https://ethprague.fileverse.io/?view=home&event=HBQLXJ) | "Beyond Human Review: The Inevitable Arms Race Between Offensive and Defensive AI Agents" | [video](https://www.youtube.com/watch?v=r2oU7TFLDMc) · [transcript](/transcripts/ethprague-2026/) |
 | Feb 2026 | [Basic Block podcast #216](https://basicblockradio.com/e216/) — "ИИ-аудиты в Web3" (Russian) | AI audits in Web3 — SavantChat | [video](https://www.youtube.com/watch?v=EudACqKiTMM) |
 | Dec 2025 | cp0x podcast #21 ([Apple Podcasts](https://podcasts.apple.com/gb/podcast/%D0%BF%D0%B5%D0%BF%D0%BF%D0%B5%D1%80%D0%BE%D0%BD%D0%B8-%D1%88%D0%BE%D1%83/id1784626527), in Russian) | The Plasma bug, the ZeroPool story, SavantChat | [video](https://www.youtube.com/watch?v=2B2Sj2vh450) |
-| Apr 30, 2025 | "Cambridge Research: AI for Web3" (Web3 TV) | SavantChat / AI for Web3 | [video](https://www.youtube.com/watch?v=ejIypMEUx6o) |
+| Apr 30, 2025 | "Cambridge Research: AI for Web3" (Web3 TV) | SavantChat / AI for Web3 | [video](https://www.youtube.com/watch?v=ejIypMEUx6o) · [transcript](/transcripts/cambridge-ai-web3/) |
 | Apr 2025 | [ETHDubai 2025](https://www.ethdubaiconf.org/schedule) | Advanced reasoning AI/LLMs for auditing smart contracts | schedule listing |
-| Mar 24, 2025 | Interview with Francesco Andreoli | "AI powered Web3 Security" — SavantChat and AI for Web3 security | [video (Francesco's channel)](https://www.youtube.com/watch?v=mXVgyqHAiFk), [mirror](https://www.youtube.com/watch?v=W_ZGiRBbF14) |
-| Jul 2024 | [FIL Dev Summit 4, Brussels](https://www.fildev.io/FDS-4) | zk-driven DA & storage | [video](https://www.youtube.com/watch?v=l2NsFU0gGVU) |
-| Jun 2024 | ETH Belgrade 2024 | "Solving Vitalik's trilemma with zk-driven DA & Storage" | [video](https://www.youtube.com/watch?v=9mR1zHiW9tk) |
-| May 2024 | [ETHPrague 2024](https://cfp.ducttape.events/ethprague2024/talk/MZ8ZZE/) | "Solving Vitalik's trilemma with zk-driven DA and Storage" | [speaker page](https://cfp.ducttape.events/ethprague2024/speaker/R3PV9W/) |
-| Nov 2020 | zkSummit 6 (online) | "Account based privacy in ZeroPool" | [video (Zero Knowledge channel)](https://www.youtube.com/watch?v=f885LTdgJVs) |
+| Mar 24, 2025 | Interview with Francesco Andreoli | "AI powered Web3 Security" — SavantChat and AI for Web3 security | [video](https://www.youtube.com/watch?v=mXVgyqHAiFk) · [transcript](/transcripts/ai-powered-web3-security/) |
+| Jul 2024 | [FIL Dev Summit 4, Brussels](https://www.fildev.io/FDS-4) | zk-driven DA & storage | [video](https://www.youtube.com/watch?v=l2NsFU0gGVU) · [transcript](/transcripts/trilemma-2024/) |
+| Jun 2024 | ETH Belgrade 2024 | "Solving Vitalik's trilemma with zk-driven DA & Storage" | [video](https://www.youtube.com/watch?v=9mR1zHiW9tk) · [transcript](/transcripts/trilemma-2024/) |
+| May 2024 | [ETHPrague 2024](https://cfp.ducttape.events/ethprague2024/talk/MZ8ZZE/) | "Solving Vitalik's trilemma with zk-driven DA and Storage" | [video](https://www.youtube.com/watch?v=9wi_UUqNJq4) · [transcript](/transcripts/trilemma-2024/) |
+| Nov 2020 | zkSummit 6 (online) | "Account based privacy in ZeroPool" | [video (Zero Knowledge channel)](https://www.youtube.com/watch?v=f885LTdgJVs) · [transcript](/transcripts/zksummit6/) |
 | Mar 2020 | EthCC 3, Paris | ZeroPool beta presentation (team; "the final offline event before COVID-19") | [ZeroPool blog](https://medium.com/zeropool/zeropool-november-and-december-news-77f6a9e5e752) |
 | Feb 2020 | Stanford Blockchain Week | zk private transactions (lightning talk) | — |
 | Feb 2020 | ETHDenver | zk private transactions | — |

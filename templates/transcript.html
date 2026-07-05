@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block title %}{% if page.extra.seo_title %}{{ page.extra.seo_title }}{% else %}{{ page.title }}{% endif %} — Igor Gulamov{% endblock title %}
+{% block description %}{{ page.description }}{% endblock description %}
+{% block canonical %}{{ page.permalink | safe }}{% endblock canonical %}
+{% block ogtype %}article{% endblock ogtype %}
+{% block ogtitle %}{{ page.title }}{% endblock ogtitle %}
+{% block ogdescription %}{{ page.description }}{% endblock ogdescription %}
+{% block ogurl %}{{ page.permalink | safe }}{% endblock ogurl %}
+{% block twtitle %}{{ page.title }}{% endblock twtitle %}
+{% block twdescription %}{{ page.description }}{% endblock twdescription %}
+{% if page.extra.keywords %}{% block keywords %}{{ page.extra.keywords }}{% endblock keywords %}{% endif %}
+{% block ogextra %}<meta property="article:published_time" content="{{ page.date }}">
+<meta property="article:modified_time" content="{% if page.updated %}{{ page.updated }}{% else %}{{ page.date }}{% endif %}">
+<meta property="article:author" content="Igor Gulamov">
+<meta property="article:section" content="Transcripts">{% endblock ogextra %}
+
+{% block jsonld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": {{ page.title | json_encode | safe }},
+  "description": {{ page.description | json_encode | safe }},
+  "uploadDate": "{{ page.date }}",
+  "thumbnailUrl": "https://igorgulamov.com/img/igor.jpg",
+  "contentUrl": "{{ page.extra.video_url }}",
+  "embedUrl": "{{ page.extra.video_url }}",
+  "transcript": "{{ page.permalink | safe }}",
+  "author": { "@type": "Person", "@id": "https://igorgulamov.com/#person", "name": "Igor Gulamov", "url": "https://igorgulamov.com/" },
+  "publisher": { "@type": "Person", "@id": "https://igorgulamov.com/#person", "name": "Igor Gulamov", "url": "https://igorgulamov.com/", "image": "https://igorgulamov.com/img/igor.jpg" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://igorgulamov.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Transcripts", "item": "https://igorgulamov.com/transcripts/" },
+    { "@type": "ListItem", "position": 3, "name": {{ page.title | json_encode | safe }}, "item": "{{ page.permalink | safe }}" }
+  ]
+}
+</script>
+{% endblock jsonld %}
+
+{% block style %}
+.lr-head{padding:56px clamp(20px,5vw,64px) 44px;border-bottom:1px solid var(--ink)}
+.lr-kicker{font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--red);text-transform:uppercase}
+h1.lr-title{margin:16px 0 0;font-size:clamp(30px,5vw,50px);line-height:1.06;font-weight:700;letter-spacing:-.03em;max-width:900px}
+.src-box{margin:22px 0 0;display:flex;flex-wrap:wrap;gap:8px 10px;font:400 12px var(--mono)}
+.src-box a,.src-box span{display:inline-block;border:1px solid var(--hair);padding:6px 11px;text-decoration:none;color:var(--ink)}
+.src-box a:hover{border-color:var(--ink)}
+.src-box .llm{border-color:var(--red);color:var(--red)}
+.src-meta{margin-top:14px;font:400 12px var(--mono);color:var(--gray);letter-spacing:.03em}
+.lr-body{max-width:760px;padding:36px clamp(20px,5vw,64px) 72px;font-size:16.5px;line-height:1.62}
+.lr-body p{margin:0 0 14px;overflow-wrap:anywhere}
+.lr-body p strong{font-weight:700}
+.lr-body a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:3px}
+.lr-body hr{border:none;border-top:1px solid var(--hair);margin:26px 0}
+.lr-body em{color:var(--gray)}
+.lr-body figure{margin:24px 0}
+.lr-body figure img{width:100%;border:1px solid var(--hair)}
+.lr-body figcaption{margin-top:6px;font:400 12px var(--mono);color:var(--gray)}
+.lr-body h2{margin:40px 0 14px;padding-top:22px;border-top:1px solid var(--ink);font-size:22px;letter-spacing:-.01em}
+{% endblock style %}
+
+{% block content %}
+<article>
+  <header class="lr-head" data-uilint="lr-head">
+    <div class="lr-kicker">Transcript · {{ page.extra.source_kind | default(value="Talk") }}{% if page.extra.event %} · {{ page.extra.event }}{% endif %}</div>
+    <h1 class="lr-title">{{ page.title }}</h1>
+    <div class="src-box" data-uilint="src-box">
+      <a href="{{ page.extra.video_url }}">▶ Original video{% if page.extra.video_label %} — {{ page.extra.video_label }}{% endif %}</a>
+      <a class="llm" href="{{ page.extra.raw_txt }}" title="Plain-text transcript for LLMs and AI agents">ↆ Raw .txt (for LLMs)</a>
+      <a href="/transcripts/">↑ All transcripts</a>
+      {% if page.extra.alt_lang_url %}<a href="{{ page.extra.alt_lang_url }}">⇄ {{ page.extra.alt_lang_label }}</a>{% endif %}
+      {% if page.extra.raw_txt_ru %}<a class="llm" href="{{ page.extra.raw_txt_ru }}" title="Russian plain-text transcript for LLMs">ↆ Raw .txt (RU)</a>{% endif %}
+    </div>
+    <div class="src-meta">{{ page.extra.lang_label | default(value="English") }}{% if page.extra.speakers %} · speakers: {{ page.extra.speakers }}{% endif %} · auto-transcribed &amp; edited</div>
+  </header>
+  <div class="lr-body" data-uilint="lr-body">
+    {{ page.content | safe }}
+  </div>
+</article>
+{% endblock content %}

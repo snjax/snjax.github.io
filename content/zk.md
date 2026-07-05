@@ -19,7 +19,7 @@ schema_type = "Article"
 
 [ZeroPool](https://zeropool.network/) is a fully private multi-blockchain transaction protocol: sender, receiver and amount are all hidden, with a common anonymity set and low fees. I founded it at ETHBoston in September 2019, where it reached the main-stage finals and took the SKALE prize (team: Igor Gulamov, Artem Vorobev, Nick Kozlov — [Devpost](https://devpost.com/software/zeropool), [demo video](https://www.youtube.com/watch?v=FE37_hiV4kQ)). Later demos: [a private transaction on Ethereum mainnet](https://www.youtube.com/watch?v=cNMzKfktATM), [ZeroPool on Substrate](https://www.youtube.com/watch?v=DQ8gbNTOP-g).
 
-I presented ZeroPool's account-based privacy design at **zkSummit 6** (online, November 2020) — [talk recording](https://www.youtube.com/watch?v=f885LTdgJVs) on the Zero Knowledge channel. Earlier that year: a zk-private-transactions talk at **ETHDenver** and a lightning talk on the same topic at **Stanford Blockchain Week** (both February 2020), and the ZeroPool beta shown at **EthCC 3 in Paris** (March 2020) — "the final offline event before COVID-19," per [ZeroPool's blog](https://medium.com/zeropool/zeropool-november-and-december-news-77f6a9e5e752).
+I presented ZeroPool's account-based privacy design at **zkSummit 6** (online, November 2020) — [talk recording](https://www.youtube.com/watch?v=f885LTdgJVs) ([transcript](/transcripts/zksummit6/)) on the Zero Knowledge channel. Earlier that year: a zk-private-transactions talk at **ETHDenver** and a lightning talk on the same topic at **Stanford Blockchain Week** (both February 2020), and the ZeroPool beta shown at **EthCC 3 in Paris** (March 2020) — "the final offline event before COVID-19," per [ZeroPool's blog](https://medium.com/zeropool/zeropool-november-and-december-news-77f6a9e5e752).
 
 Technically, ZeroPool is a UTXO-based design: UTXO hashes live in calldata, the Merkle root in storage, and UTXOs plus transactions are encrypted to the receiver's public key — the design write-up is on [ethresear.ch (September 2019)](https://ethresear.ch/t/zeropool-explanation/6122), with the gas-scaling follow-up ["State of ZeroPool"](https://ethresear.ch/t/state-of-zeropool-scaling-anonymous-transactions-for-ethereum/6946) (February 2020) showing transaction costs dropping from 40k toward 15k gas with batching.
 
@@ -63,7 +63,7 @@ In 2024 the research line shifted to the data problem: how to store and prove la
 - [**Using FRI for DA with optimistic correctable commitments in rollups**](https://ethresear.ch/t/using-fri-for-da-with-optimistic-correctable-commitments-in-rollups/20467) (September 2024).
 - Research index: [zeropool.network/research](https://zeropool.network/research/).
 
-I gave the "Solving Vitalik's trilemma with zk-driven DA and Storage" talk at three 2024 events: [ETHPrague 2024](https://www.youtube.com/watch?v=9wi_UUqNJq4), [ETH Belgrade 2024](https://www.youtube.com/watch?v=9mR1zHiW9tk), and [FIL Dev Summit 4, Brussels](https://www.youtube.com/watch?v=l2NsFU0gGVU).
+I gave the "Solving Vitalik's trilemma with zk-driven DA and Storage" talk at three 2024 events: [ETHPrague 2024](https://www.youtube.com/watch?v=9wi_UUqNJq4), [ETH Belgrade 2024](https://www.youtube.com/watch?v=9mR1zHiW9tk), and [FIL Dev Summit 4, Brussels](https://www.youtube.com/watch?v=l2NsFU0gGVU) — [full transcript with slides](/transcripts/trilemma-2024/).
 
 ## Where it started, and where it went
 
