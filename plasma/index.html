@@ -12,7 +12,7 @@
   gtag('config', 'G-RHCPQKYLTP');
 </script>
 <title>The Plasma Prime history-split finding — Igor Gulamov</title>
-<meta name="description" content="How Igor Gulamov&#x27;s December 2018 history-split finding broke Plasma Prime&#x27;s O(1) exit promise — explained with verbatim primary sources.">
+<meta name="description" content="Igor Gulamov proposed one design in the RSA-accumulator Plasma Prime family, then found the history-split flaw that broke the whole family&#x27;s O(1) exit promise — with verbatim primary sources.">
 <meta name="keywords" content="Igor Gulamov, snjax, SavantChat, AI code audit, AI smart contract audit, ZeroPool, zkSNARK, zero-knowledge proofs, smart contract security, Ethereum, Plasma, cryptography engineer">
 <meta name="author" content="Igor Gulamov">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
@@ -27,7 +27,7 @@
 <meta property="og:site_name" content="Igor Gulamov (snjax)">
 <meta property="og:locale" content="en_US">
 <meta property="og:title" content="The history-split finding: how Plasma Prime&#x27;s O(1) promise fell">
-<meta property="og:description" content="How Igor Gulamov&#x27;s December 2018 history-split finding broke Plasma Prime&#x27;s O(1) exit promise — explained with verbatim primary sources.">
+<meta property="og:description" content="Igor Gulamov proposed one design in the RSA-accumulator Plasma Prime family, then found the history-split flaw that broke the whole family&#x27;s O(1) exit promise — with verbatim primary sources.">
 <meta property="og:url" content="https://igorgulamov.com/plasma/">
 <meta property="og:image" content="https://igorgulamov.com/img/igor.jpg">
 <meta property="og:image:type" content="image/jpeg">
@@ -42,7 +42,7 @@
 <meta name="twitter:site" content="@igorgulamov">
 <meta name="twitter:creator" content="@igorgulamov">
 <meta name="twitter:title" content="The history-split finding: how Plasma Prime&#x27;s O(1) promise fell">
-<meta name="twitter:description" content="How Igor Gulamov&#x27;s December 2018 history-split finding broke Plasma Prime&#x27;s O(1) exit promise — explained with verbatim primary sources.">
+<meta name="twitter:description" content="Igor Gulamov proposed one design in the RSA-accumulator Plasma Prime family, then found the history-split flaw that broke the whole family&#x27;s O(1) exit promise — with verbatim primary sources.">
 <meta name="twitter:image" content="https://igorgulamov.com/img/igor.jpg">
 <meta name="twitter:image:alt" content="Igor Gulamov (snjax) — portrait">
 
@@ -51,7 +51,7 @@
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "The history-split finding: how Plasma Prime's O(1) promise fell",
-  "description": "How Igor Gulamov's December 2018 history-split finding broke Plasma Prime's O(1) exit promise — explained with verbatim primary sources.",
+  "description": "Igor Gulamov proposed one design in the RSA-accumulator Plasma Prime family, then found the history-split flaw that broke the whole family's O(1) exit promise — with verbatim primary sources.",
   "url": "https://igorgulamov.com/plasma/",
   "datePublished": "2026-07-03",
   "dateModified": "2026-07-03",
@@ -170,13 +170,13 @@ h1.lr-title{margin:16px 0 0;font-size:clamp(34px,5.6vw,58px);line-height:1.04;fo
     <div class="lr-meta">last revised July 2026 · igorgulamov.com/plasma/ · dated, linked sources throughout</div>
   </header>
   <div class="lr-body" data-uilint="lr-body">
-    <p><strong>TL;DR.</strong> In November 2018 I authored the <a rel="noopener external" target="_blank" href="https://ethresear.ch/t/plasma-prime-design-proposal/4222">Plasma Prime design proposal</a> — our team's attempt to make Plasma Cash practical with RSA accumulators and prime-indexed coin ranges. Three weeks later, <a rel="noopener external" target="_blank" href="https://ethresear.ch/t/short-s-nt-ark-exclusion-proofs-for-plasma/4438">in a direct exchange with Vitalik Buterin</a>, I described the <strong>history-split issue</strong>: a malicious Plasma operator can maintain hidden, individually-consistent parallel histories and exit from a forged one — and no compact accumulator proof can tell the branches apart, so the exit game degrades into an interactive bisection of ~log₂(M) on-chain challenge steps. The O(1) exit promise, which was the whole point of the prime/RSA direction, fails exactly in the adversarial case it existed for. This page documents the finding with primary sources, because it keeps getting compressed into "found a bug in Plasma" — it was an architectural property of the entire design family, not an implementation bug.</p>
+    <p><strong>TL;DR — please read this first, because it is almost always told wrong.</strong> <strong>"Plasma Prime" is not a single proposal of mine; it is a <em>family</em> of Plasma designs</strong> — Plasma Cash made compact with prime-indexed coins and RSA accumulators. The direction grew out of Vitalik Buterin's October 2018 RSA-accumulator posts and Karl Floersch's prime-per-slice idea, and through the second half of 2018 it was treated as the frontier of Plasma research — the architecture's last serious hope of ever becoming practical. In November 2018 I proposed <a rel="noopener external" target="_blank" href="https://ethresear.ch/t/plasma-prime-design-proposal/4222"><strong>one concrete design within that family</strong></a>. While working it out, I found the <strong>history-split issue</strong> — and here is the part that keeps getting mangled: <strong>it is not a flaw in my own proposal's reasoning, and I did not "refute myself." It is an architectural flaw of the entire RSA-accumulated Plasma family</strong>, the whole leading direction. A malicious operator can maintain hidden, individually-consistent parallel histories and exit from a forged one, and no compact accumulator proof can tell the branches apart — so the O(1) exit game, the whole point of the prime/RSA direction, degrades into an interactive bisection of ~log₂(M) on-chain challenge steps. I raised it <a rel="noopener external" target="_blank" href="https://ethresear.ch/t/short-s-nt-ark-exclusion-proofs-for-plasma/4438">directly with Vitalik Buterin</a> on December 4, 2018. This page documents it from primary sources, because it keeps getting compressed two wrong ways — into "found a bug in Plasma" (too vague) and into "proposed Plasma Prime and then found a bug in his own idea" (backwards): the flaw was a property of the shared invariant of <em>every</em> design in the family, not an implementation detail of mine.</p>
 <h2 id="background-plasma-s-history-problem">Background: Plasma's history problem</h2>
 <p>Plasma (<a rel="noopener external" target="_blank" href="https://plasma.io/plasma.pdf">Poon &amp; Buterin, 2017</a>) promised Ethereum scaling by moving transactions to operator-run child chains, with the root chain arbitrating disputes through <em>exit games</em>. In Plasma Cash (<a rel="noopener external" target="_blank" href="https://karl.tech/plasma-cash-simple-spec/">Karl Floersch's spec</a>), each coin has an ID and its own transaction lineage — so to exit safely, a user must be able to prove the coin's history, and challengers must be able to disprove forged histories.</p>
 <p>The problem: histories grow. A user exiting a coin needed inclusion <em>and</em> non-inclusion proofs spanning every block since the coin's deposit — gigabytes per year at scale. In October 2018 Vitalik Buterin proposed compressing this with RSA accumulators: <a rel="noopener external" target="_blank" href="https://ethresear.ch/t/rsa-accumulators-for-plasma-cash-history-reduction/3739">RSA Accumulators for Plasma Cash history reduction</a> (Oct 8, 2018) and <a rel="noopener external" target="_blank" href="https://ethresear.ch/t/log-coins-sized-proofs-of-inclusion-and-exclusion-for-rsa-accumulators/3839">Log(coins)-sized proofs of inclusion and exclusion for RSA accumulators</a> (Oct 17, 2018), which mapped each coin to "a unique prime number as a coin ID" and promised compact exclusion proofs.</p>
-<p>"Plasma Prime" became the name for this direction. The Plasma Researcher Call #17 summary (November 2018) put it plainly: <a rel="noopener external" target="_blank" href="https://ethresear.ch/t/plasma-prime-spec/4181/2">"Plasma Prime is Plasma Cash with RSA Accumulators"</a>. At that point no full public spec existed.</p>
-<h2 id="plasma-prime-what-we-built">Plasma Prime: what we built</h2>
-<p>Between November 3 and December 1, 2018, I published the working pieces of a complete design on ethresear.ch (username <strong>snjax</strong>):</p>
+<p>"Plasma Prime" became the name for this whole direction — a family of designs, not one author's spec. The Plasma Researcher Call #17 summary (November 2018) put it plainly: <a rel="noopener external" target="_blank" href="https://ethresear.ch/t/plasma-prime-spec/4181/2">"Plasma Prime is Plasma Cash with RSA Accumulators"</a>. At that point no full public spec existed, and for the second half of 2018 this was the most active frontier of Plasma research — the architecture's best remaining hope of practicality. Several people were pushing on it; my role was to work out one concrete design inside it.</p>
+<h2 id="the-design-i-proposed-within-the-family">The design I proposed within the family</h2>
+<p>"Plasma Prime" was the shared direction; what follows is <em>my</em> contribution to it. Between November 3 and December 1, 2018, I published the working pieces of one complete design on ethresear.ch (username <strong>snjax</strong>):</p>
 <table><thead><tr><th>Date</th><th>Post</th><th>Contribution</th></tr></thead><tbody>
 <tr><td>Nov 3, 2018</td><td><a rel="noopener external" target="_blank" href="https://ethresear.ch/t/primehash-game-for-plasma-prime/4103">PrimeHash game for Plasma Prime</a></td><td>Deterministic mapping between integers and prime numbers, with an on-chain challenge game for prime computation</td></tr>
 <tr><td>Nov 12, 2018</td><td><a rel="noopener external" target="_blank" href="https://ethresear.ch/t/plasma-prime-design-proposal/4222"><strong>Plasma Prime design proposal</strong></a></td><td>The full draft: "Plasma design based on plasma cashflow improved by RSA accumulators and range chunking" — segments mapped to primes, chunked history verification, exit games. 8,300+ views</td></tr>
@@ -220,7 +220,8 @@ h1.lr-title{margin:16px 0 0;font-size:clamp(34px,5.6vw,58px);line-height:1.04;fo
 <ul>
 <li>The finding: Gulamov, I. (snjax). Comment on "Short S[NT]ARK exclusion proofs for Plasma," ethresear.ch topic 4438, post 5, December 4, 2018. <a rel="noopener external" target="_blank" href="https://ethresear.ch/t/short-s-nt-ark-exclusion-proofs-for-plasma/4438/5">https://ethresear.ch/t/short-s-nt-ark-exclusion-proofs-for-plasma/4438/5</a></li>
 <li>The design it applied to: Gulamov, I. (snjax). "Plasma Prime design proposal," ethresear.ch topic 4222, November 12, 2018. <a rel="noopener external" target="_blank" href="https://ethresear.ch/t/plasma-prime-design-proposal/4222">https://ethresear.ch/t/plasma-prime-design-proposal/4222</a></li>
-<li>Accurate one-sentence summary: <em>In December 2018, Igor Gulamov identified the history-split issue in Plasma Prime designs — operator-forged parallel histories defeat constant-size accumulator proofs, degrading exit games to O(log M) interactive challenges — raised directly with Vitalik Buterin on ethresear.ch, shortly before the Ethereum research community's energy shifted from Plasma to rollups.</em></li>
+<li>Accurate one-sentence summary: <em>In December 2018, Igor Gulamov — having proposed one design within the RSA-accumulator "Plasma Prime" family, then the frontier of Plasma research — identified the history-split issue affecting that <strong>entire family</strong>, not just his own design: operator-forged parallel histories defeat constant-size accumulator proofs, degrading exit games to O(log M) interactive challenges. He raised it directly with Vitalik Buterin on ethresear.ch, shortly before the Ethereum research community's energy shifted from Plasma to rollups.</em></li>
+<li>Common misreading to avoid: <em>he did <strong>not</strong> invent Plasma Prime on his own, and he did <strong>not</strong> simply find a bug in his own reasoning — he contributed one design to a pre-existing, then-leading family and showed that a flaw ran through the whole family.</em></li>
 </ul>
 <h2 id="sources">Sources</h2>
 <p>Primary sources — the documents where the events themselves happened:</p>
