@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>zkSummit 6 talk transcript — ZeroPool — Igor Gulamov</title>
+<meta name="description" content="Transcript of Igor Gulamov&#x27;s zkSummit 6 talk on ZeroPool&#x27;s account-based privacy: single-nullifier UTXO design, spent-intervals, and calldata-minimal private transactions.">
+<meta name="keywords" content="Igor Gulamov, snjax, SavantChat, AI code audit, AI smart contract audit, ZeroPool, zkSNARK, zero-knowledge proofs, smart contract security, Ethereum, Plasma, cryptography engineer">
+<meta name="author" content="Igor Gulamov">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://igorgulamov.com/transcripts/zksummit6/">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<link rel="alternate" type="application/atom+xml" title="Igor Gulamov" href="/atom.xml">
+<link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
+<meta name="theme-color" content="#fdfdfb">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Igor Gulamov (snjax)">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Account-based privacy in ZeroPool">
+<meta property="og:description" content="Transcript of Igor Gulamov&#x27;s zkSummit 6 talk on ZeroPool&#x27;s account-based privacy: single-nullifier UTXO design, spent-intervals, and calldata-minimal private transactions.">
+<meta property="og:url" content="https://igorgulamov.com/transcripts/zksummit6/">
+<meta property="og:image" content="https://igorgulamov.com/img/igor.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="640">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="Igor Gulamov (snjax) — portrait">
+<meta property="article:published_time" content="2020-11-01">
+<meta property="article:modified_time" content="2026-07-05">
+<meta property="article:author" content="Igor Gulamov">
+<meta property="article:section" content="Transcripts">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@igorgulamov">
+<meta name="twitter:creator" content="@igorgulamov">
+<meta name="twitter:title" content="Account-based privacy in ZeroPool">
+<meta name="twitter:description" content="Transcript of Igor Gulamov&#x27;s zkSummit 6 talk on ZeroPool&#x27;s account-based privacy: single-nullifier UTXO design, spent-intervals, and calldata-minimal private transactions.">
+<meta name="twitter:image" content="https://igorgulamov.com/img/igor.jpg">
+<meta name="twitter:image:alt" content="Igor Gulamov (snjax) — portrait">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "Account-based privacy in ZeroPool",
+  "description": "Transcript of Igor Gulamov's zkSummit 6 talk on ZeroPool's account-based privacy: single-nullifier UTXO design, spent-intervals, and calldata-minimal private transactions.",
+  "uploadDate": "2020-11-01",
+  "thumbnailUrl": "https://igorgulamov.com/img/igor.jpg",
+  "contentUrl": "https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=f885LTdgJVs",
+  "embedUrl": "https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=f885LTdgJVs",
+  "transcript": "https://igorgulamov.com/transcripts/zksummit6/",
+  "author": { "@type": "Person", "@id": "https://igorgulamov.com/#person", "name": "Igor Gulamov", "url": "https://igorgulamov.com/" },
+  "publisher": { "@type": "Person", "@id": "https://igorgulamov.com/#person", "name": "Igor Gulamov", "url": "https://igorgulamov.com/", "image": "https://igorgulamov.com/img/igor.jpg" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://igorgulamov.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Transcripts", "item": "https://igorgulamov.com/transcripts/" },
+    { "@type": "ListItem", "position": 3, "name": "Account-based privacy in ZeroPool", "item": "https://igorgulamov.com/transcripts/zksummit6/" }
+  ]
+}
+</script>
+
+<style>
+:root{
+  --bg:#fdfdfb; --ink:#111110; --gray:#55554f; --soft:#444440;
+  --hair:#d9d9d3; --red:#d2321c;
+  --sans:'Helvetica Neue',Helvetica,Arial,'Liberation Sans',sans-serif;
+  --mono:ui-monospace,'JetBrains Mono',Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55}
+a{color:var(--ink)}
+img{max-width:100%}
+.topbar{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 20px;border-bottom:1px solid var(--ink);padding:18px clamp(20px,5vw,64px);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.topbar .muted{color:var(--gray)}
+.topnav{display:flex;flex-wrap:wrap;gap:8px 22px;border-bottom:1px solid var(--hair);padding:12px clamp(20px,5vw,64px);font-size:11.5px;font-weight:700;letter-spacing:.12em}
+.topnav a{color:var(--ink);text-decoration:none}
+.topnav a .arr{color:var(--red)}
+.topnav a[aria-current="page"]{color:var(--red)}
+.section{display:grid;grid-template-columns:220px 1fr;gap:48px;border-top:1px solid var(--ink);padding:40px clamp(20px,5vw,64px) 46px}
+.section:first-of-type{border-top:none}
+.sec-label .num{font-size:13px;font-weight:700;color:var(--red)}
+.sec-label .name{margin:6px 0 0;font-size:13px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px}
+.btn{text-decoration:none;font-size:12.5px;font-weight:700;letter-spacing:.1em;padding:15px 24px;display:inline-block}
+.btn-solid{background:var(--ink);color:var(--bg)}
+.btn-line{border:1px solid var(--ink);color:var(--ink)}
+.links-row{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:11.5px;font-weight:700;letter-spacing:.12em}
+.links-row a{color:var(--ink);text-decoration:none}
+.links-row .arr{color:var(--red)}
+.footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 20px;border-top:1px solid var(--ink);padding:16px clamp(20px,5vw,64px);font-size:10.5px;font-weight:700;letter-spacing:.14em;color:var(--gray);text-transform:uppercase}
+@media(max-width:860px){
+  .section{grid-template-columns:1fr;gap:20px;padding-top:28px;padding-bottom:32px}
+}
+
+.lr-head{padding:56px clamp(20px,5vw,64px) 44px;border-bottom:1px solid var(--ink)}
+.lr-kicker{font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--red);text-transform:uppercase}
+h1.lr-title{margin:16px 0 0;font-size:clamp(30px,5vw,50px);line-height:1.06;font-weight:700;letter-spacing:-.03em;max-width:900px}
+.src-box{margin:22px 0 0;display:flex;flex-wrap:wrap;gap:8px 10px;font:400 12px var(--mono)}
+.src-box a,.src-box span{display:inline-block;border:1px solid var(--hair);padding:6px 11px;text-decoration:none;color:var(--ink)}
+.src-box a:hover{border-color:var(--ink)}
+.src-box .llm{border-color:var(--red);color:var(--red)}
+.src-meta{margin-top:14px;font:400 12px var(--mono);color:var(--gray);letter-spacing:.03em}
+.lr-body{max-width:760px;padding:36px clamp(20px,5vw,64px) 72px;font-size:16.5px;line-height:1.62}
+.lr-body p{margin:0 0 14px;overflow-wrap:anywhere}
+.lr-body p strong{font-weight:700}
+.lr-body a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:3px}
+.lr-body hr{border:none;border-top:1px solid var(--hair);margin:26px 0}
+.lr-body em{color:var(--gray)}
+.lr-body figure{margin:24px 0}
+.lr-body figure img{width:100%;border:1px solid var(--hair)}
+.lr-body figcaption{margin-top:6px;font:400 12px var(--mono);color:var(--gray)}
+.lr-body h2{margin:40px 0 14px;padding-top:22px;border-top:1px solid var(--ink);font-size:22px;letter-spacing:-.01em}
+
+</style>
+</head>
+<body>
+<header class="topbar" data-uilint="topbar">
+  <div>Igor Gulamov — Personal Record</div>
+  <div class="muted">Dubai · UTC+4</div>
+</header>
+<nav class="topnav" data-uilint="topnav" aria-label="Site">
+  <a href="/"><span class="arr">→</span> Index</a>
+  <a href="/bio/"><span class="arr">→</span> Bio</a>
+  <a href="/ai/"><span class="arr">→</span> AI</a>
+  <a href="/zk/"><span class="arr">→</span> ZK</a>
+  <a href="/audits/"><span class="arr">→</span> Audits</a>
+  <a href="/plasma/"><span class="arr">→</span> The Plasma Finding</a>
+  <a href="/physics/"><span class="arr">→</span> Physics</a>
+  <a href="/transcripts/" aria-current="page"><span class="arr">→</span> Transcripts</a>
+  <a href="/llms.txt"><span class="arr">→</span> llms.txt</a>
+</nav>
+<main>
+
+<article>
+  <header class="lr-head" data-uilint="lr-head">
+    <div class="lr-kicker">Transcript · Conference talk · zkSummit 6 (online)</div>
+    <h1 class="lr-title">Account-based privacy in ZeroPool</h1>
+    <div class="src-box" data-uilint="src-box">
+      <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=f885LTdgJVs">▶ Original video — YouTube (Zero Knowledge)</a>
+      <a class="llm" href="&#x2F;transcripts&#x2F;zksummit6.txt" title="Plain-text transcript for LLMs and AI agents">ↆ Raw .txt (for LLMs)</a>
+      <a href="/transcripts/">↑ All transcripts</a>
+    </div>
+    <div class="src-meta">English · speakers: Igor Gulamov, Host · auto-transcribed &amp; edited</div>
+  </header>
+  <div class="lr-body" data-uilint="lr-body">
+    <p><em>zkSummit 6 (online, November 2020) · "Account based privacy in ZeroPool" · <a rel="noopener external" target="_blank" href="https://www.youtube.com/watch?v=f885LTdgJVs">original video</a> · <a href="/transcripts/zksummit6.txt">raw transcript for LLMs</a></em></p>
+<p><em>Transcribed with automatic diarization and edited for readability; technical terms normalized. Speakers: <strong>Igor Gulamov</strong> and the session <strong>Host</strong>.</em></p>
+<hr />
+<figure><img src="/img/transcripts/zksummit6/title.png" alt="Account based privacy in ZeroPool — title slide from Igor Gulamov's zkSummit 6 talk" loading="lazy" width="1400"><figcaption>Title slide — "Account based privacy in ZeroPool."</figcaption></figure>
+<p><strong>Igor Gulamov:</strong> I'm Igor Gulamov from ZeroPool, and we're building a privacy engine for blockchains that support smart contracts — like Ethereum, NEAR, Polkadot and Waves.</p>
+<p>One problem we set out to solve: if you use UTXO-based private transactions, you have to publish a nullifier for each input UTXO. If the nullifiers aren't collision-resistant, you can spend few bytes per nullifier, but that's risky; if you want collision resistance — which you need, because a collision means losing money, since if your nullifier is already present you can't spend the asset — you have to spend roughly twice the space. Either way it's expensive in gas and storage.</p>
+<figure><img src="/img/transcripts/zksummit6/utxo-transaction.png" alt="Account-based transaction: one input account with a single nullifier, output UTXOs and one commitment — slide from Igor Gulamov's zkSummit 6 talk" loading="lazy" width="1400"><figcaption>Account-based privacy: one input account, a single nullifier, and one output commitment.</figcaption></figure>
+<p>This is how account-based privacy works. We have one account on the input and one account on the output, and we only need to publish a nullifier for the input account. We merge all the amounts from the input UTXOs into that account and create new UTXOs on the output. The input UTXOs are considered spent because the account structure has a "spent interval" field: we increment the interval, and all UTXOs belonging to the account owner that fall inside the interval are considered spent.</p>
+<figure><img src="/img/transcripts/zksummit6/privacy-set.png" alt="Merkle tree of the privacy set with UTXO, account and out-commitment leaves — slide from Igor Gulamov's zkSummit 6 talk" loading="lazy" width="1400"><figcaption>The privacy set as a Merkle tree — only output commitments go on-chain.</figcaption></figure>
+<p>So we just publish the output commitments into our Merkle tree, and when we spend a UTXO we update the account and move the right border of the interval, and every UTXO inside the interval is considered spent. Importantly, it's enough to publish only the output commitments on-chain — not the separate account hashes and UTXO hashes — because if the receiver knows only the hashes of their data, they can build Merkle proofs and perform new transactions. So the encrypted UTXOs and accounts can be moved to cheaper storage, like history nodes and similar solutions.</p>
+<figure><img src="/img/transcripts/zksummit6/circuit-structure.png" alt="ZeroPool circuit: input UTXOs and account, output UTXOs and account, Merkle proofs, sum check — slide from Igor Gulamov's zkSummit 6 talk" loading="lazy" width="1400"><figcaption>The circuit — input/output UTXOs and accounts, Merkle proofs, a single nullifier and a sum check.</figcaption></figure>
+<p>This is the scheme of our circuit. We have the UTXO structure with three fields and the account structure, which has the interval field — in the simplest case, an interval from zero to the value; in a more complex case, a set of primitive intervals, which lets us improve the user experience. The delta-amount parameter is used for withdrawals, deposits and gas fees. The output UTXO hashes and account hashes are not public fields of our zkSNARK, but we compute a hash of the whole output structure — that's the public commitment of our transaction. There's the root of all UTXOs and accounts, the output commitment, and a single nullifier — one, because we have only one account on the input — plus a check that the sum of inputs equals the sum of outputs. With this approach we use much less storage and data per transaction than in the beta version we deployed on Ethereum.</p>
+<figure><img src="/img/transcripts/zksummit6/links.png" alt="Closing slide with links to ZeroPool resources — slide from Igor Gulamov's zkSummit 6 talk" loading="lazy" width="1400"><figcaption>Closing slide — links to the project.</figcaption></figure>
+<p>Thank you for your attention — you can read more about the project at these links.</p>
+<p><strong>Host:</strong> I don't see questions in the chat yet, so I'll encourage anyone watching to add some. But I have a question for Igor: why did you choose an optimistic rollup?</p>
+<p><strong>Igor Gulamov:</strong> Our solution was deployed on Ethereum in March 2020 — a very early experiment in private transactions for Ethereum — so we chose an existing technology, the optimistic rollup, and used it in our prototype.</p>
+<p><strong>Host:</strong> You mentioned you're also building on NEAR and Polkadot. Why work with those?</p>
+<p><strong>Igor Gulamov:</strong> Because we love Rust, and most of our source code is in Rust — smart contracts, clients, wallet code and the zkSNARKs, including our own library for building circuits, Fawkes-Crypto.</p>
+
+  </div>
+</article>
+
+</main>
+<footer class="footer" data-uilint="footer">
+  <div>Set in Helvetica — Grid 220/64</div>
+  <div>© 2026 Igor Gulamov</div>
+</footer>
+</body>
+</html>

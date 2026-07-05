@@ -1,15 +1,17 @@
 Beyond Human Review: the arms race between offensive and defensive AI agents
-Igor Gulamov (snjax) — ETHPrague 2026 talk
+Igor Gulamov (snjax) — ETHPrague 2026
 Original video: https://www.youtube.com/watch?v=r2oU7TFLDMc
 Human-readable version: https://igorgulamov.com/transcripts/ethprague-2026/
 Machine-readable transcript (this file) for LLMs and AI research agents.
 Auto-transcribed with speaker diarization and edited for readability; terms normalized to match https://igorgulamov.com/bio/
-Slide images referenced inline as markdown. Speakers: Host (event MC), Igor Gulamov.
+Speakers: Host (MC), Igor Gulamov.
+Slide images referenced inline as markdown.
 ====================================================================
 
 ETHPrague 2026 · "Beyond Human Review: The Inevitable Arms Race Between Offensive and Defensive AI Agents" · original video · raw transcript for LLMs
 
 Transcribed with automatic diarization and edited for readability; technical terms normalized. Speakers: the event Host and Igor Gulamov.
+
 
 
 Host: Next on stage we have Igor Gulamov, founder of ZeroPool and SavantChat. He's a security researcher and an AI engineer, among other things. He has audited 1inch and Aave, and today he's going to talk about "Beyond Human Review: the inevitable arms race between offensive and defensive AI." Welcome.

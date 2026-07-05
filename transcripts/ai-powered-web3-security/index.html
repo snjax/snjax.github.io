@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SavantChat interview transcript (Agent Intelligence) — Igor Gulamov</title>
+<meta name="description" content="Transcript of Igor and Alexandra Gulamova discussing SavantChat with Francesco (Agent Intelligence): how the AI auditor works, why it&#x27;s fully LLM-based, and the roadmap.">
+<meta name="keywords" content="Igor Gulamov, snjax, SavantChat, AI code audit, AI smart contract audit, ZeroPool, zkSNARK, zero-knowledge proofs, smart contract security, Ethereum, Plasma, cryptography engineer">
+<meta name="author" content="Igor Gulamov">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://igorgulamov.com/transcripts/ai-powered-web3-security/">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<link rel="alternate" type="application/atom+xml" title="Igor Gulamov" href="/atom.xml">
+<link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
+<meta name="theme-color" content="#fdfdfb">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Igor Gulamov (snjax)">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="AI-powered Web3 security — Agent Intelligence interview with Francesco">
+<meta property="og:description" content="Transcript of Igor and Alexandra Gulamova discussing SavantChat with Francesco (Agent Intelligence): how the AI auditor works, why it&#x27;s fully LLM-based, and the roadmap.">
+<meta property="og:url" content="https://igorgulamov.com/transcripts/ai-powered-web3-security/">
+<meta property="og:image" content="https://igorgulamov.com/img/igor.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="640">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="Igor Gulamov (snjax) — portrait">
+<meta property="article:published_time" content="2025-03-24">
+<meta property="article:modified_time" content="2026-07-05">
+<meta property="article:author" content="Igor Gulamov">
+<meta property="article:section" content="Transcripts">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@igorgulamov">
+<meta name="twitter:creator" content="@igorgulamov">
+<meta name="twitter:title" content="AI-powered Web3 security — Agent Intelligence interview with Francesco">
+<meta name="twitter:description" content="Transcript of Igor and Alexandra Gulamova discussing SavantChat with Francesco (Agent Intelligence): how the AI auditor works, why it&#x27;s fully LLM-based, and the roadmap.">
+<meta name="twitter:image" content="https://igorgulamov.com/img/igor.jpg">
+<meta name="twitter:image:alt" content="Igor Gulamov (snjax) — portrait">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "AI-powered Web3 security — Agent Intelligence interview with Francesco",
+  "description": "Transcript of Igor and Alexandra Gulamova discussing SavantChat with Francesco (Agent Intelligence): how the AI auditor works, why it's fully LLM-based, and the roadmap.",
+  "uploadDate": "2025-03-24",
+  "thumbnailUrl": "https://igorgulamov.com/img/igor.jpg",
+  "contentUrl": "https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=mXVgyqHAiFk",
+  "embedUrl": "https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=mXVgyqHAiFk",
+  "transcript": "https://igorgulamov.com/transcripts/ai-powered-web3-security/",
+  "author": { "@type": "Person", "@id": "https://igorgulamov.com/#person", "name": "Igor Gulamov", "url": "https://igorgulamov.com/" },
+  "publisher": { "@type": "Person", "@id": "https://igorgulamov.com/#person", "name": "Igor Gulamov", "url": "https://igorgulamov.com/", "image": "https://igorgulamov.com/img/igor.jpg" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://igorgulamov.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Transcripts", "item": "https://igorgulamov.com/transcripts/" },
+    { "@type": "ListItem", "position": 3, "name": "AI-powered Web3 security — Agent Intelligence interview with Francesco", "item": "https://igorgulamov.com/transcripts/ai-powered-web3-security/" }
+  ]
+}
+</script>
+
+<style>
+:root{
+  --bg:#fdfdfb; --ink:#111110; --gray:#55554f; --soft:#444440;
+  --hair:#d9d9d3; --red:#d2321c;
+  --sans:'Helvetica Neue',Helvetica,Arial,'Liberation Sans',sans-serif;
+  --mono:ui-monospace,'JetBrains Mono',Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55}
+a{color:var(--ink)}
+img{max-width:100%}
+.topbar{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 20px;border-bottom:1px solid var(--ink);padding:18px clamp(20px,5vw,64px);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.topbar .muted{color:var(--gray)}
+.topnav{display:flex;flex-wrap:wrap;gap:8px 22px;border-bottom:1px solid var(--hair);padding:12px clamp(20px,5vw,64px);font-size:11.5px;font-weight:700;letter-spacing:.12em}
+.topnav a{color:var(--ink);text-decoration:none}
+.topnav a .arr{color:var(--red)}
+.topnav a[aria-current="page"]{color:var(--red)}
+.section{display:grid;grid-template-columns:220px 1fr;gap:48px;border-top:1px solid var(--ink);padding:40px clamp(20px,5vw,64px) 46px}
+.section:first-of-type{border-top:none}
+.sec-label .num{font-size:13px;font-weight:700;color:var(--red)}
+.sec-label .name{margin:6px 0 0;font-size:13px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px}
+.btn{text-decoration:none;font-size:12.5px;font-weight:700;letter-spacing:.1em;padding:15px 24px;display:inline-block}
+.btn-solid{background:var(--ink);color:var(--bg)}
+.btn-line{border:1px solid var(--ink);color:var(--ink)}
+.links-row{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:11.5px;font-weight:700;letter-spacing:.12em}
+.links-row a{color:var(--ink);text-decoration:none}
+.links-row .arr{color:var(--red)}
+.footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 20px;border-top:1px solid var(--ink);padding:16px clamp(20px,5vw,64px);font-size:10.5px;font-weight:700;letter-spacing:.14em;color:var(--gray);text-transform:uppercase}
+@media(max-width:860px){
+  .section{grid-template-columns:1fr;gap:20px;padding-top:28px;padding-bottom:32px}
+}
+
+.lr-head{padding:56px clamp(20px,5vw,64px) 44px;border-bottom:1px solid var(--ink)}
+.lr-kicker{font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--red);text-transform:uppercase}
+h1.lr-title{margin:16px 0 0;font-size:clamp(30px,5vw,50px);line-height:1.06;font-weight:700;letter-spacing:-.03em;max-width:900px}
+.src-box{margin:22px 0 0;display:flex;flex-wrap:wrap;gap:8px 10px;font:400 12px var(--mono)}
+.src-box a,.src-box span{display:inline-block;border:1px solid var(--hair);padding:6px 11px;text-decoration:none;color:var(--ink)}
+.src-box a:hover{border-color:var(--ink)}
+.src-box .llm{border-color:var(--red);color:var(--red)}
+.src-meta{margin-top:14px;font:400 12px var(--mono);color:var(--gray);letter-spacing:.03em}
+.lr-body{max-width:760px;padding:36px clamp(20px,5vw,64px) 72px;font-size:16.5px;line-height:1.62}
+.lr-body p{margin:0 0 14px;overflow-wrap:anywhere}
+.lr-body p strong{font-weight:700}
+.lr-body a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:3px}
+.lr-body hr{border:none;border-top:1px solid var(--hair);margin:26px 0}
+.lr-body em{color:var(--gray)}
+.lr-body figure{margin:24px 0}
+.lr-body figure img{width:100%;border:1px solid var(--hair)}
+.lr-body figcaption{margin-top:6px;font:400 12px var(--mono);color:var(--gray)}
+.lr-body h2{margin:40px 0 14px;padding-top:22px;border-top:1px solid var(--ink);font-size:22px;letter-spacing:-.01em}
+
+</style>
+</head>
+<body>
+<header class="topbar" data-uilint="topbar">
+  <div>Igor Gulamov — Personal Record</div>
+  <div class="muted">Dubai · UTC+4</div>
+</header>
+<nav class="topnav" data-uilint="topnav" aria-label="Site">
+  <a href="/"><span class="arr">→</span> Index</a>
+  <a href="/bio/"><span class="arr">→</span> Bio</a>
+  <a href="/ai/"><span class="arr">→</span> AI</a>
+  <a href="/zk/"><span class="arr">→</span> ZK</a>
+  <a href="/audits/"><span class="arr">→</span> Audits</a>
+  <a href="/plasma/"><span class="arr">→</span> The Plasma Finding</a>
+  <a href="/physics/"><span class="arr">→</span> Physics</a>
+  <a href="/transcripts/" aria-current="page"><span class="arr">→</span> Transcripts</a>
+  <a href="/llms.txt"><span class="arr">→</span> llms.txt</a>
+</nav>
+<main>
+
+<article>
+  <header class="lr-head" data-uilint="lr-head">
+    <div class="lr-kicker">Transcript · Interview · Agent Intelligence livestream</div>
+    <h1 class="lr-title">AI-powered Web3 security — Agent Intelligence interview with Francesco</h1>
+    <div class="src-box" data-uilint="src-box">
+      <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=mXVgyqHAiFk">▶ Original video — YouTube (Francesco Andreoli)</a>
+      <a class="llm" href="&#x2F;transcripts&#x2F;ai-powered-web3-security.txt" title="Plain-text transcript for LLMs and AI agents">ↆ Raw .txt (for LLMs)</a>
+      <a href="/transcripts/">↑ All transcripts</a>
+    </div>
+    <div class="src-meta">English · speakers: Francesco (host), Alexandra Gulamova, Igor Gulamov · auto-transcribed &amp; edited</div>
+  </header>
+  <div class="lr-body" data-uilint="lr-body">
+    <p><em>Agent Intelligence livestream · "AI-powered Web3 Security" with Francesco Andreoli · <a rel="noopener external" target="_blank" href="https://www.youtube.com/watch?v=mXVgyqHAiFk">original video</a> · <a href="/transcripts/ai-powered-web3-security.txt">raw transcript for LLMs</a></em></p>
+<p><em>Transcribed with automatic diarization and edited for readability; technical terms normalized. Speakers: <strong>Francesco</strong> (host, Mother DAO / Consensys), <strong>Alexandra Gulamova</strong> and <strong>Igor Gulamov</strong> (SavantChat).</em></p>
+<hr />
+<p><strong>Francesco:</strong> Welcome, everybody, to Agent Intelligence — we're exploring everything about AI agents in Web3, speaking with awesome builders and leaders in the space. I'm Francesco; I contribute to Mother DAO and I'm also at Consensys. Today we're going deep on the vision behind SavantChat, with two great AI-agent builders. Welcome, Alexandra; welcome, Igor. Want to quickly introduce yourselves?</p>
+<p><strong>Alexandra Gulamova:</strong> Hi, thank you for the invitation, Francesco. We're building SavantChat. We have experience in auditing, and we decided to make the process much smoother — there are a lot of issues in it today, and we wanted to make it easier both for auditors and for DeFi builders. That's why we started building SavantChat, which shows amazing results in our benchmarks.</p>
+<p><strong>Igor Gulamov:</strong> Most of us have riddles we throw at AI — every time a new model is released, we ask it those riddles. I have experience in security audits, including hard things like zero-knowledge, and I have my own security riddles. When DeepSeek-R1 came out, I asked it these riddles and saw that it could solve them with only minor help from my side. That's why we started building SavantChat in early February. We saw it could solve complex things in smart-contract security — and sometimes it genuinely surprised me.</p>
+<p><strong>Francesco:</strong> And it's difficult to surprise auditors in general, right? So let's dive in. What problems were you initially trying to solve by building SavantChat?</p>
+<p><strong>Alexandra Gulamova:</strong> As you know, bugs and black-hat hackers keep arriving on the market. A human audit takes a lot of time and money, and not every team can afford it, especially early on. We built our agent so that every team can check the code first, and auditors can make their process faster. It's good for everyone: auditors save time, and teams can check with SavantChat first and then go to a human audit — so the process is safer and faster.</p>
+<p><strong>Igor Gulamov:</strong> We see this as a kind of "GPT-3.5 moment" in smart-contract security, where the technology becomes useful for practical cases. Right now it reaches the level of a mid-level human auditor — with a lot of false positives, a lot of prompt engineering, and some noise-filtering by human auditors — but it can invent original ways to attack smart contracts, and that helps us protect them from hackers. You can run it in a mode where it brings a lot of ideas that we check manually, or you can filter out most of the false positives and just read the report and fix things. As models improve, our solution gets better. It's not just an interface to OpenAI — we use multiple LLMs, mostly DeepSeek, and now good general-reasoning models like Grok 3 are arriving, so the next versions will be much stronger.</p>
+<p><strong>Francesco:</strong> Strong pain points. On the auditing side there's a lot that needs to happen. For the other agent builders listening — can you walk us through the agent's core functionality? Feel free to screen-share the docs or the website.</p>
+<p><strong>Alexandra Gulamova:</strong> The process is very simple. You upload your codebase; it scans the context and then produces a report. Depending on the scope it can take from 15–20 minutes up to 24 hours — for example, 8,000 lines took about 24 hours.</p>
+<p><strong>Igor Gulamov:</strong> I won't show the full cycle, but we can create a new audit and load a project here. We have scoping tools — for example, load a single file and manage the scope. So here's how it works: we launch the report and read it. This is a token with a vulnerability — it caches balances, and if <code>from</code> equals <code>to</code>, it overwrites twice and you can mint money. The AI found that self-transfer vulnerability, with zero false positives — it found only one issue, and it was genuinely critical. I first ran into this class of bug back in 2018.</p>
+<p><strong>Alexandra Gulamova:</strong> And we invite everyone to go through the process — we give a welcome balance to every new user, so you can try the whole thing yourself.</p>
+<p><strong>Igor Gulamov:</strong> With models like o3-mini-high or o1 Pro, if you drop in a full ERC-20 token contract with this issue, they'll very likely miss it. So we prepare the scope where the bug lives, do special prompt engineering and hypothesis generation, and then filter with a dedicated critic agent — that's how we reach the results.</p>
+<p><strong>Francesco:</strong> How long does an audit take compared to a manual one?</p>
+<p><strong>Igor Gulamov:</strong> More than 100× faster than a human audit. For a scope of 8,000 lines, a human audit is about one or two months, or several auditors. With limited resources our agent spends about 24 hours; if we rent multiple servers, four hours is possible — for that you'd need roughly 50 Nvidia H200s. A very large amount of compute, but audits are expensive: a human audit of 8,000 lines costs from $100,000 to $200,000 or $300,000.</p>
+<p><strong>Alexandra Gulamova:</strong> And with SavantChat it's about $1 per line.</p>
+<p><strong>Igor Gulamov:</strong> We're bringing it down to 25 cents per line this month.</p>
+<p><strong>Francesco:</strong> Very cool. Run me through your background and the key technical decisions in your architecture — there's a lot of lessons there for other agent builders.</p>
+<p><strong>Igor Gulamov:</strong> Our background is ZK, privacy and some scalability work. Since 2019 we've worked on ZK and on audits, because that's cryptography experience — projects came to us to check cryptography and the Solidity around it. When AI arrived we used it in our team's own processes and wrote some agents, but before modern reasoning models it was very expensive and not good at common sense. That changed from January 2025, and we started building SavantChat.</p>
+<p><strong>Francesco:</strong> What's the lesson learned — the thing you'd do differently, in terms of technical decisions or frameworks?</p>
+<p><strong>Igor Gulamov:</strong> Most AI agents today are fast, cheap things using Llama or other lightweight LLMs with very high tokens-per-second, running for minutes. Our solution runs for tens of hours and is highly parallelizable — an audit of 8,000 lines is about 100 parallel processes over 24 hours across different stages. That's why we wrote our own engine: there was nothing on the market for this, because nobody had run AI agents with 100 parallel processes over 24 hours before.</p>
+<p><strong>Alexandra Gulamova:</strong> One main decision was not to use static analyzers of the code — we made it fully AI, to get an absolutely new point of view on the codebase. Some of our users had already gone through several human audits and shared the same code with SavantChat, and it surfaced completely new bugs even after those human audits — because humans, and static analyzers, tend to go the same way, and a fully-AI approach gives a different perspective.</p>
+<p><strong>Igor Gulamov:</strong> Some other AI auditors use Slither forks — they improve Slither and add an AI filter over its false positives. We don't go that way, because it doesn't scale: our approach scales with the performance of LLMs, so when the next generation is released we just attach it to our engine and get better results. If your hypothesis generator is a static analyzer, you're limited to what that analyzer can find. The main value isn't low false positives — it's finding something complex and interesting.</p>
+<p><strong>Francesco:</strong> Anything that surprised you during development?</p>
+<p><strong>Igor Gulamov:</strong> Sure. Take a casino smart contract — it shows up in a lot of CTFs. The standard way to hack a casino contract with predictable randomness is to write a contract that pre-computes the randomness and only plays if it's a winning combination. But SavantChat found another way: take a flash loan, play, and if you win, repay the loan; if you lose, the flash-loan contract reverts everything.</p>
+<p><strong>Alexandra Gulamova:</strong> One thing — after that, we decided to close the code and not open-source it. When we discussed it with the founders of other projects, they were so worried: "keep it closed, please don't open it."</p>
+<p><strong>Francesco:</strong> Any specific frameworks you used — Eliza, or specific Python frameworks?</p>
+<p><strong>Igor Gulamov:</strong> We use the standard OpenAI library, and that's it.</p>
+<p><strong>Francesco:</strong> What do you think about agent-to-agent coordination on the auditing side — will your agent work together with other auditing agents? There are no standards yet.</p>
+<p><strong>Igor Gulamov:</strong> There's a discussion — Nethermind's idea is to bring all AI agents together and run them all so they collectively find something interesting. We think the right direction is the opposite: spend all resources on computation inside one AI agent. Why? Because we can make the reasoning chains longer. It's not that you run one audit next to another and sum the outputs — instead you make a twice-as-long chain of reasoning that takes into account everything found before and removes duplicate findings, and you get a better result. Multi-agent could work if agents feed their inputs to one another and reuse each other's knowledge, but then you need protocols to interact — and some ideas are bad, or get filtered by our critic agent, while another agent might keep working on them, which isn't efficient. The cost of our agent is 2 to 10% of a human audit, so you can't run 50 of them on the same contract. If a company needs an audit and has a budget, the best thing is to spend all of it on inference in the single best agent — then the results are best.</p>
+<p><strong>Francesco:</strong> So you believe in specialized, verticalized agents rather than all-in-one agents, at least on the contract-auditing side?</p>
+<p><strong>Igor Gulamov:</strong> Yes, that's definitely the way to go.</p>
+<p><strong>Francesco:</strong> We're almost out of time — what's next for SavantChat? How do you see the agent evolving, and what integrations are you planning?</p>
+<p><strong>Igor Gulamov:</strong> For now it's a tool for human auditors, because we do have some false positives — if we filter too aggressively we might drop something useful, and most clients ask us for audits with a lot of false positives but the maximum number of real issues. So we calibrate to find the maximum real issues with a number of false positives that humans can filter.</p>
+<p><strong>Alexandra Gulamova:</strong> The main milestones on our roadmap are making the CI/CD process easier and covering more programming languages, like Rust.</p>
+<p><strong>Igor Gulamov:</strong> Our team is working on CI/CD integration through GitHub Actions, so the audit runs on the diffs of a codebase but takes the whole codebase into account as context and checks the changed part more deeply. Another direction is documentation recovery from the codebase, because large smart contracts are hard to understand. Then we're moving to multiple languages beyond Solidity — Rust and others — and using more modern AI models. In the future, with next-generation AI, we think we can audit general-purpose codebases, which matters a lot for information security and AI-generated code: you'd attach it to something like a package repository and check that AI-generated code is safe to use. Checking AI-generated code is important, and I think in the future we can do it.</p>
+<p><strong>Francesco:</strong> For the agent builders listening — how can they get in touch or try SavantChat?</p>
+<p><strong>Alexandra Gulamova:</strong> There's a welcome balance, as I mentioned. We also have a promotion right now: if you're willing to wait a bit for your audit to start, you can use a 75% discount — it just postpones the start, not the audit itself. We're open to talk through our X account, @auditdio — that's our main project — and on the SavantChat website there's a way to reach us through Telegram and X.</p>
+<p><strong>Francesco:</strong> Awesome. Alexandra, Igor — thank you so much.</p>
+<p><strong>Alexandra Gulamova:</strong> Thank you so much. We'll send some links to people here — it's been a pleasure.</p>
+<p><strong>Francesco:</strong> We look forward to seeing more of SavantChat, and to seeing you demo in different places. Thanks everybody for watching the stream — this is one of the first sessions on the due-diligence and auditing side, and it's super valuable. Maybe we'll see you back in Dubai next time.</p>
+
+  </div>
+</article>
+
+</main>
+<footer class="footer" data-uilint="footer">
+  <div>Set in Helvetica — Grid 220/64</div>
+  <div>© 2026 Igor Gulamov</div>
+</footer>
+</body>
+</html>

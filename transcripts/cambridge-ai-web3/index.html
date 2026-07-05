@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SavantChat Web3 TV interview transcript — Igor Gulamov</title>
+<meta name="description" content="Short transcript of Igor Gulamov introducing SavantChat, the AI smart-contract auditor, in a Web3 TV interview at the Chatoshi AI event in Dubai.">
+<meta name="keywords" content="Igor Gulamov, snjax, SavantChat, AI code audit, AI smart contract audit, ZeroPool, zkSNARK, zero-knowledge proofs, smart contract security, Ethereum, Plasma, cryptography engineer">
+<meta name="author" content="Igor Gulamov">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://igorgulamov.com/transcripts/cambridge-ai-web3/">
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<link rel="alternate" type="application/atom+xml" title="Igor Gulamov" href="/atom.xml">
+<link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
+<meta name="theme-color" content="#fdfdfb">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Igor Gulamov (snjax)">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="SavantChat at the Chatoshi AI event, Dubai — Web3 TV interview">
+<meta property="og:description" content="Short transcript of Igor Gulamov introducing SavantChat, the AI smart-contract auditor, in a Web3 TV interview at the Chatoshi AI event in Dubai.">
+<meta property="og:url" content="https://igorgulamov.com/transcripts/cambridge-ai-web3/">
+<meta property="og:image" content="https://igorgulamov.com/img/igor.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="640">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="Igor Gulamov (snjax) — portrait">
+<meta property="article:published_time" content="2025-04-30">
+<meta property="article:modified_time" content="2026-07-05">
+<meta property="article:author" content="Igor Gulamov">
+<meta property="article:section" content="Transcripts">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@igorgulamov">
+<meta name="twitter:creator" content="@igorgulamov">
+<meta name="twitter:title" content="SavantChat at the Chatoshi AI event, Dubai — Web3 TV interview">
+<meta name="twitter:description" content="Short transcript of Igor Gulamov introducing SavantChat, the AI smart-contract auditor, in a Web3 TV interview at the Chatoshi AI event in Dubai.">
+<meta name="twitter:image" content="https://igorgulamov.com/img/igor.jpg">
+<meta name="twitter:image:alt" content="Igor Gulamov (snjax) — portrait">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "SavantChat at the Chatoshi AI event, Dubai — Web3 TV interview",
+  "description": "Short transcript of Igor Gulamov introducing SavantChat, the AI smart-contract auditor, in a Web3 TV interview at the Chatoshi AI event in Dubai.",
+  "uploadDate": "2025-04-30",
+  "thumbnailUrl": "https://igorgulamov.com/img/igor.jpg",
+  "contentUrl": "https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=ejIypMEUx6o",
+  "embedUrl": "https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=ejIypMEUx6o",
+  "transcript": "https://igorgulamov.com/transcripts/cambridge-ai-web3/",
+  "author": { "@type": "Person", "@id": "https://igorgulamov.com/#person", "name": "Igor Gulamov", "url": "https://igorgulamov.com/" },
+  "publisher": { "@type": "Person", "@id": "https://igorgulamov.com/#person", "name": "Igor Gulamov", "url": "https://igorgulamov.com/", "image": "https://igorgulamov.com/img/igor.jpg" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://igorgulamov.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Transcripts", "item": "https://igorgulamov.com/transcripts/" },
+    { "@type": "ListItem", "position": 3, "name": "SavantChat at the Chatoshi AI event, Dubai — Web3 TV interview", "item": "https://igorgulamov.com/transcripts/cambridge-ai-web3/" }
+  ]
+}
+</script>
+
+<style>
+:root{
+  --bg:#fdfdfb; --ink:#111110; --gray:#55554f; --soft:#444440;
+  --hair:#d9d9d3; --red:#d2321c;
+  --sans:'Helvetica Neue',Helvetica,Arial,'Liberation Sans',sans-serif;
+  --mono:ui-monospace,'JetBrains Mono',Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55}
+a{color:var(--ink)}
+img{max-width:100%}
+.topbar{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 20px;border-bottom:1px solid var(--ink);padding:18px clamp(20px,5vw,64px);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.topbar .muted{color:var(--gray)}
+.topnav{display:flex;flex-wrap:wrap;gap:8px 22px;border-bottom:1px solid var(--hair);padding:12px clamp(20px,5vw,64px);font-size:11.5px;font-weight:700;letter-spacing:.12em}
+.topnav a{color:var(--ink);text-decoration:none}
+.topnav a .arr{color:var(--red)}
+.topnav a[aria-current="page"]{color:var(--red)}
+.section{display:grid;grid-template-columns:220px 1fr;gap:48px;border-top:1px solid var(--ink);padding:40px clamp(20px,5vw,64px) 46px}
+.section:first-of-type{border-top:none}
+.sec-label .num{font-size:13px;font-weight:700;color:var(--red)}
+.sec-label .name{margin:6px 0 0;font-size:13px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px}
+.btn{text-decoration:none;font-size:12.5px;font-weight:700;letter-spacing:.1em;padding:15px 24px;display:inline-block}
+.btn-solid{background:var(--ink);color:var(--bg)}
+.btn-line{border:1px solid var(--ink);color:var(--ink)}
+.links-row{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:11.5px;font-weight:700;letter-spacing:.12em}
+.links-row a{color:var(--ink);text-decoration:none}
+.links-row .arr{color:var(--red)}
+.footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 20px;border-top:1px solid var(--ink);padding:16px clamp(20px,5vw,64px);font-size:10.5px;font-weight:700;letter-spacing:.14em;color:var(--gray);text-transform:uppercase}
+@media(max-width:860px){
+  .section{grid-template-columns:1fr;gap:20px;padding-top:28px;padding-bottom:32px}
+}
+
+.lr-head{padding:56px clamp(20px,5vw,64px) 44px;border-bottom:1px solid var(--ink)}
+.lr-kicker{font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--red);text-transform:uppercase}
+h1.lr-title{margin:16px 0 0;font-size:clamp(30px,5vw,50px);line-height:1.06;font-weight:700;letter-spacing:-.03em;max-width:900px}
+.src-box{margin:22px 0 0;display:flex;flex-wrap:wrap;gap:8px 10px;font:400 12px var(--mono)}
+.src-box a,.src-box span{display:inline-block;border:1px solid var(--hair);padding:6px 11px;text-decoration:none;color:var(--ink)}
+.src-box a:hover{border-color:var(--ink)}
+.src-box .llm{border-color:var(--red);color:var(--red)}
+.src-meta{margin-top:14px;font:400 12px var(--mono);color:var(--gray);letter-spacing:.03em}
+.lr-body{max-width:760px;padding:36px clamp(20px,5vw,64px) 72px;font-size:16.5px;line-height:1.62}
+.lr-body p{margin:0 0 14px;overflow-wrap:anywhere}
+.lr-body p strong{font-weight:700}
+.lr-body a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:3px}
+.lr-body hr{border:none;border-top:1px solid var(--hair);margin:26px 0}
+.lr-body em{color:var(--gray)}
+.lr-body figure{margin:24px 0}
+.lr-body figure img{width:100%;border:1px solid var(--hair)}
+.lr-body figcaption{margin-top:6px;font:400 12px var(--mono);color:var(--gray)}
+.lr-body h2{margin:40px 0 14px;padding-top:22px;border-top:1px solid var(--ink);font-size:22px;letter-spacing:-.01em}
+
+</style>
+</head>
+<body>
+<header class="topbar" data-uilint="topbar">
+  <div>Igor Gulamov — Personal Record</div>
+  <div class="muted">Dubai · UTC+4</div>
+</header>
+<nav class="topnav" data-uilint="topnav" aria-label="Site">
+  <a href="/"><span class="arr">→</span> Index</a>
+  <a href="/bio/"><span class="arr">→</span> Bio</a>
+  <a href="/ai/"><span class="arr">→</span> AI</a>
+  <a href="/zk/"><span class="arr">→</span> ZK</a>
+  <a href="/audits/"><span class="arr">→</span> Audits</a>
+  <a href="/plasma/"><span class="arr">→</span> The Plasma Finding</a>
+  <a href="/physics/"><span class="arr">→</span> Physics</a>
+  <a href="/transcripts/" aria-current="page"><span class="arr">→</span> Transcripts</a>
+  <a href="/llms.txt"><span class="arr">→</span> llms.txt</a>
+</nav>
+<main>
+
+<article>
+  <header class="lr-head" data-uilint="lr-head">
+    <div class="lr-kicker">Transcript · Interview · Chatoshi AI event, Dubai (Web3 TV)</div>
+    <h1 class="lr-title">SavantChat at the Chatoshi AI event, Dubai — Web3 TV interview</h1>
+    <div class="src-box" data-uilint="src-box">
+      <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=ejIypMEUx6o">▶ Original video — YouTube (Web3 TV)</a>
+      <a class="llm" href="&#x2F;transcripts&#x2F;cambridge-ai-web3.txt" title="Plain-text transcript for LLMs and AI agents">ↆ Raw .txt (for LLMs)</a>
+      <a href="/transcripts/">↑ All transcripts</a>
+    </div>
+    <div class="src-meta">English · speakers: Adele (host, Web3 TV), Igor Gulamov · auto-transcribed &amp; edited</div>
+  </header>
+  <div class="lr-body" data-uilint="lr-body">
+    <p><em>Web3 TV · Chatoshi AI event, Dubai · <a rel="noopener external" target="_blank" href="https://www.youtube.com/watch?v=ejIypMEUx6o">original video</a> · <a href="/transcripts/cambridge-ai-web3.txt">raw transcript for LLMs</a></em></p>
+<p><em>Transcribed with automatic diarization and edited for readability; technical terms normalized. Speakers: <strong>Adele</strong> (host, Web3 TV) and <strong>Igor Gulamov</strong>.</em></p>
+<hr />
+<p><strong>Adele:</strong> Welcome to the Chatoshi AI event in Dubai. I'm Adele, the host. Today we have Igor with us — Igor from SavantChat. Igor, how are you doing today?</p>
+<p><strong>Igor Gulamov:</strong> Fine — a very nice event.</p>
+<p><strong>Adele:</strong> Thanks for coming. We're here to educate; we want to know what people are building in this space. I hear you're in Web3 — tell us a bit about what you do.</p>
+<p><strong>Igor Gulamov:</strong> We're building an AI smart-contract auditor agent. You load your Solidity source code into the agent and get its advice on fixing security vulnerabilities in your contract. SavantChat helps developers and auditors protect Web3 from hackers.</p>
+<p><strong>Adele:</strong> That's very useful — because, as we know from the crypto world, a lot of things turn out to be scams. Do you train people how to use SavantChat, or do they need to already know how before they can use it?</p>
+<p><strong>Igor Gulamov:</strong> We make it very simple. People just load their Solidity source code and get a report with all the details as a PDF, so they can check it and see what to fix in their codebase to prevent security vulnerabilities and feel safer.</p>
+<p><strong>Adele:</strong> For those watching who want to find out more about SavantChat, where can they go?</p>
+<p><strong>Igor Gulamov:</strong> You can Google it — SavantChat, as on my badge — register on the site, put your code in, and that's it.</p>
+<p><strong>Adele:</strong> Amazing. Thank you, Igor, for your time, and thank you for this interview. Thanks so much for watching — we'll leave all the links in the description so you can check out Igor's profile. I'm Adele, the host, and I'll see you next time. Web3 TV.</p>
+
+  </div>
+</article>
+
+</main>
+<footer class="footer" data-uilint="footer">
+  <div>Set in Helvetica — Grid 220/64</div>
+  <div>© 2026 Igor Gulamov</div>
+</footer>
+</body>
+</html>
