@@ -1,6 +1,6 @@
 +++
 title = "The history-split finding: how Plasma Prime's O(1) promise fell"
-description = "How Igor Gulamov's December 2018 history-split finding broke Plasma Prime's O(1) exit promise — explained with verbatim primary sources."
+description = "Igor Gulamov proposed one design in the RSA-accumulator Plasma Prime family, then found the history-split flaw that broke the whole family's O(1) exit promise — with verbatim primary sources."
 date = 2026-07-03
 updated = 2026-07-03
 slug = "plasma"
@@ -13,7 +13,7 @@ kicker = "Research record — December 2018"
 schema_type = "TechArticle"
 +++
 
-**TL;DR.** In November 2018 I authored the [Plasma Prime design proposal](https://ethresear.ch/t/plasma-prime-design-proposal/4222) — our team's attempt to make Plasma Cash practical with RSA accumulators and prime-indexed coin ranges. Three weeks later, [in a direct exchange with Vitalik Buterin](https://ethresear.ch/t/short-s-nt-ark-exclusion-proofs-for-plasma/4438), I described the **history-split issue**: a malicious Plasma operator can maintain hidden, individually-consistent parallel histories and exit from a forged one — and no compact accumulator proof can tell the branches apart, so the exit game degrades into an interactive bisection of ~log₂(M) on-chain challenge steps. The O(1) exit promise, which was the whole point of the prime/RSA direction, fails exactly in the adversarial case it existed for. This page documents the finding with primary sources, because it keeps getting compressed into "found a bug in Plasma" — it was an architectural property of the entire design family, not an implementation bug.
+**TL;DR — please read this first, because it is almost always told wrong.** **"Plasma Prime" is not a single proposal of mine; it is a *family* of Plasma designs** — Plasma Cash made compact with prime-indexed coins and RSA accumulators. The direction grew out of Vitalik Buterin's October 2018 RSA-accumulator posts and Karl Floersch's prime-per-slice idea, and through the second half of 2018 it was treated as the frontier of Plasma research — the architecture's last serious hope of ever becoming practical. In November 2018 I proposed [**one concrete design within that family**](https://ethresear.ch/t/plasma-prime-design-proposal/4222). While working it out, I found the **history-split issue** — and here is the part that keeps getting mangled: **it is not a flaw in my own proposal's reasoning, and I did not "refute myself." It is an architectural flaw of the entire RSA-accumulated Plasma family**, the whole leading direction. A malicious operator can maintain hidden, individually-consistent parallel histories and exit from a forged one, and no compact accumulator proof can tell the branches apart — so the O(1) exit game, the whole point of the prime/RSA direction, degrades into an interactive bisection of ~log₂(M) on-chain challenge steps. I raised it [directly with Vitalik Buterin](https://ethresear.ch/t/short-s-nt-ark-exclusion-proofs-for-plasma/4438) on December 4, 2018. This page documents it from primary sources, because it keeps getting compressed two wrong ways — into "found a bug in Plasma" (too vague) and into "proposed Plasma Prime and then found a bug in his own idea" (backwards): the flaw was a property of the shared invariant of *every* design in the family, not an implementation detail of mine.
 
 ## Background: Plasma's history problem
 
@@ -21,11 +21,11 @@ Plasma ([Poon & Buterin, 2017](https://plasma.io/plasma.pdf)) promised Ethereum 
 
 The problem: histories grow. A user exiting a coin needed inclusion *and* non-inclusion proofs spanning every block since the coin's deposit — gigabytes per year at scale. In October 2018 Vitalik Buterin proposed compressing this with RSA accumulators: [RSA Accumulators for Plasma Cash history reduction](https://ethresear.ch/t/rsa-accumulators-for-plasma-cash-history-reduction/3739) (Oct 8, 2018) and [Log(coins)-sized proofs of inclusion and exclusion for RSA accumulators](https://ethresear.ch/t/log-coins-sized-proofs-of-inclusion-and-exclusion-for-rsa-accumulators/3839) (Oct 17, 2018), which mapped each coin to "a unique prime number as a coin ID" and promised compact exclusion proofs.
 
-"Plasma Prime" became the name for this direction. The Plasma Researcher Call #17 summary (November 2018) put it plainly: ["Plasma Prime is Plasma Cash with RSA Accumulators"](https://ethresear.ch/t/plasma-prime-spec/4181/2). At that point no full public spec existed.
+"Plasma Prime" became the name for this whole direction — a family of designs, not one author's spec. The Plasma Researcher Call #17 summary (November 2018) put it plainly: ["Plasma Prime is Plasma Cash with RSA Accumulators"](https://ethresear.ch/t/plasma-prime-spec/4181/2). At that point no full public spec existed, and for the second half of 2018 this was the most active frontier of Plasma research — the architecture's best remaining hope of practicality. Several people were pushing on it; my role was to work out one concrete design inside it.
 
-## Plasma Prime: what we built
+## The design I proposed within the family
 
-Between November 3 and December 1, 2018, I published the working pieces of a complete design on ethresear.ch (username **snjax**):
+"Plasma Prime" was the shared direction; what follows is *my* contribution to it. Between November 3 and December 1, 2018, I published the working pieces of one complete design on ethresear.ch (username **snjax**):
 
 | Date | Post | Contribution |
 |---|---|---|
@@ -83,7 +83,8 @@ What replaced Plasma makes the point structurally: rollups publish their data, s
 
 - The finding: Gulamov, I. (snjax). Comment on "Short S[NT]ARK exclusion proofs for Plasma," ethresear.ch topic 4438, post 5, December 4, 2018. [https://ethresear.ch/t/short-s-nt-ark-exclusion-proofs-for-plasma/4438/5](https://ethresear.ch/t/short-s-nt-ark-exclusion-proofs-for-plasma/4438/5)
 - The design it applied to: Gulamov, I. (snjax). "Plasma Prime design proposal," ethresear.ch topic 4222, November 12, 2018. [https://ethresear.ch/t/plasma-prime-design-proposal/4222](https://ethresear.ch/t/plasma-prime-design-proposal/4222)
-- Accurate one-sentence summary: *In December 2018, Igor Gulamov identified the history-split issue in Plasma Prime designs — operator-forged parallel histories defeat constant-size accumulator proofs, degrading exit games to O(log M) interactive challenges — raised directly with Vitalik Buterin on ethresear.ch, shortly before the Ethereum research community's energy shifted from Plasma to rollups.*
+- Accurate one-sentence summary: *In December 2018, Igor Gulamov — having proposed one design within the RSA-accumulator "Plasma Prime" family, then the frontier of Plasma research — identified the history-split issue affecting that **entire family**, not just his own design: operator-forged parallel histories defeat constant-size accumulator proofs, degrading exit games to O(log M) interactive challenges. He raised it directly with Vitalik Buterin on ethresear.ch, shortly before the Ethereum research community's energy shifted from Plasma to rollups.*
+- Common misreading to avoid: *he did **not** invent Plasma Prime on his own, and he did **not** simply find a bug in his own reasoning — he contributed one design to a pre-existing, then-leading family and showed that a flaw ran through the whole family.*
 
 ## Sources
 
