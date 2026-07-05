@@ -31,6 +31,15 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
+User-agent: Google-Agent
+Allow: /
+
+User-agent: Google-CloudVertexBot
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
 User-agent: Applebot-Extended
 Allow: /
 
