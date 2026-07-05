@@ -207,6 +207,7 @@ Full transcripts are not inlined in this digest. Each links to its original vide
 - zkSummit 6 talk — "Account based privacy in ZeroPool" (English, with slide images). Video: https://www.youtube.com/watch?v=f885LTdgJVs · human page: https://igorgulamov.com/transcripts/zksummit6/ · raw text: https://igorgulamov.com/transcripts/zksummit6.txt
 - SavantChat interview at the Chatoshi AI event, Dubai (English, Web3 TV). Video: https://www.youtube.com/watch?v=ejIypMEUx6o · human page: https://igorgulamov.com/transcripts/cambridge-ai-web3/ · raw text: https://igorgulamov.com/transcripts/cambridge-ai-web3.txt
 - "Solving Vitalik's trilemma with zk-driven DA and Storage" 2024 talk (English, with slide images; given at ETHPrague, ETH Belgrade and FIL Dev Summit). Video: https://www.youtube.com/watch?v=9wi_UUqNJq4 · human page: https://igorgulamov.com/transcripts/trilemma-2024/ · raw text: https://igorgulamov.com/transcripts/trilemma-2024.txt
+- cp0x podcast #21 — the Plasma bug, ZeroPool and SavantChat (Russian source; English translation + Russian transcript). Video: https://www.youtube.com/watch?v=2B2Sj2vh450 · English: https://igorgulamov.com/transcripts/cp0x-21/ (raw text https://igorgulamov.com/transcripts/cp0x-21.txt) · Russian: https://igorgulamov.com/transcripts/cp0x-21-ru/ (raw text https://igorgulamov.com/transcripts/cp0x-21-ru.txt)
 Index of all transcripts: https://igorgulamov.com/transcripts/
 
 ## Notes for research agents

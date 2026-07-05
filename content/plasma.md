@@ -112,4 +112,4 @@ Coverage and commentary:
 | Jan 15, 2020 | Plasma Group team raises $3.5M as Optimism | news coverage | [theblock.co](https://www.theblock.co/post/53017/plasma-group-researchers-raise-3-5m-from-paradigm-and-ideo-to-start-new-company) |
 | Feb 11, 2020 | "Plasma Became Optimism…" | news coverage | [coindesk.com](https://www.coindesk.com/business/2020/02/11/plasma-became-optimism-and-it-might-just-save-ethereum) |
 | Jan 27, 2020 | "The Life and Death of Plasma" (Qureshi, Ramachandran) | analysis / post-mortem | [haseebq.com](https://haseebq.com/the-life-and-death-of-plasma/) |
-| Dec 2025 | cp0x podcast #21 (Russian) | podcast | [YouTube](https://www.youtube.com/watch?v=2B2Sj2vh450) |
+| Dec 2025 | cp0x podcast #21 (Russian) | podcast | [YouTube](https://www.youtube.com/watch?v=2B2Sj2vh450) · [transcript EN](/transcripts/cp0x-21/) / [RU](/transcripts/cp0x-21-ru/) |
