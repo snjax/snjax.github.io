@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 
+{% block title %}Igor Gulamov — cryptography, ZK and AI security engineer{% endblock title %}
+{% block ogtitle %}Igor Gulamov — cryptography, ZK and AI security engineer{% endblock ogtitle %}
+{% block twtitle %}Igor Gulamov — cryptography, ZK and AI security engineer{% endblock twtitle %}
+
 {% block jsonld %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ProfilePage",
-  "dateModified": "{{ now() | date(format="%Y-%m-%d") }}",
+  "dateModified": "{{ now() | date(format="%Y-%m-%dT%H:%M:%S%:z") }}",
   "mainEntity": {
     "@type": "Person",
     "@id": "https://igorgulamov.com/#person",
@@ -115,6 +119,12 @@ h1.hero-name{margin:18px 0 0;font-size:clamp(52px,9vw,88px);line-height:.98;font
 .machines p{margin:0;font-size:14px;line-height:1.6;color:#c9c9c4;max-width:620px}
 .machines pre{margin:16px 0 0;font:400 12px/1.7 var(--mono);color:#8f8f89;white-space:pre-wrap}
 .machines a{color:#f2f2ef}
+.prose-body{max-width:680px}
+.prose-body p{margin:0 0 15px;font-size:16px;line-height:1.62}
+.prose-body p:last-child{margin-bottom:0}
+.prose-body h3{margin:26px 0 8px;font-size:15px;font-weight:700;letter-spacing:.01em}
+.prose-body a{color:var(--red);text-decoration:none}
+.prose-body a:hover{text-decoration:underline}
 @media(max-width:860px){
   .hero{grid-template-columns:1fr;gap:28px;padding-top:36px}
   .portrait-wrap{align-items:flex-start}
@@ -153,8 +163,21 @@ h1.hero-name{margin:18px 0 0;font-size:clamp(52px,9vw,88px);line-height:.98;font
   </div>
 </section>
 
+<section class="section" data-uilint="profile">
+  <div class="sec-label"><span class="num">01</span><h2 class="name">Profile</h2></div>
+  <div class="prose-body">
+    <p>I&#8217;m a cryptography engineer and applied mathematician who has spent two decades moving from theoretical physics into the core of Ethereum&#8217;s privacy, scaling and security stack. Today I build AI systems that audit code; before that I built zero-knowledge protocols and reviewed the smart contracts that secure billions of dollars on-chain. Almost all of that work is public — dated, and linked to primary sources across this site.</p>
+    <h3>AI-driven smart-contract security</h3>
+    <p>As co-founder of <a href="/ai/">SavantChat</a> I build a language-agnostic AI code auditor: an engine that generates vulnerability hypotheses across a whole codebase, and a critic agent that filters false positives, returning a report written in the register of a senior human auditor. In June 2025 it placed <b>top-6</b> against expert human teams at Sherlock&#8217;s Symbiotic Relay audit contest — the first competitive win by an AI auditor against humans — and it scores 87–95% on CTFBench, a benchmark for AI smart-contract auditors. It already runs as a pre-audit step inside 1inch&#8217;s development workflow.</p>
+    <h3>Zero-knowledge proofs and Ethereum scaling</h3>
+    <p>I founded <a href="/zk/">ZeroPool</a>, a system for private multi-chain transactions built on zkSNARKs, and wrote Fawkes-Crypto, its Rust proving framework. My <a href="/audits/">audit record</a> spans 15 published reviews of major DeFi and zero-knowledge protocols — ten for 1inch, plus Aave, Opium and Ethereum Foundation projects — with no reported impact reaching production. In 2018 I identified the <a href="/plasma/">history-split flaw</a> in Plasma Prime: a subtle break in the O(1) exit-game promise shared by accumulator-based Plasma designs, worked out in an open exchange with Vitalik Buterin.</p>
+    <h3>From theoretical physics</h3>
+    <p>Before cryptography I did doctoral research in <a href="/physics/">theoretical physics</a> at Moscow State University, studying Q-balls — non-topological solitons proposed as dark-matter candidates — with 7 peer-reviewed papers and 190 citations, three of them in Physical Review D. The same instincts carry into the cryptography: precise models, adversarial thinking, and results that hold up to scrutiny. <a href="/bio/">Read the full biography →</a></p>
+  </div>
+</section>
+
 <section class="section" data-uilint="now">
-  <div class="sec-label"><span class="num">01</span><h2 class="name">Now — SavantChat</h2></div>
+  <div class="sec-label"><span class="num">02</span><h2 class="name">Now — SavantChat</h2></div>
   <div>
     <p style="margin:0;max-width:600px;font-size:16px;line-height:1.55">AI-powered security audits for code — fully language-agnostic. One agent generates vulnerability hypotheses, a critic agent filters false positives; the output reads like a senior auditor&#8217;s report, available 24/7 at a fraction of the cost of a human team. Proven in public on smart contracts: <a href="https://savant.chat" style="color:var(--red)">savant.chat</a></p>
     <div class="stats3">
@@ -166,7 +189,7 @@ h1.hero-name{margin:18px 0 0;font-size:clamp(52px,9vw,88px);line-height:.98;font
 </section>
 
 <section class="section" data-uilint="career">
-  <div class="sec-label"><span class="num">02</span><h2 class="name">Career</h2></div>
+  <div class="sec-label"><span class="num">03</span><h2 class="name">Career</h2></div>
   <div>
     <div class="tl hot"><div class="yr">2025 —</div><div class="rail"></div><div class="what"><div class="t">Co-founder, SavantChat</div><div class="d">AI code auditor — language-agnostic, born in smart contracts. Top-6 at Sherlock&#8217;s Symbiotic Relay audit contest against human experts (Jun 2025 — the world&#8217;s first AI-auditor win); 87–95% on CTFBench; pre-audits in 1inch&#8217;s dev workflow. <a href="/ai/" style="color:var(--red)">More on SavantChat →</a></div></div></div>
     <div class="tl"><div class="yr">2019 —</div><div class="rail"></div><div class="what"><div class="t">Founder, ZeroPool</div><div class="d">Private multi-chain transactions on zkSNARKs (UTXO model — sender, receiver and amount hidden). Authored the Fawkes-Crypto zkSNARK framework in Rust. Grants: Web3 Foundation (63,000 DAI), NEAR, Waves, Gitcoin. Sharded-storage research line, ETHPrague 2024 talk. <a href="/zk/" style="color:var(--red)">The zero-knowledge track →</a></div></div></div>
@@ -180,7 +203,7 @@ h1.hero-name{margin:18px 0 0;font-size:clamp(52px,9vw,88px);line-height:.98;font
 </section>
 
 <section class="section" data-uilint="results">
-  <div class="sec-label"><span class="num">03</span><h2 class="name">Results</h2></div>
+  <div class="sec-label"><span class="num">04</span><h2 class="name">Results</h2></div>
   <div class="tiles">
     <div class="tile"><div class="v">7</div><div class="k">peer-reviewed physics papers</div></div>
     <div class="tile"><div class="v">190</div><div class="k">citations, INSPIRE-HEP (Jul 2026)</div></div>
@@ -194,7 +217,7 @@ h1.hero-name{margin:18px 0 0;font-size:clamp(52px,9vw,88px);line-height:.98;font
 </section>
 
 <section class="section" data-uilint="research">
-  <div class="sec-label"><span class="num">04</span><h2 class="name">Research</h2></div>
+  <div class="sec-label"><span class="num">05</span><h2 class="name">Research</h2></div>
   <div>
     <div class="paper"><div class="yr">2015</div><div class="t"><a href="https://arxiv.org/abs/1506.05786">Some properties of U(1) gauged Q-balls</a><span class="venue"> — Phys. Rev. D 92</span></div><div class="cit">75 cit.</div></div>
     <div class="paper"><div class="yr">2013</div><div class="t"><a href="https://arxiv.org/abs/1311.0325">Theory of U(1) gauged Q-balls revisited</a><span class="venue"> — Phys. Rev. D 89 (2014)</span></div><div class="cit">69 cit.</div></div>
@@ -209,7 +232,7 @@ h1.hero-name{margin:18px 0 0;font-size:clamp(52px,9vw,88px);line-height:.98;font
 </section>
 
 <section class="section" data-uilint="contact">
-  <div class="sec-label"><span class="num">05</span><h2 class="name">Contact</h2></div>
+  <div class="sec-label"><span class="num">06</span><h2 class="name">Contact</h2></div>
   <div>
     <div class="contact-big">The fastest way to reach me is Telegram.</div>
     <div class="btn-row" style="margin-top:22px">
