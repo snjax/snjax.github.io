@@ -48,7 +48,7 @@ I showed earlier that a transfer function can be vulnerable; that transfer funct
 
 Here is how CTFBench works. On the X axis we have the rate of reports per line of code — a high number of reports means high noise, lower is better. On the Y axis we have the share of detected vulnerabilities. We have several contracts with N vulnerabilities and measure the over-reporting index, and we measure the models' ability to find those vulnerabilities. We now see CTFBench being solved by GPT-5.5 and Gemini 3.1 Pro. There will be more powerful models on the market that can find more security vulnerabilities.
 
-This is EVMBench — we ran it a few days ago, and here are the results. We have a lower bound for our solution, because in this test we run our agent only on small inputs and from a single angle. It looks like cheating, but it's cheating in the other direction: in production our agent takes each chunk of code and runs a small research pass from several different angles, whereas in this check we used only one angle. Why? Because it's expensive, and this approach lets us spend only about 1% of the inference.
+This is EVMBench — we ran it a few days ago, and here are the results. Note: SavantChat scored 73.3% in May 2026 and 81.2% in June 2026; results and report: [auditdbio/savant-chat-evmbench-report.]
 
 ![The SavantChat pipeline — each block is a race-against-cost closer, ending in critic filtering and PoC validation.](https://igorgulamov.com/img/transcripts/ethprague-2026/pipeline.png)
 
